@@ -1,11 +1,6 @@
-import React from 'react';
-
 function App() {
-  return (
-    <div>
-      Hello world!
-    </div>
-  );
+  const y = '';
+  return <h1>Hello world!</h1>;
 }
 
 export default App;
