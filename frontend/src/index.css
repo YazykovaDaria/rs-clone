@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('../public/fonts/fonts.css');
+
+html,
+body,
+button,
+input {
+  font-family: 'Segoe UI Regular';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+}
+
+body,
+button,
+input {
+  font-size: 15px;
+}
