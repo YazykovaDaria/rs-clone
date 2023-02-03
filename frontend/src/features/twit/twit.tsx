@@ -1,12 +1,12 @@
-import TwitContent from '../../entities/twit-content';
-import Like from '../../features/twit/twit-row-bottom/like';
-import Reply from '../../features/twit/twit-row-bottom/reply';
-import Retweet from '../../features/twit/twit-row-bottom/retweet';
-import TwitDate from '../../features/twit/twit-row-top/twit-date';
-import TwitSettings from '../../features/twit/twit-row-top/twit-settings';
-import UserAlias from '../../features/twit/twit-row-top/user-alias';
-import UserName from '../../features/twit/twit-row-top/user-name';
-import UserImg from '../../features/twit/user-img';
+import TwitContent from './twit-content';
+import Like from './twit-row-bottom/like';
+import Reply from './twit-row-bottom/reply';
+import Retweet from './twit-row-bottom/retweet';
+import TwitDate from './twit-row-top/twit-date';
+import TwitSettings from './twit-row-top/twit-settings';
+import UserAlias from './twit-row-top/user-alias';
+import UserName from './twit-row-top/user-name';
+import UserImg from './user-img';
 
 export default function Twit() {
   return (
