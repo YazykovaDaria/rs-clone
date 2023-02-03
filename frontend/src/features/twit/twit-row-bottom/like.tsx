@@ -4,14 +4,14 @@ export default function Like() {
   return (
     <div
       title="Like"
-      className="twit__like text-gray-350 flex flex-nowrap items-center transition-all duration-200 mr-10"
+      className="twit__like text-gray-350 flex flex-nowrap items-center transition-colors duration-200 mr-10"
     >
       <div className="w-9 h-9 rounded-full flex items-center justify-center">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
           strokeWidth={1.5}
-          className="w-5 h-5 stroke-gray-350  transition-all duration-200 fill-none"
+          className="w-5 h-5 stroke-gray-350 transition-colors duration-200 fill-none"
         >
           <path
             strokeLinecap="round"

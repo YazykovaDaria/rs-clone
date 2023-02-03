@@ -2,7 +2,7 @@ import './style.css';
 
 export default function TwitSettings() {
   return (
-    <div className="twit__settings w-9 h-9 rounded-full flex items-center justify-center transition-all duration-200">
+    <div className="twit__settings w-9 h-9 rounded-full flex items-center justify-center transition-colors duration-200">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"

@@ -10,26 +10,28 @@ import UserImg from '../../features/twit/user-img';
 
 export default function Twit() {
   return (
-    <div className="cursor-pointer w-[566px] flex">
-      <div>
-        <UserImg />
-      </div>
-      <div className="w-[506px]">
-        <div className="flex justify-between items-center">
-          <div className="flex items-center">
-            <UserName /> <UserAlias /> <TwitDate />
-          </div>
-          <div>
-            <TwitSettings />
-          </div>
-        </div>
-
+    <div className="cursor-pointer w-[598px] relative p-4 hover:bg-slate-50 transition-colors duration-200 border">
+      <div className="flex w-full">
         <div>
-          <TwitContent />
+          <UserImg />
         </div>
+        <div className="w-[506px]">
+          <div className="flex justify-between items-center">
+            <div className="flex items-center">
+              <UserName /> <UserAlias /> <TwitDate />
+            </div>
+            <div>
+              <TwitSettings />
+            </div>
+          </div>
 
-        <div className="flex items-center flex-nowrap">
-          <Reply /> <Retweet /> <Like />
+          <div>
+            <TwitContent />
+          </div>
+
+          <div className="flex items-center flex-nowrap">
+            <Reply /> <Retweet /> <Like />
+          </div>
         </div>
       </div>
     </div>
