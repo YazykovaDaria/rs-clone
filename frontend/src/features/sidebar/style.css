@@ -1,0 +1,12 @@
+.aside-link {
+  @apply flex gap-2 hover:bg-slate-200 hover:rounded-lg p-1 items-center transition-all duration-100
+  }
+
+  .aside-bnt {
+    @apply hidden sm:flex justify-center rounded-full text-white hover:cursor-pointer hover:bg-cyan-400 text-xl bg-sky-500 p-2 transition-all duration-100
+  }
+
+  .active {
+    font-weight: 700;
+    color: rgb(7, 7, 157);
+  }
