@@ -1,5 +1,5 @@
 .aside-link {
-  @apply flex gap-2 hover:bg-slate-200 hover:rounded-lg p-1 items-center transition-all duration-100
+  @apply flex gap-2 hover:bg-slate-200 hover:rounded-full p-1 items-center transition-all duration-100
   }
 
   .aside-bnt {
