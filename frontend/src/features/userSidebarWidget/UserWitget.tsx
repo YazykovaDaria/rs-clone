@@ -1,9 +1,11 @@
 import './style.css';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import ButtonCloseSvg from '../../shared/ButtonCloseSvg/ButtonCloswSvg';
 import Modal from '../../shared/modal/Modal';
 
 function UserWidget() {
+  const { t } = useTranslation();
   const [isOpenPopup, setPopup] = useState(false);
   const [isOpenModal, setModal] = useState(false);
 
@@ -28,7 +30,7 @@ function UserWidget() {
             }}
             className="p-0"
           >
-            Switch language
+            {t('selectLng')}
           </button>
           <Modal isOpen={isOpenModal} onClose={closeModal}>
             lang
@@ -36,7 +38,7 @@ function UserWidget() {
         </div>
 
         <div className="hover:text-sky-600 hover:font-bold cursor-pointer">
-          Logout
+          {t('logout')}
         </div>
       </div>
 

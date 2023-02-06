@@ -13,8 +13,10 @@
     "prepare": "cd .. && husky install frontend/.husky"
   },
   "dependencies": {
+    "i18next": "^22.4.9",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-i18next": "^12.1.5",
     "react-router-dom": "^6.8.0",
     "vite-plugin-svgr": "^2.4.0"
   },

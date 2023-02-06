@@ -1,0 +1,11 @@
+{
+  "nav": {
+    "home": "Home",
+    "profile": "Profile",
+    "messages": "Messages"
+  },
+  "tweet": "Tweet",
+  "logout": "Logout",
+  "login": "Login",
+  "selectLng": "Select language"
+}
