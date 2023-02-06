@@ -6,7 +6,7 @@ import { ReactComponent as Home } from '../../shared/assets/icons/home.svg';
 
 function Nav() {
   return (
-    <ul className="flex gap-4 sm:gap-3 flex-row justify-between sm:flex-col">
+    <ul className="flex gap-4 sm:gap-3 flex-row justify-between sm:flex-col items-center sm:items-start">
       <li>
         <NavLink to="/" className="aside-link">
           <Home />
