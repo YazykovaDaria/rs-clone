@@ -17,19 +17,16 @@ function App() {
   return (
     <I18nextProvider i18n={i18n}>
       <BrowserRouter>
-        {/* <button onClick={() => i18n.changeLanguage("ru")}>ru</button>
-    <button onClick={() => i18n.changeLanguage("en")}>en</button>
-      <p>{t('home')}</p> */}
-
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Main />} />
-            <Route path="login" element={<Login />} />
-            <Route path="auth" element={<Auth />} />
             <Route path="profile" element={<Profile />} />
             <Route path="chat" element={<Chat />} />
-            <Route path="*" element={<NotFound />} />
           </Route>
+
+          <Route path="/login" element={<Login />} />
+          <Route path="/auth" element={<Auth />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </I18nextProvider>
