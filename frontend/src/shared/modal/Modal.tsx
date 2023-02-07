@@ -15,26 +15,11 @@ const modalRootEl = document.getElementById('modal');
 const Modal: FC<ModalProps> = ({ isOpen, onClose, children }) => {
   const element = useMemo(() => document.createElement('div'), []);
 
-  // this code drop app
-  // useEffect(() => {
-  //   return () => {
-  //     if (isOpen) {
-  //       modalRootEl?.appendChild(element);
-  //     } else {
-  //       modalRootEl?.removeChild(element);
-  //     }
-  //   };
-  // });
-
-  // eslint-disable-next-line consistent-return
   useEffect(() => {
-    if (isOpen) {
-      modalRootEl?.appendChild(element);
-
-      return () => {
-        modalRootEl?.removeChild(element);
-      };
-    }
+    modalRootEl?.appendChild(element);
+    return () => {
+      modalRootEl?.removeChild(element);
+    };
   });
 
   const closeModal = (e: React.MouseEvent) => {
