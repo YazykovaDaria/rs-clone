@@ -6,8 +6,8 @@ import { ReactComponent as Logo } from '../../shared/assets/icons/icons8-twitter
 
 function SideBar() {
   return (
-    <aside className="flex sm:flex-col justify-between items-center p-3 sm:h-screen">
-      <div className="flex sm:flex-col justify-between gap-5">
+    <aside className="flex flex-col justify-between sm:p-3 h-screen sticky top-0 left-0">
+      <div className="flex flex-col justify-between gap-5">
         <Link to="/">
           <Logo className="hover:fill-cyan-500 fill-cyan-300" />
         </Link>

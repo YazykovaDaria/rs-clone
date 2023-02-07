@@ -50,13 +50,13 @@ export default function HeaderDesription() {
           </span>
         </div>
         <div className="flex flex-row w-full items-start">
-          <div className="text-gray-350 mr-3">
+          <div className="text-gray-350 mr-3 hover:underline cursor-pointer">
             <span className="text-black font-bold pr-1">10</span>
-            FolLowing
+            Following
           </div>
-          <div className="text-gray-350 mr-3">
+          <div className="text-gray-350 mr-3 hover:underline cursor-pointer">
             <span className="text-black font-bold pr-1">15</span>
-            FolLowers
+            Followers
           </div>
         </div>
       </div>

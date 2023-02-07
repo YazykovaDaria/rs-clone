@@ -8,7 +8,7 @@ import { ReactComponent as Home } from '../../shared/assets/icons/home.svg';
 function Nav() {
   const { t } = useTranslation();
   return (
-    <ul className="flex gap-4 sm:gap-3 flex-row justify-between sm:flex-col items-center sm:items-start">
+    <ul className="flex gap-4 sm:gap-3 flex-col justify-between sm:flex-col items-center sm:items-start">
       <li>
         <NavLink to="/" className="aside-link">
           <Home />

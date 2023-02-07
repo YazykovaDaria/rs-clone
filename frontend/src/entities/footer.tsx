@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
-    <footer className="">
-      <div className="text-gray-350 transition-all duration-200 flex justify-between w-full p-1 container">
+    <footer>
+      <div className="text-gray-350 transition-all duration-200 flex justify-between w-full p-3 container items-center border">
         <div className="flex flex-col">
           <a
             href="https://github.com/yazykovadaria"
@@ -19,7 +19,7 @@ export default function Footer() {
             viktorsolovyev
           </a>
         </div>
-        <div className="font-bold">2023</div>
+        <div className="font-bold text-black">2023</div>
         <a href="https://rs.school/js/" className="fill-gray-350">
           <svg
             version="1.1"

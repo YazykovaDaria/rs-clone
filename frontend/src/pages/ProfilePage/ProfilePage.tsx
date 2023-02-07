@@ -1,5 +1,19 @@
+import HeaderProfile from '../../entities/header-profile/header-profile';
+import Twit from '../../features/twit/twit';
+
 function Profile() {
-  return <p>Profile page</p>;
+  return (
+    <>
+      <HeaderProfile />
+      <Twit />
+      <Twit />
+      <Twit />
+      <Twit />
+      <Twit />
+      <Twit />
+      <Twit />
+    </>
+  );
 }
 
 export default Profile;
