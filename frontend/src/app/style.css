@@ -1,0 +1,3 @@
+.close-svg {
+  @apply stroke-black hover:stroke-red-500
+}

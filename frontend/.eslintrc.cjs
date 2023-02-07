@@ -26,5 +26,12 @@ module.exports = {
       'error',
       { devDependencies: ['**/*.test.tsx', '**/*.spec.tsx'] },
     ],
+    'react/function-component-definition': [
+      2,
+      {
+        namedComponents: ['arrow-function', 'function-declaration'],
+        unnamedComponents: 'arrow-function',
+      },
+    ],
   },
 };
