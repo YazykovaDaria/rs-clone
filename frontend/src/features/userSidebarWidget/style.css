@@ -1,0 +1,7 @@
+.user-aside {
+  @apply flex items-center justify-around hover:bg-slate-200 hover:rounded-full p-1
+}
+
+.user-popup {
+  @apply p-2 pt-5 border-2 border-gray-300 rounded-xl flex flex-col gap-2 relative
+}
