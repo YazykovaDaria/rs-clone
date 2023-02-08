@@ -14,7 +14,7 @@ function scrollUp() {
 
 export default function StickyHeader() {
   return (
-    <div className="w-full fixed z-50 top-0 flex items-center h-[53px] px-4 justify-between cursor-pointer backdrop-blur-md bg-white/60">
+    <div className="w-full fixed z-40 top-0 flex items-center h-[53px] px-4 justify-between cursor-pointer backdrop-blur-md bg-white/60">
       <div className="arrow-back min-w-[56px] min-h-[32px] flex items-start">
         <div className="w-9 h-9 rounded-full flex items-center justify-center">
           <svg

@@ -9,7 +9,7 @@ function SideBar() {
     <aside className="flex flex-col justify-between sm:p-3 h-screen sticky top-0 left-0">
       <div className="flex flex-col justify-between gap-5">
         <Link to="/">
-          <Logo className="hover:fill-cyan-500 fill-cyan-300" />
+          <Logo className="hover:fill-cyan-500 fill-cyan-300 md:w-16 md:h-16 w-12 h-12" />
         </Link>
 
         <Nav />

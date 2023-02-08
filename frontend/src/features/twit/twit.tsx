@@ -10,7 +10,7 @@ import UserImg from './user-img';
 
 export default function Twit() {
   return (
-    <div className="cursor-pointer relative p-4 hover:bg-slate-50 transition-colors duration-200 border-t border-x">
+    <div className="cursor-pointer p-4 hover:bg-slate-50 transition-colors duration-200 border-t border-x">
       <div className="flex w-full">
         <div>
           <UserImg />
