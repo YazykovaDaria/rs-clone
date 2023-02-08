@@ -16,7 +16,11 @@ export default function StickyHeader() {
   return (
     <div className="w-full fixed z-40 top-0 flex items-center h-[53px] px-4 justify-between cursor-pointer backdrop-blur-md bg-white/60">
       <div className="arrow-back min-w-[56px] min-h-[32px] flex items-start">
-        <div className="w-9 h-9 rounded-full flex items-center justify-center">
+        <button
+          onClick={() => window.history.back()}
+          type="button"
+          className="w-9 h-9 rounded-full flex items-center justify-center"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -31,7 +35,7 @@ export default function StickyHeader() {
               d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
             />
           </svg>
-        </div>
+        </button>
       </div>
       <div
         onClick={scrollUp}
