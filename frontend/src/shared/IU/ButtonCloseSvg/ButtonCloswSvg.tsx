@@ -1,4 +1,4 @@
-import { ReactComponent as Close } from '../assets/icons/close.svg';
+import { ReactComponent as Close } from '../../assets/icons/close.svg';
 
 type ButtonCloseSvgProps = {
   close: () => void;

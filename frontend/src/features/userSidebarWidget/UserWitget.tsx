@@ -1,8 +1,8 @@
 import './style.css';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import ButtonCloseSvg from '../../shared/ButtonCloseSvg/ButtonCloswSvg';
-import Modal from '../../shared/modal/Modal';
+import ButtonCloseSvg from '../../shared/IU/ButtonCloseSvg/ButtonCloswSvg';
+import Modal from '../../shared/IU/modal/Modal';
 
 function UserWidget() {
   const { t } = useTranslation();

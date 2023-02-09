@@ -1,8 +1,8 @@
 import i18next from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
-import en from '../../shared/locales/en.json';
-import ru from '../../shared/locales/ru.json';
+import en from './en.json';
+import ru from './ru.json';
 
 const i18n = i18next.createInstance();
 
