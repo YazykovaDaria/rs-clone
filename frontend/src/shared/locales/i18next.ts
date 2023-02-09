@@ -15,7 +15,7 @@ i18n.use(initReactI18next).init({
       translation: ru,
     },
   },
-  lng: 'en',
+  lng: localStorage.getItem('lng') || 'en',
   fallbackLng: 'en',
 
   interpolation: {
