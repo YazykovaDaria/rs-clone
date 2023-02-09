@@ -1,8 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { I18nextProvider } from 'react-i18next';
-import i18n from '../processes/localization/i18next';
-// import i18n from "./i18n";
-// import { useTranslation } from 'react-i18next';
+import i18n from '../shared/locales/i18next';
 
 import Login from '../pages/loginPage/Login';
 import Main from '../pages/MainPage/MainPage';
