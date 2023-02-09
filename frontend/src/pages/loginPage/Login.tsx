@@ -1,5 +1,7 @@
 function Login() {
-  return <p>Login page</p>;
+  return (
+    <div className="max-w-screen-xl mx-auto justify-between">Login page</div>
+  );
 }
 
 export default Login;
