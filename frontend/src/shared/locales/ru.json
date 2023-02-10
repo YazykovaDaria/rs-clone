@@ -12,6 +12,7 @@
     "createAccount": "Создать аккаунт",
     "name": "Имя",
     "email": "Почта",
+    "nickname": "Логин",
     "password": "Пароль",
     "confirmPassword": "Подтверждение пароля",
     "registration": "Зарегистрироваться"

@@ -12,6 +12,7 @@
   "authLoginForm": {
     "createAccount": "Create an account",
     "name": "Name",
+    "nickname": "Login",
     "email": "E-mail",
     "password": "Password",
     "confirmPassword": "Confirm password",
