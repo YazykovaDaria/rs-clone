@@ -11,6 +11,8 @@
 
   "authLoginForm": {
     "createAccount": "Create an account",
+    "notHave": "Don't have an account?",
+    "logIn": "Log in to Threetter",
     "name": "Name",
     "nickname": "Login",
     "email": "E-mail",

@@ -10,6 +10,8 @@
   "selectLng": "Выберите язык",
   "authLoginForm": {
     "createAccount": "Создать аккаунт",
+    "notHave": "Нет аккаунта?",
+    "logIn": "Войти в Threetter",
     "name": "Имя",
     "email": "Почта",
     "nickname": "Логин",
