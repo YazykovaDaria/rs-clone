@@ -7,5 +7,20 @@
   "tweet": "Твитнуть",
   "logout": "Выйти",
   "login": "Войти",
-  "selectLng": "Выберите язык"
+  "selectLng": "Выберите язык",
+  "authLoginForm": {
+    "createAccount": "Создать аккаунт",
+    "name": "Имя",
+    "email": "Почта",
+    "password": "Пароль",
+    "confirmPassword": "Подтверждение пароля",
+    "registration": "Зарегистрироваться"
+  },
+  "formErrors": {
+    "max20": "Максимум 20 символов",
+    "min6": "Должно быть болььше 6 символов",
+    "required": "Поле не должно быть пустым",
+    "email": "Не верный email",
+    "samePassword": "Пароли не совпадают"
+  }
 }

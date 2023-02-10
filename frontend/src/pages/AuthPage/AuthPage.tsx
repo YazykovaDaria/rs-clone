@@ -1,18 +1,30 @@
 import { useFormik } from 'formik';
 import * as yup from 'yup';
+import { useTranslation } from 'react-i18next';
 
 const validation = yup.object().shape({
-  name: yup.string().max(3, 'max 20 sumbols').required('required'),
-  login: yup.string().max(20, 'max 20 sumbols').required('required'),
-  email: yup.string().email('add right email').required('must be'),
-  password: yup.string().min(6, 'min six sumbols').required('must be'),
+  name: yup
+    .string()
+    .max(20, 'formErrors.max20')
+    .required('formErrors.required'),
+  login: yup
+    .string()
+    .max(20, 'formErrors.max20')
+    .required('formErrors.required'),
+  email: yup.string().email('formErrors.email').required('formErrors.required'),
+  password: yup
+    .string()
+    .min(6, 'formErrors.min6')
+    .required('formErrors.required'),
   confirmPassword: yup
     .string()
-    .oneOf([yup.ref('password')], "password isn't same")
-    .required('must be'),
+    .oneOf([yup.ref('password')], 'formErrors.samePassword')
+    .required('formErrors.required'),
 });
 
 function Auth() {
+  const { t } = useTranslation();
+
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -28,70 +40,70 @@ function Auth() {
   });
   return (
     <>
-      <h2>Create accaunt</h2>
+      <h2>{t('createAccount')}</h2>
 
       <form onSubmit={formik.handleSubmit} className="flex flex-col gap-3">
         <input
           id="name"
           name="name"
           type="text"
-          placeholder="Name"
+          placeholder={t('authLoginForm.name')}
           onChange={formik.handleChange}
           value={formik.values.name}
         />
         {formik.errors.name ? (
-          <div className="text-red-500">{formik.errors.name}</div>
+          <div className="text-red-500">{t(formik.errors.name)}</div>
         ) : null}
 
         <input
           id="login"
           name="login"
           type="text"
-          placeholder="Login"
+          placeholder={t('login')}
           onChange={formik.handleChange}
           value={formik.values.login}
         />
         {formik.errors.login ? (
-          <div className="text-red-500">{formik.errors.login}</div>
+          <div className="text-red-500">{t(formik.errors.login)}</div>
         ) : null}
 
         <input
           id="email"
           name="email"
           type="email"
-          placeholder="E-mail"
+          placeholder={t('authLoginForm.email')}
           onChange={formik.handleChange}
           value={formik.values.email}
         />
         {formik.errors.email ? (
-          <div className="text-red-500">{formik.errors.email}</div>
+          <div className="text-red-500">{t(formik.errors.email)}</div>
         ) : null}
 
         <input
           id="password"
           name="password"
           type="password"
-          placeholder="Password"
+          placeholder={t('authLoginForm.password')}
           onChange={formik.handleChange}
           value={formik.values.password}
         />
         {formik.errors.password ? (
-          <div className="text-red-500">{formik.errors.password}</div>
+          <div className="text-red-500">{t(formik.errors.password)}</div>
         ) : null}
 
         <input
           id="confirmPassword"
           name="confirmPassword"
           type="password"
-          placeholder="confirm Password"
+          placeholder={t('authLoginForm.confirmPassword')}
           onChange={formik.handleChange}
           value={formik.values.confirmPassword}
         />
         {formik.errors.confirmPassword ? (
-          <div className="text-red-500">{formik.errors.confirmPassword}</div>
+          <div className="text-red-500">{t(formik.errors.confirmPassword)}</div>
         ) : null}
 
-        <button type="submit">Submit</button>
+        <button type="submit">{t('authLoginForm.registration')}</button>
       </form>
     </>
   );
