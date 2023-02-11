@@ -14,6 +14,7 @@
     "logIn": "Войти в Threetter",
     "name": "Имя",
     "email": "Почта",
+    "birthday": "Дата рождения",
     "nickname": "Логин",
     "password": "Пароль",
     "confirmPassword": "Подтверждение пароля",
