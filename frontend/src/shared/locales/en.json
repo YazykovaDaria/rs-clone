@@ -7,5 +7,24 @@
   "tweet": "Tweet",
   "logout": "Logout",
   "login": "Login",
-  "selectLng": "Select language"
+  "selectLng": "Select language",
+
+  "authLoginForm": {
+    "createAccount": "Create an account",
+    "notHave": "Don't have an account?",
+    "logIn": "Log in to Threetter",
+    "name": "Name",
+    "nickname": "Login",
+    "email": "E-mail",
+    "password": "Password",
+    "confirmPassword": "Confirm password",
+    "registration": "Registration"
+  },
+  "formErrors": {
+    "max20": "Max length is twenty sumbols",
+    "min6": "Min length is six sumbols",
+    "required": "Must not be empty",
+    "email": "Enter right email",
+    "samePassword": "Passwords are not the same"
+  }
 }
