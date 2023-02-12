@@ -1,7 +1,9 @@
 import * as yup from 'yup';
 import { useTranslation } from 'react-i18next';
 import { useFormik } from 'formik';
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useGetLoginMutation } from '../../entities/user/userApi';
 
 const validation = yup.object().shape({
   username: yup
@@ -10,12 +12,16 @@ const validation = yup.object().shape({
     .required('formErrors.required'),
   password: yup
     .string()
-    .min(6, 'formErrors.min6')
+    .min(5, 'formErrors.min6')
     .required('formErrors.required'),
 });
 
 function LoginForm() {
+  const [authFailed, setAuthFailed] = useState(false);
+  const [authMes, setAuthMes] = useState('');
+  const [login] = useGetLoginMutation();
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const userRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -28,8 +34,21 @@ function LoginForm() {
       password: '',
     },
     validationSchema: validation,
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+    onSubmit: async (values) => {
+      try {
+        const userData = await login(JSON.stringify(values)).unwrap();
+        const { accessToken, username } = userData;
+        localStorage.setItem('token', accessToken);
+        localStorage.setItem('username', username);
+        navigate('/');
+      } catch (err) {
+        if (err.status === 404 || err.status === 401) {
+          setAuthMes(err.data.message);
+        } else {
+          setAuthMes('network error');
+        }
+        setAuthFailed(true);
+      }
     },
   });
 
@@ -78,9 +97,10 @@ function LoginForm() {
         <p className="text-red-500">{t(f.errors.password)}</p>
       ) : null}
 
+      {authFailed ? <p className="text-red-500">{t(authMes)}</p> : null}
       <button
         type="submit"
-        disabled={!(f.isValid && f.dirty)}
+        disabled={!(f.isValid && f.dirty) || f.isSubmitting}
         className="disabled:bg-slate-500 bg-blue-350 hover:bg-green-350 rounded-xl text-xl p-3 text-white mt-2"
       >
         {t('login')}

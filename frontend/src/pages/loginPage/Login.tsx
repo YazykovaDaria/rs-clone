@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
 import FormHeader from '../../shared/IU/FormHeader/FormHeader';
-import LoginForm from '../../entities/LoginForm/LoginForm';
+import LoginForm from '../../features/LoginForm/LoginForm';
 
 function Login() {
   const { t } = useTranslation();

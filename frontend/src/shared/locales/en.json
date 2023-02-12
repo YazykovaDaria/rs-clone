@@ -8,6 +8,9 @@
   "logout": "Logout",
   "login": "Login",
   "selectLng": "Select language",
+  "Invalid Password!": "Invalid password",
+  "User Not found.": "Invalid login",
+  "network error": "Network error",
 
   "authLoginForm": {
     "createAccount": "Create an account",

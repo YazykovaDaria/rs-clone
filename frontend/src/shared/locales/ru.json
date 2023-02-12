@@ -4,7 +4,10 @@
     "profile": "Профиль",
     "messages": "Сообщения"
   },
+  "Invalid Password!": "Неверный пароль",
+  "User Not found.": "Неверный логин",
   "tweet": "Твитнуть",
+  "network error": "Ошибка сети",
   "logout": "Выйти",
   "login": "Войти",
   "selectLng": "Выберите язык",
