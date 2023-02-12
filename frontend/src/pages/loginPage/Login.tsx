@@ -7,7 +7,7 @@ function Login() {
   const { t } = useTranslation();
 
   return (
-    <div className="relative">
+    <div className="pt-5">
       <div className="p-2 max-w-2xl m-auto text-base flex flex-col gap-5">
         <FormHeader />
         <h2 className="text-3xl text-center">{t('authLoginForm.logIn')}</h2>
