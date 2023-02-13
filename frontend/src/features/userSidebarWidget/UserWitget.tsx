@@ -18,7 +18,7 @@ function UserWidget() {
   const togglePopup = (): void => setPopup(!isOpenPopup);
 
   return (
-    <div className="flex flex-col-reverse sm:flex-col gap-2 cursor-pointer sm:w-11/12">
+    <div className="flex flex-col gap-2 cursor-pointer sm:w-11/12">
       <div className={isOpenPopup ? 'user-popup' : 'hidden'}>
         <ButtonCloseSvg close={closePopup} />
         <div className="hover:text-sky-600 hover:font-bold transition-colors">
