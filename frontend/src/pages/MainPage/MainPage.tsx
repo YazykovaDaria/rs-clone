@@ -1,4 +1,4 @@
-import TwitCreator from '../../features/twit-creator/twit-creator';
+import TwitCreator from '../../features/twit-creator/Twit-creator';
 import Twit from '../../features/twit/twit';
 
 function Main() {
