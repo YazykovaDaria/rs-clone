@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import ButtonCloseSvg from '../../shared/IU/ButtonCloseSvg/ButtonCloswSvg';
 import SelectLang from '../selectLanguage/SelectLanguage';
+import Logout from '../logout/Logout';
 import Modal from '../../shared/IU/modal/Modal';
 
 function UserWidget() {
@@ -51,7 +52,7 @@ function UserWidget() {
             isOpen={isOpenModalLogout}
             onClose={() => setModalLogout(false)}
           >
-            <p>{t('logout')}</p>
+            <Logout close={() => setModalLogout(false)} />
           </Modal>
         </div>
       </div>

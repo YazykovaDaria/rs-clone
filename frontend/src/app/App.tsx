@@ -1,5 +1,4 @@
 import { Provider } from 'react-redux';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { I18nextProvider } from 'react-i18next';
 import store from './store';
 import i18n from '../shared/locales/i18next';

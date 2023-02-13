@@ -11,6 +11,8 @@
   "logout": "Выйти",
   "login": "Войти",
   "selectLng": "Выберите язык",
+  "cancel": "Отменить",
+  "leaveTreetter": "Вы уверены что хотите выйти из Threetter?",
   "authLoginForm": {
     "createAccount": "Создать аккаунт",
     "notHave": "Нет аккаунта?",

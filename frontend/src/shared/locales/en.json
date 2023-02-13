@@ -11,6 +11,8 @@
   "Invalid Password!": "Invalid password",
   "User Not found.": "Invalid login",
   "network error": "Network error",
+  "leaveTreetter": "Are you sure you want to leave Threetter?",
+  "cancel": "Cancel",
 
   "authLoginForm": {
     "createAccount": "Create an account",
