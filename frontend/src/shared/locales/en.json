@@ -8,7 +8,7 @@
   "logout": "Logout",
   "login": "Login",
   "selectLng": "Select language",
-
+  "whatHappening": "What's happening?",
   "authLoginForm": {
     "createAccount": "Create an account",
     "notHave": "Don't have an account?",

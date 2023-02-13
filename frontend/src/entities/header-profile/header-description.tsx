@@ -1,7 +1,7 @@
 export default function HeaderDesription() {
   return (
     <div className="w-full">
-      <div className="w-full bg-slate-200 h-[200px]" />
+      <div className="w-full bg-slate-200 h-[200px] mt-[53px]" />
       <div className="w-full p-4 flex justify-between max-h-20">
         <div className="-top-20 w-32 h-32 cursor-pointer flex items-center justify-center transition-colors duration-200 relative mr-3">
           <img
@@ -50,13 +50,13 @@ export default function HeaderDesription() {
           </span>
         </div>
         <div className="flex flex-row w-full items-start">
-          <div className="text-gray-350 mr-3">
+          <div className="text-gray-350 mr-3 hover:underline cursor-pointer">
             <span className="text-black font-bold pr-1">10</span>
-            FolLowing
+            Following
           </div>
-          <div className="text-gray-350 mr-3">
+          <div className="text-gray-350 mr-3 hover:underline cursor-pointer">
             <span className="text-black font-bold pr-1">15</span>
-            FolLowers
+            Followers
           </div>
         </div>
       </div>

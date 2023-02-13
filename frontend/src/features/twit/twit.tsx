@@ -10,12 +10,12 @@ import UserImg from './user-img';
 
 export default function Twit() {
   return (
-    <div className="cursor-pointer w-[598px] relative p-4 hover:bg-slate-50 transition-colors duration-200 border">
+    <div className="cursor-pointer p-4 hover:bg-slate-50 transition-colors duration-200 border-b">
       <div className="flex w-full">
         <div>
           <UserImg />
         </div>
-        <div className="w-[506px]">
+        <div>
           <div className="flex justify-between items-center">
             <div className="flex items-center">
               <UserName /> <UserAlias /> <TwitDate />

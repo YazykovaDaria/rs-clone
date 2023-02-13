@@ -8,6 +8,7 @@
   "logout": "Выйти",
   "login": "Войти",
   "selectLng": "Выберите язык",
+  "whatHappening": "Что случилось?",
   "authLoginForm": {
     "createAccount": "Создать аккаунт",
     "notHave": "Нет аккаунта?",

@@ -3,5 +3,5 @@
 }
 
 .user-popup {
-  @apply p-2 pt-5 border-2 border-gray-300 rounded-xl flex flex-col gap-2 relative
+  @apply p-2 pt-5 border-2 border-gray-300 rounded-xl flex flex-col gap-2 absolute backdrop-blur-sm bg-white/60 left-1 z-50 w-[90%] min-w-[140px] top-[73vh]
 }
