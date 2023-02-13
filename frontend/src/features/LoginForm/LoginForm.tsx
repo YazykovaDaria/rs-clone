@@ -13,7 +13,7 @@ const validation = yup.object().shape({
     .required('formErrors.required'),
   password: yup
     .string()
-    .min(6, 'formErrors.min6')
+    .min(5, 'formErrors.min6')
     .required('formErrors.required'),
 });
 
@@ -39,9 +39,8 @@ function LoginForm() {
     onSubmit: async (values) => {
       try {
         const userData = await login(JSON.stringify(values)).unwrap();
-        const { accessToken, username } = userData;
-
-        auth.logIn({ token: accessToken, username });
+        const { accessToken, username, name } = userData;
+        auth.logIn({ token: accessToken, username, name });
         navigate('/');
       } catch (err) {
         if (err.status === 404 || err.status === 401) {

@@ -2,4 +2,5 @@
 export type saveUser = {
   username: string;
   token: string;
+  name: string;
 };

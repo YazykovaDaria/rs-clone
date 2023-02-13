@@ -16,7 +16,7 @@ const FormHeader = () => {
 
   return (
     <div className="flex justify-between items-center">
-      <Logo className="fill-cyan-300" />
+      <Logo className="fill-cyan-300 md:w-16 md:h-16 w-12 h-12" />
       <div className="flex gap-1">
         <button
           disabled={lang === 'en'}
