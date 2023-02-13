@@ -1,33 +1,20 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
 import { I18nextProvider } from 'react-i18next';
+import store from './store';
 import i18n from '../shared/locales/i18next';
 
-import Login from '../pages/loginPage/Login';
-import Main from '../pages/MainPage/MainPage';
-import Auth from '../pages/AuthPage/AuthPage';
-import Profile from '../pages/ProfilePage/ProfilePage';
-import NotFound from '../pages/NotFound/NotFound';
-import './style.css';
-import Chat from '../pages/ChatPage/Chat';
-import Layout from '../widgets/layout/Layout';
+import AuthProvider from '../entities/user/Auth/AuthProvider';
+import Router from './Router';
 
 function App() {
   return (
-    <I18nextProvider i18n={i18n}>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Main />} />
-            <Route path="profile" element={<Profile />} />
-            <Route path="chat" element={<Chat />} />
-          </Route>
-
-          <Route path="/login" element={<Login />} />
-          <Route path="/auth" element={<Auth />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </I18nextProvider>
+    <Provider store={store}>
+      <I18nextProvider i18n={i18n}>
+        <AuthProvider>
+          <Router />
+        </AuthProvider>
+      </I18nextProvider>
+    </Provider>
   );
 }
 

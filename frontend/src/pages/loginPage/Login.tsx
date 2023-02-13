@@ -1,13 +1,13 @@
 import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
 import FormHeader from '../../shared/IU/FormHeader/FormHeader';
-import LoginForm from '../../entities/LoginForm/LoginForm';
+import LoginForm from '../../features/LoginForm/LoginForm';
 
 function Login() {
   const { t } = useTranslation();
 
   return (
-    <div className="relative">
+    <div className="pt-5">
       <div className="p-2 max-w-2xl m-auto text-base flex flex-col gap-5">
         <FormHeader />
         <h2 className="text-3xl text-center">{t('authLoginForm.logIn')}</h2>

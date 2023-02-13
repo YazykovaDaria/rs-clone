@@ -10,6 +10,7 @@ export default function TwitCreator() {
   let [messageLength, setMessageLength] = useState(MAX_TWIT_MSG_LEN);
   const { t } = useTranslation();
 
+  // это плохой код, так в реакте не работают. Надо было сделать форму управляемой через formik или хуки
   function calculateMessageLength() {
     messageLength = MAX_TWIT_MSG_LEN;
     const twitCreateBtn = document.querySelector('.twit-create__btn');

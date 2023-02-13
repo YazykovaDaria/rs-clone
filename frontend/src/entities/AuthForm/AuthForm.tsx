@@ -7,6 +7,7 @@ const validation = yup.object().shape({
     .string()
     .max(20, 'formErrors.max20')
     .required('formErrors.required'),
+  birthday: yup.string().required('formErrors.required'),
   username: yup
     .string()
     .max(20, 'formErrors.max20')
@@ -28,6 +29,7 @@ function AuhtForm() {
   const f = useFormik({
     initialValues: {
       name: '',
+      birthday: '',
       username: '',
       email: '',
       password: '',
@@ -39,6 +41,12 @@ function AuhtForm() {
     },
   });
 
+  //   <div class="relative z-0 w-full mb-6 group">
+  //   <input type="email" name="floating_email" id="floating_email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+
+  //   <label for="floating_email" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email address</label>
+  // </div>
+
   return (
     <form onSubmit={f.handleSubmit} className="flex flex-col gap-5">
       <input
@@ -47,7 +55,7 @@ function AuhtForm() {
             ? 'border-red-500 rounded-xl'
             : 'rounded-xl'
         }
-        id="name"
+        id="floating_name"
         name="name"
         type="text"
         placeholder={t('authLoginForm.name')}
@@ -55,8 +63,27 @@ function AuhtForm() {
         onBlur={f.handleBlur}
         value={f.values.name}
       />
+
       {f.errors.name && f.touched.name ? (
         <p className="text-red-500">{t(f.errors.name)}</p>
+      ) : null}
+
+      <input
+        className={
+          f.errors.birthday && f.touched.birthday
+            ? 'border-red-500 rounded-xl'
+            : 'rounded-xl'
+        }
+        id="birthday"
+        name="birthday"
+        type="date"
+        placeholder={t('authLoginForm.birthday')}
+        onChange={f.handleChange}
+        onBlur={f.handleBlur}
+        value={f.values.birthday}
+      />
+      {f.errors.birthday && f.touched.birthday ? (
+        <p className="text-red-500">{t(f.errors.birthday)}</p>
       ) : null}
 
       <input

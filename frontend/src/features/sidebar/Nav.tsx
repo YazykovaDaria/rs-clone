@@ -4,9 +4,12 @@ import { useTranslation } from 'react-i18next';
 import { ReactComponent as Chat } from '../../shared/assets/icons/chat.svg';
 import { ReactComponent as Profile } from '../../shared/assets/icons/profile.svg';
 import { ReactComponent as Home } from '../../shared/assets/icons/home.svg';
+import { useAuth } from '../../entities/user/Auth/authContext';
 
 function Nav() {
   const { t } = useTranslation();
+
+  const user = useAuth().getUsername();
   return (
     <ul className="flex gap-4 sm:gap-3 flex-col justify-between sm:flex-col items-center sm:items-start">
       <li>
@@ -16,7 +19,7 @@ function Nav() {
         </NavLink>
       </li>
       <li>
-        <NavLink to="/profile" className="aside-link">
+        <NavLink to={`profile/${user}`} className="aside-link">
           <Profile />
           <p className="hidden sm:block text-xl">{t('nav.profile')}</p>
         </NavLink>

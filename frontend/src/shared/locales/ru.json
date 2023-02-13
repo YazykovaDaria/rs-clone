@@ -4,10 +4,15 @@
     "profile": "Профиль",
     "messages": "Сообщения"
   },
+  "Invalid Password!": "Неверный пароль",
+  "User Not found.": "Неверный логин",
   "tweet": "Твитнуть",
+  "network error": "Ошибка сети",
   "logout": "Выйти",
   "login": "Войти",
   "selectLng": "Выберите язык",
+  "cancel": "Отменить",
+  "leaveTreetter": "Вы уверены что хотите выйти из Threetter?",
   "whatHappening": "Что случилось?",
   "authLoginForm": {
     "createAccount": "Создать аккаунт",
@@ -15,6 +20,7 @@
     "logIn": "Войти в Threetter",
     "name": "Имя",
     "email": "Почта",
+    "birthday": "Дата рождения",
     "nickname": "Логин",
     "password": "Пароль",
     "confirmPassword": "Подтверждение пароля",
