@@ -8,5 +8,23 @@
   "logout": "Выйти",
   "login": "Войти",
   "selectLng": "Выберите язык",
-  "whatHappening": "Что случилось?"
+  "whatHappening": "Что случилось?",
+  "authLoginForm": {
+    "createAccount": "Создать аккаунт",
+    "notHave": "Нет аккаунта?",
+    "logIn": "Войти в Threetter",
+    "name": "Имя",
+    "email": "Почта",
+    "nickname": "Логин",
+    "password": "Пароль",
+    "confirmPassword": "Подтверждение пароля",
+    "registration": "Зарегистрироваться"
+  },
+  "formErrors": {
+    "max20": "Максимум 20 символов",
+    "min6": "Должно быть болььше 6 символов",
+    "required": "Поле не должно быть пустым",
+    "email": "Не верный email",
+    "samePassword": "Пароли не совпадают"
+  }
 }

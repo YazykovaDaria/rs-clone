@@ -35,7 +35,7 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, children }) => {
         className="bg-slate-300 fixed top-0 left-0 w-screen h-screen flex justify-center items-center js-close z-50"
         onClick={closeModal}
       >
-        <div className="bg-white p-4 rounded-xl relative">
+        <div className="bg-white p-4 rounded-xl relative pt-8">
           <ButtonCloseSvg close={closeModal} />
 
           {children}

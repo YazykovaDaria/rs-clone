@@ -1,17 +1,15 @@
 import './style.css';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import ButtonCloseSvg from '../../shared/ButtonCloseSvg/ButtonCloswSvg';
-import Modal from '../../shared/modal/Modal';
+import ButtonCloseSvg from '../../shared/IU/ButtonCloseSvg/ButtonCloswSvg';
+import SelectLang from '../selectLanguage/SelectLanguage';
+import Modal from '../../shared/IU/modal/Modal';
 
 function UserWidget() {
   const { t } = useTranslation();
   const [isOpenPopup, setPopup] = useState(false);
-  const [isOpenModal, setModal] = useState(false);
-
-  const openModal = (): void => setModal(true);
-
-  const closeModal = (): void => setModal(false);
+  const [isOpenModalLang, setModalLang] = useState(false);
+  const [isOpenModalLogout, setModalLogout] = useState(false);
 
   const closePopup = (): void => setPopup(false);
 
@@ -25,20 +23,34 @@ function UserWidget() {
           <button
             type="button"
             onClick={() => {
-              openModal();
+              setModalLang(true);
               closePopup();
             }}
             className="p-0"
           >
             {t('selectLng')}
           </button>
-          <Modal isOpen={isOpenModal} onClose={closeModal}>
-            lang
+          <Modal isOpen={isOpenModalLang} onClose={() => setModalLang(false)}>
+            <SelectLang close={() => setModalLang(false)} />
           </Modal>
         </div>
-
         <div className="hover:text-sky-600 cursor-pointer transition-colors">
-          {t('logout')}
+          <button
+            type="button"
+            onClick={() => {
+              setModalLogout(true);
+              closePopup();
+            }}
+            className="p-0"
+          >
+            {t('logout')}
+          </button>
+          <Modal
+            isOpen={isOpenModalLogout}
+            onClose={() => setModalLogout(false)}
+          >
+            <p>{t('logout')}</p>
+          </Modal>
         </div>
       </div>
 
