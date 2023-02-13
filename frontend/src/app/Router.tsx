@@ -43,7 +43,7 @@ const Router = () => {
             }
           />
 
-          <Route path="profile" element={<Profile />} />
+          <Route path="profile/:user" element={<Profile />} />
           <Route path="chat" element={<Chat />} />
         </Route>
 
