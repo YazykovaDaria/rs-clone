@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import MAX_TWIT_MSG_LEN from '../../shared/constants/MAX_TWIT_MSG_LEN';
 import autoHeight from './lib/autoHeight';
 import previewImage from './lib/previewImg';
@@ -7,6 +8,8 @@ import './style.css';
 export default function TwitCreator() {
   // eslint-disable-next-line prefer-const
   let [messageLength, setMessageLength] = useState(MAX_TWIT_MSG_LEN);
+  const { t } = useTranslation();
+
   function calculateMessageLength() {
     messageLength = MAX_TWIT_MSG_LEN;
     const twitCreateBtn = document.querySelector('.twit-create__btn');
@@ -36,7 +39,7 @@ export default function TwitCreator() {
           <textarea
             maxLength={140}
             id="text"
-            placeholder="What's happening?"
+            placeholder={t('whatHappening') || "What's happening?"}
             onChange={calculateMessageLength}
             className="w-full focus:border-b-2 outline-none block p-2 md:text-xl overflow-hidden resize-none max-h-[600px]"
           />
@@ -83,7 +86,7 @@ export default function TwitCreator() {
             type="submit"
             className="twit-create__btn disabled block md:mr-5 rounded-full text-white cursor-pointer font-bold hover:bg-cyan-500 bg-sky-400 py-1 px-4 transition-colors duration-200"
           >
-            Tweet
+            {t('tweet')}
           </button>
         </div>
       </div>
