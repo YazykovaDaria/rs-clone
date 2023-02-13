@@ -1,9 +1,10 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { baseUrl } from '../../../shared/constans/const';
 
 export const userLogin = createApi({
   reducerPath: 'userApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://rs-clone-twitter-api-production.up.railway.app/api/',
+    baseUrl,
   }),
   endpoints: (build) => ({
     // getLo: build.query({
@@ -14,7 +15,7 @@ export const userLogin = createApi({
         url: 'auth/signin',
         method: 'POST',
         headers: {
-          "Content-type": "application/json; charset=UTF-8",
+          'Content-type': 'application/json; charset=UTF-8',
         },
         body,
       }),

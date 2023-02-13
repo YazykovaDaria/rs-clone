@@ -3,7 +3,8 @@ import { useTranslation } from 'react-i18next';
 import { useFormik } from 'formik';
 import { useRef, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useGetLoginMutation } from '../../entities/user/userApi';
+import { useAuth } from '../../entities/user/Auth/authContext';
+import { useGetLoginMutation } from '../../entities/user/Auth/loginApi';
 
 const validation = yup.object().shape({
   username: yup
@@ -12,7 +13,7 @@ const validation = yup.object().shape({
     .required('formErrors.required'),
   password: yup
     .string()
-    .min(5, 'formErrors.min6')
+    .min(6, 'formErrors.min6')
     .required('formErrors.required'),
 });
 
@@ -22,6 +23,7 @@ function LoginForm() {
   const [login] = useGetLoginMutation();
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const auth = useAuth();
   const userRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -38,8 +40,8 @@ function LoginForm() {
       try {
         const userData = await login(JSON.stringify(values)).unwrap();
         const { accessToken, username } = userData;
-        localStorage.setItem('token', accessToken);
-        localStorage.setItem('username', username);
+
+        auth.logIn({ token: accessToken, username });
         navigate('/');
       } catch (err) {
         if (err.status === 404 || err.status === 401) {
