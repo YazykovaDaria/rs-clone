@@ -1,20 +1,21 @@
 import { useState } from 'react';
+import MAX_TWIT_MSG_LEN from '../../shared/constants/MAX_TWIT_MSG_LEN';
 import autoHeight from './lib/autoHeight';
 import previewImage from './lib/previewImg';
 import './style.css';
 
 export default function TwitCreator() {
   // eslint-disable-next-line prefer-const
-  let [messageLength, setMessageLength] = useState(140);
+  let [messageLength, setMessageLength] = useState(MAX_TWIT_MSG_LEN);
   function calculateMessageLength() {
-    messageLength = 140;
+    messageLength = MAX_TWIT_MSG_LEN;
     const twitCreateBtn = document.querySelector('.twit-create__btn');
     const textareaLength = (
       document.getElementById('text') as HTMLTextAreaElement
     ).value.length;
     setMessageLength(messageLength - textareaLength);
     autoHeight();
-    if (textareaLength === 0) {
+    if (textareaLength <= 0) {
       twitCreateBtn?.classList.add('disabled');
     } else {
       twitCreateBtn?.classList.remove('disabled');
@@ -47,6 +48,7 @@ export default function TwitCreator() {
               id="file-input"
               onChange={previewImage}
               type="file"
+              accept=".jpg, .jpeg, .png"
               className="invisible w-[1px] h-[1px]"
             />
             <svg
@@ -70,7 +72,7 @@ export default function TwitCreator() {
             className="hidden max-h-[50vh] object-contain"
           />
         </form>
-        <div className="flex justify-end items-center ">
+        <div className="flex justify-end items-center mt-2">
           <div
             className="mr-4 rounded-full border-2 border-sky-400 w-8 h-8 flex justify-center items-center"
             style={{ borderColor: messageLength ? 'rgb(56 189 248)' : 'red' }}
