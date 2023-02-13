@@ -4,7 +4,7 @@ export default function Like() {
   return (
     <div
       title="Like"
-      className="twit__like text-gray-350 flex flex-nowrap items-center transition-colors duration-200 mr-10"
+      className="twit__like text-gray-350 flex flex-nowrap items-center transition-colors duration-200"
     >
       <div className="w-9 h-9 rounded-full flex items-center justify-center">
         <svg

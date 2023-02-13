@@ -3,10 +3,11 @@
   }
 
   .aside-bnt {
-    @apply hidden sm:flex justify-center rounded-full text-white hover:cursor-pointer hover:bg-cyan-400 text-xl bg-sky-500 p-2 transition-all duration-100
+    @apply hidden sm:flex justify-center rounded-full text-white cursor-pointer font-bold hover:bg-cyan-500 bg-sky-400 p-2 transition-colors duration-200
   }
 
   .active {
     font-weight: 700;
-    color: rgb(7, 7, 157);
+    color: black;
+    stroke-width: 2;
   }

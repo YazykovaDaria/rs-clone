@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
-    <footer className="">
-      <div className="text-gray-350 transition-all duration-200 flex justify-between w-full p-1 container">
+    <footer>
+      <div className="text-gray-350 transition-all duration-200 flex justify-between w-full p-3 container items-center border">
         <div className="flex flex-col">
           <a
             href="https://github.com/yazykovadaria"
@@ -19,8 +19,8 @@ export default function Footer() {
             viktorsolovyev
           </a>
         </div>
-        <div className="font-bold">2023</div>
-        <a href="https://rs.school/js/" className="fill-gray-350">
+        <div className="font-bold text-black">2023</div>
+        <a href="https://rs.school/js/" className="">
           <svg
             version="1.1"
             xmlns="http://www.w3.org/2000/svg"
@@ -28,7 +28,7 @@ export default function Footer() {
             x="0px"
             y="0px"
             viewBox="-21 318.6 552.8 205.3"
-            className="w-16 h-12"
+            className="w-16 h-12 fill-gray-350"
           >
             <path
               d="M264.4,386.6l26.3-1.7c0.6,4.3,1.7,7.5,3.5,9.8c2.9,3.6,6.9,5.4,12.2,5.4c3.9,0,7-0.9,9.1-2.8
