@@ -1,6 +1,17 @@
-export default function autoHeight() {
-  const text = document.getElementById('text') as HTMLInputElement;
-  if (text.scrollTop > 0) {
-    text.style.height = `${text.scrollHeight}px`;
-  }
-}
+/* eslint-disable no-param-reassign */
+import { useEffect } from 'react';
+
+const useAutosizeTextArea = (
+  textAreaRef: HTMLTextAreaElement | null,
+  value: string
+) => {
+  useEffect(() => {
+    if (textAreaRef) {
+      textAreaRef.style.height = '0px';
+      const { scrollHeight } = textAreaRef;
+      textAreaRef.style.height = `${scrollHeight}px`;
+    }
+  }, [textAreaRef, value]);
+};
+
+export default useAutosizeTextArea;
