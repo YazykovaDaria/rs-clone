@@ -1,10 +1,6 @@
 import './style.css';
 import { useTranslation } from 'react-i18next';
 
-interface PropName {
-  name: string;
-}
-
 function scrollUp() {
   const top = Math.max(
     document.body.scrollTop,
@@ -17,7 +13,7 @@ function scrollUp() {
   return false;
 }
 
-export default function StickyHeader({ name }: PropName) {
+export default function StickyHeader({ name }: { name: string }) {
   const { t } = useTranslation();
   return (
     <div className="w-full fixed z-40 top-0 flex items-center h-[53px] px-4 justify-between cursor-pointer backdrop-blur-md bg-white/60">
