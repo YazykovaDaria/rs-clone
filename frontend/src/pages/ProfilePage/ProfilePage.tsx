@@ -2,12 +2,13 @@ import { useParams } from 'react-router-dom';
 import HeaderProfile from '../../entities/header-profile/header-profile';
 import { useGetUserProfileQuery } from '../../entities/header-profile/userProfileApi';
 import Twit from '../../features/twit/twit';
+import Spiner from '../../shared/IU/spiner/spiner';
 import IUserProfile from '../../shared/types/IUserProfile';
 
 function Profile() {
   const { user } = useParams();
   const { data, isLoading } = useGetUserProfileQuery(user || '');
-  if (isLoading) return <h1>Loading...</h1>;
+  if (isLoading) return <Spiner />;
   const {
     username,
     email,
@@ -34,7 +35,6 @@ function Profile() {
         followers={followers}
         following={following}
       />
-      <Twit />
       <Twit />
       <Twit />
       <Twit />
