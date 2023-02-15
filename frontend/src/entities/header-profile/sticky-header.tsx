@@ -1,5 +1,9 @@
 import './style.css';
 
+interface PropName {
+  name: string;
+}
+
 function scrollUp() {
   const top = Math.max(
     document.body.scrollTop,
@@ -12,7 +16,7 @@ function scrollUp() {
   return false;
 }
 
-export default function StickyHeader() {
+export default function StickyHeader({ name }: PropName) {
   return (
     <div className="w-full fixed z-40 top-0 flex items-center h-[53px] px-4 justify-between cursor-pointer backdrop-blur-md bg-white/60">
       <div className="arrow-back min-w-[56px] min-h-[32px] flex items-start">
@@ -44,7 +48,7 @@ export default function StickyHeader() {
         tabIndex={0}
         className="flex flex-col w-full items-start"
       >
-        <h2 className="text-black font-bold text-xl">LegoMan</h2>
+        <h2 className="text-black font-bold text-xl">{name}</h2>
         <div className="text-gray-350">10 Tweets</div>
       </div>
     </div>
