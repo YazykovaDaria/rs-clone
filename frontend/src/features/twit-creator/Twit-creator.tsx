@@ -5,10 +5,12 @@ import { useTranslation } from 'react-i18next';
 import useAutosizeTextArea from './lib/autoHeight';
 import MAX_TWIT_MSG_LEN from '../../shared/constants/MAX_TWIT_MSG_LEN';
 import PreviewImage from '../../shared/IU/PreviewImg';
-import ButtonCloseSvg from '../../shared/IU/ButtonCloseSvg/ButtonCloswSvg';
 import { ReactComponent as Picture } from '../../shared/assets/icons/picture.svg';
+import { OptionalCloseProps } from '../../shared/types/props';
 
-export default function TwitCreator() {
+// баг при открытии твита в модалке на главной странице - картинка не добавляется
+
+export default function TwitCreator({ close }: OptionalCloseProps) {
   const [messageLength, setMessageLength] = useState(MAX_TWIT_MSG_LEN);
   const { t } = useTranslation();
 
@@ -30,8 +32,12 @@ export default function TwitCreator() {
       text: '',
       img: null,
     },
-    onSubmit(values) {
+    onSubmit(values, { resetForm }) {
       console.log(values);
+      resetForm();
+      if (close) {
+        close();
+      }
     },
   });
 
@@ -64,7 +70,13 @@ export default function TwitCreator() {
 
           {f.values.img && (
             <div className="relative">
-              <ButtonCloseSvg close={() => f.setFieldValue('img', null)} />
+              <button
+                type="button"
+                onClick={() => f.setFieldValue('img', null)}
+                className="absolute right-1 top-1 w-5 h-5 hover:bg-zinc-400 hover:rounded-full"
+              >
+                ❌
+              </button>
               <PreviewImage file={f.values.img} />
             </div>
           )}
@@ -73,7 +85,7 @@ export default function TwitCreator() {
             id="img"
             name="img"
             onChange={(e) => {
-              const target = e.target as HTMLInputElement;
+              const target = e.currentTarget as HTMLInputElement;
               if (target.files) {
                 f.setFieldValue('img', target.files[0]);
               }

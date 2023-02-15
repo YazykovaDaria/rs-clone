@@ -1,11 +1,7 @@
 import { useTranslation } from 'react-i18next';
+import { OptionalCloseProps } from '../../shared/types/props';
 
-type SelectLangProps = {
-  // eslint-disable-next-line react/require-default-props
-  close?: () => void;
-};
-
-const SelectLang = ({ close }: SelectLangProps) => {
+const SelectLang = ({ close }: OptionalCloseProps) => {
   const { t, i18n } = useTranslation();
 
   const changeLang = (lng: string): void => {
