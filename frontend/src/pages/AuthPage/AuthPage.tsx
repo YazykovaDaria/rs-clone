@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import AuhtForm from '../../entities/AuthForm/AuthForm';
+import AuhtForm from '../../features/AuthForm/AuthForm';
 import FormHeader from '../../shared/IU/FormHeader/FormHeader';
 
 function Auth() {
