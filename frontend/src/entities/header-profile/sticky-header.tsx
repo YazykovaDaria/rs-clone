@@ -1,4 +1,5 @@
 import './style.css';
+import { useTranslation } from 'react-i18next';
 
 interface PropName {
   name: string;
@@ -17,6 +18,7 @@ function scrollUp() {
 }
 
 export default function StickyHeader({ name }: PropName) {
+  const { t } = useTranslation();
   return (
     <div className="w-full fixed z-40 top-0 flex items-center h-[53px] px-4 justify-between cursor-pointer backdrop-blur-md bg-white/60">
       <div className="arrow-back min-w-[56px] min-h-[32px] flex items-start">
@@ -49,7 +51,7 @@ export default function StickyHeader({ name }: PropName) {
         className="flex flex-col w-full items-start"
       >
         <h2 className="text-black font-bold text-xl">{name}</h2>
-        <div className="text-gray-350">10 Tweets</div>
+        <div className="text-gray-350">10 {t('profile.tweets')}</div>
       </div>
     </div>
   );

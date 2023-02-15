@@ -1,6 +1,6 @@
 export default function transformDateBirth(str: string) {
   const date = new Date(str);
-  const months = [
+  const monthsEn = [
     'January',
     'February',
     'March',
@@ -14,7 +14,26 @@ export default function transformDateBirth(str: string) {
     'November',
     'December',
   ];
+  const monthsRu = [
+    'Январь',
+    'Февраль',
+    'Март',
+    'Апрель',
+    'Май',
+    'Июнь',
+    'Июль',
+    'Август',
+    'Сентябрь',
+    'Октябрь',
+    'Ноябрь',
+    'Декабрь',
+  ];
   const month = date.getMonth();
   const year = date.getFullYear();
-  return `${months[month]} ${year}`;
+  const lang = localStorage.getItem('lng');
+
+  if (lang === 'ru') {
+    return `${monthsRu[month]} ${year}`;
+  }
+  return `${monthsEn[month]} ${year}`;
 }
