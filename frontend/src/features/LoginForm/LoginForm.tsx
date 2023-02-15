@@ -24,11 +24,6 @@ function LoginForm() {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const auth = useAuth();
-  const userRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    userRef.current?.focus();
-  }, []);
 
   const f = useFormik({
     initialValues: {
@@ -64,7 +59,6 @@ function LoginForm() {
           type="text"
           id="floating-username"
           placeholder=" "
-          ref={userRef}
           onChange={f.handleChange}
           onBlur={f.handleBlur}
           value={f.values.username}
