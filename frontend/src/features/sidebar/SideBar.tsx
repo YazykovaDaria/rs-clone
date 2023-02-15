@@ -21,7 +21,7 @@ function SideBar() {
         <Nav />
 
         <Modal isOpen={isOpenModal} onClose={() => setModal(false)}>
-          <TwitCreator />
+          <TwitCreator close={() => setModal(false)} />
         </Modal>
 
         <button
