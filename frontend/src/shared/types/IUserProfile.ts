@@ -9,4 +9,7 @@ export default interface IUserProfile {
   registration_date: string;
   followers: number;
   following: number;
+  imageType?: string;
+  imageName?: string;
+  imageData?: string;
 }

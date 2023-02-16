@@ -6,6 +6,7 @@ import Spiner from '../../shared/IU/spiner/spiner';
 
 export default function HeaderProfile({ user }: { user: string }) {
   const { data, isLoading } = useGetUserProfileQuery(user);
+  console.log(data);
   if (isLoading) return <Spiner />;
   const {
     username,
