@@ -9,6 +9,7 @@ export default interface IUserProfile {
   registration_date: string;
   followers: number;
   following: number;
+  tweets?: number;
   avatar: {
     imageType: string | null;
     imageName: string | null;
