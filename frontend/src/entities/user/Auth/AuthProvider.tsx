@@ -6,14 +6,10 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
   const storage = localStorage.getItem('user');
   let currentUser;
   if (storage) {
-    currentUser = JSON.parse(storage).userData;
+    currentUser = JSON.parse(storage);
   }
 
-  const [user, setUser] = useState(
-    currentUser
-      ? { username: currentUser.username, name: currentUser.name }
-      : null
-  );
+  const [user, setUser] = useState(currentUser || null);
 
   const logIn = (userData: saveUser) => {
     localStorage.setItem('user', JSON.stringify(userData));
@@ -26,11 +22,9 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
   };
 
   const authData = useMemo(() => {
-    const getUsername = () => (user?.username ? user.username : '');
     return {
       logIn,
       logOut,
-      getUsername,
       user,
     };
   }, [user]);

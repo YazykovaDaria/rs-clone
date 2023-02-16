@@ -13,6 +13,13 @@ function UserWidget() {
   const [isOpenModalLang, setModalLang] = useState(false);
   const [isOpenModalLogout, setModalLogout] = useState(false);
   const { user } = useAuth();
+  const userData = {
+    name: 'name',
+    username: 'nick',
+  };
+  if (user) {
+    Object.assign(userData, user);
+  }
 
   const closePopup = (): void => setPopup(false);
 
@@ -66,8 +73,8 @@ function UserWidget() {
           />
         </div>
         <div className="flex-col hidden md:flex items-start p-1">
-          <span className="font-bold">{user.name}</span>
-          <span className="text-gray-350">{`@${user.username}`}</span>
+          <span className="font-bold">{userData.name}</span>
+          <span className="text-gray-350">{`@${userData.username}`}</span>
         </div>
         <span className="hidden sm:inline-block text-lg font-bold hover:text-sky-600 transition-colors">
           ...

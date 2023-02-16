@@ -8,7 +8,11 @@ import { useAuth } from '../../entities/user/Auth/authContext';
 
 function Nav() {
   const { t } = useTranslation();
-  const { username } = useAuth().user;
+  let name = '';
+  const { user } = useAuth();
+  if (user) {
+    name = user.username;
+  }
   return (
     <ul className="flex gap-4 sm:gap-3 flex-col justify-between sm:flex-col items-center sm:items-start">
       <li>
@@ -18,7 +22,7 @@ function Nav() {
         </NavLink>
       </li>
       <li>
-        <NavLink to={`profile/${username}`} className="aside-link">
+        <NavLink to={`profile/${name}`} className="aside-link">
           <Profile />
           <p className="hidden sm:block text-xl">{t('nav.profile')}</p>
         </NavLink>
