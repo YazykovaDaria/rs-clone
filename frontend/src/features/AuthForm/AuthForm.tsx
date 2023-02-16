@@ -1,12 +1,24 @@
 import { useTranslation } from 'react-i18next';
 import { useFormik } from 'formik';
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { validation } from './validation';
+import { useAuth } from '../../entities/user/Auth/authContext';
+import {
+  useGetSignupMutation,
+  useGetLoginMutation,
+} from '../../entities/user/Auth/loginApi';
+import Preloader from '../../shared/IU/Preloader';
 
 function AuhtForm() {
   const { t } = useTranslation();
   const dateRef = useRef<HTMLInputElement>(null);
   const userRef = useRef<HTMLInputElement>(null);
+  const [authMes, setAuthMes] = useState('');
+  const navigate = useNavigate();
+  const [auth] = useGetSignupMutation();
+  const [login] = useGetLoginMutation();
+  const goAuth = useAuth();
 
   useEffect(() => {
     userRef.current?.focus();
@@ -22,8 +34,22 @@ function AuhtForm() {
       confirmPassword: '',
     },
     validationSchema: validation,
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+    onSubmit: async (values) => {
+      try {
+        await auth(JSON.stringify(values)).unwrap();
+        const { username, password } = values;
+        const userData = await login(
+          JSON.stringify({ username, password })
+        ).unwrap();
+        goAuth.logIn(userData);
+        navigate('/');
+      } catch (err) {
+        if (err.status === 400) {
+          setAuthMes(err.data.message);
+        } else {
+          setAuthMes('network error');
+        }
+      }
     },
   });
 
@@ -168,6 +194,9 @@ function AuhtForm() {
       {f.touched.confirmPassword && f.errors.confirmPassword ? (
         <p className="text-red-500">{t(f.errors.confirmPassword)}</p>
       ) : null}
+
+      {authMes && <p className="text-red-500">{t(authMes)}</p>}
+      {f.isSubmitting && <Preloader />}
 
       <button
         type="submit"
