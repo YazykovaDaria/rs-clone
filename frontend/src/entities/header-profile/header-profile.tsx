@@ -6,7 +6,6 @@ import Spiner from '../../shared/IU/spiner/spiner';
 
 export default function HeaderProfile({ user }: { user: string }) {
   const { data, isLoading } = useGetUserProfileQuery(user);
-  console.log(data);
   if (isLoading) return <Spiner />;
   const {
     username,
@@ -19,6 +18,7 @@ export default function HeaderProfile({ user }: { user: string }) {
     registration_date: registrationDate,
     followers,
     following,
+    avatar,
   }: IUserProfile = data;
 
   return (
@@ -36,6 +36,7 @@ export default function HeaderProfile({ user }: { user: string }) {
         registration_date={registrationDate}
         followers={followers}
         following={following}
+        avatar={avatar}
       />
     </div>
   );
