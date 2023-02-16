@@ -13,7 +13,10 @@ function scrollUp() {
   return false;
 }
 
-export default function StickyHeader({ name }: { name: string }) {
+export default function StickyHeader(
+  { name }: { name: string },
+  { len }: { len: string }
+) {
   const { t } = useTranslation();
   return (
     <div className="w-full fixed z-40 top-0 flex items-center h-[53px] px-4 justify-between cursor-pointer backdrop-blur-md bg-white/60">
@@ -47,7 +50,9 @@ export default function StickyHeader({ name }: { name: string }) {
         className="flex flex-col w-full items-start"
       >
         <h2 className="text-black font-bold text-xl">{name}</h2>
-        <div className="text-gray-350">10 {t('profile.tweets')}</div>
+        <div className="text-gray-350">
+          {len} {t('profile.tweets')}
+        </div>
       </div>
     </div>
   );
