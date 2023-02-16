@@ -6,7 +6,7 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
   const storage = localStorage.getItem('user');
   let currentUser;
   if (storage) {
-    currentUser = JSON.parse(storage);
+    currentUser = JSON.parse(storage).userData;
   }
 
   const [user, setUser] = useState(
