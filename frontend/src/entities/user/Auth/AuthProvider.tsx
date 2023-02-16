@@ -11,7 +11,7 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
 
   const [user, setUser] = useState(
     currentUser
-      ? { username: currentUser.username, token: currentUser.token }
+      ? { username: currentUser.username, name: currentUser.name }
       : null
   );
 
