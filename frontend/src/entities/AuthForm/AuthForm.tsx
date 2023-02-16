@@ -52,8 +52,8 @@ function AuhtForm() {
       <input
         className={
           f.errors.name && f.touched.name
-            ? 'border-red-500 rounded-xl px-2 py-1'
-            : 'rounded-xl px-2 py-1'
+            ? 'border-red-500 rounded-xl'
+            : 'rounded-xl'
         }
         id="floating_name"
         name="name"
@@ -71,8 +71,8 @@ function AuhtForm() {
       <input
         className={
           f.errors.birthday && f.touched.birthday
-            ? 'border-red-500 rounded-xl px-2 py-1'
-            : 'rounded-xl px-2 py-1'
+            ? 'border-red-500 rounded-xl'
+            : 'rounded-xl'
         }
         id="birthday"
         name="birthday"
@@ -89,8 +89,8 @@ function AuhtForm() {
       <input
         className={
           f.errors.username && f.touched.username
-            ? 'border-red-500 rounded-xl px-2 py-1'
-            : 'rounded-xl px-2 py-1'
+            ? 'border-red-500 rounded-xl'
+            : 'rounded-xl'
         }
         id="username"
         name="username"
@@ -107,8 +107,8 @@ function AuhtForm() {
       <input
         className={
           f.errors.email && f.touched.email
-            ? 'border-red-500 rounded-xl px-2 py-1'
-            : 'rounded-xl px-2 py-1'
+            ? 'border-red-500 rounded-xl'
+            : 'rounded-xl'
         }
         id="email"
         name="email"
@@ -125,8 +125,8 @@ function AuhtForm() {
       <input
         className={
           f.errors.password && f.touched.password
-            ? 'border-red-500 rounded-xl px-2 py-1'
-            : 'rounded-xl px-2 py-1'
+            ? 'border-red-500 rounded-xl'
+            : 'rounded-xl'
         }
         id="password"
         name="password"
@@ -143,8 +143,8 @@ function AuhtForm() {
       <input
         className={
           f.errors.confirmPassword && f.touched.confirmPassword
-            ? 'border-red-500 rounded-xl px-2 py-1'
-            : 'rounded-xl px-2 py-1'
+            ? 'border-red-500 rounded-xl'
+            : 'rounded-xl'
         }
         id="confirmPassword"
         name="confirmPassword"
