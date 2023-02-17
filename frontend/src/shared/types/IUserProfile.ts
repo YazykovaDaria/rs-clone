@@ -1,3 +1,8 @@
+type Followers = {
+  username: string;
+  name: string;
+};
+
 export default interface IUserProfile {
   username: string;
   email: string;
@@ -7,9 +12,8 @@ export default interface IUserProfile {
   site?: string;
   birthday: string;
   registration_date: string;
-  followers: number;
-  following: number;
-  tweets?: number;
+  followers: Followers[];
+  following: Followers[];
   avatar: {
     imageType: string | null;
     imageName: string | null;

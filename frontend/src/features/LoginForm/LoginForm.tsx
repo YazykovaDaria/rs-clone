@@ -1,10 +1,11 @@
 import * as yup from 'yup';
 import { useTranslation } from 'react-i18next';
 import { useFormik } from 'formik';
-import { useRef, useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../entities/user/Auth/authContext';
 import { useGetLoginMutation } from '../../entities/user/Auth/loginApi';
+import Preloader from '../../shared/IU/Preloader';
 
 const validation = yup.object().shape({
   username: yup
@@ -13,7 +14,7 @@ const validation = yup.object().shape({
     .required('formErrors.required'),
   password: yup
     .string()
-    .min(5, 'formErrors.min6')
+    .min(6, 'formErrors.min6')
     .required('formErrors.required'),
 });
 
@@ -24,11 +25,6 @@ function LoginForm() {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const auth = useAuth();
-  const userRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    userRef.current?.focus();
-  }, []);
 
   const f = useFormik({
     initialValues: {
@@ -39,8 +35,8 @@ function LoginForm() {
     onSubmit: async (values) => {
       try {
         const userData = await login(JSON.stringify(values)).unwrap();
-        const { accessToken, username, name } = userData;
-        auth.logIn({ token: accessToken, username, name });
+
+        auth?.logIn(userData);
         navigate('/');
       } catch (err) {
         if (err.status === 404 || err.status === 401) {
@@ -64,7 +60,6 @@ function LoginForm() {
           type="text"
           id="floating-username"
           placeholder=" "
-          ref={userRef}
           onChange={f.handleChange}
           onBlur={f.handleBlur}
           value={f.values.username}
@@ -98,6 +93,7 @@ function LoginForm() {
         <p className="text-red-500">{t(f.errors.password)}</p>
       ) : null}
 
+      {f.isSubmitting && <Preloader />}
       {authFailed ? <p className="text-red-500">{t(authMes)}</p> : null}
       <button
         type="submit"
