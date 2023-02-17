@@ -3,6 +3,7 @@ import { baseUrl, token } from '../../../shared/constants/api';
 
 export const userProfileApi = createApi({
   reducerPath: 'userProfileApi',
+  tagTypes: ['User'],
   baseQuery: fetchBaseQuery({
     baseUrl,
     headers: {
@@ -12,6 +13,7 @@ export const userProfileApi = createApi({
   endpoints: (build) => ({
     getUserProfile: build.query({
       query: (user: string) => `users/${user}`,
+      providesTags: ['User'],
     }),
 
     updateUser: build.mutation({
@@ -23,6 +25,7 @@ export const userProfileApi = createApi({
           body,
         };
       },
+      invalidatesTags: ['User'],
     }),
   }),
 });

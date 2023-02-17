@@ -3,12 +3,14 @@ import { useFormik } from 'formik';
 import { useAuth } from '../../entities/user/Auth/authContext';
 import { getInitValues } from './lib/getInitValues';
 import { useUpdateUserMutation } from '../../entities/user/Profile/userProfileApi';
+import { OptionalCloseProps } from '../../shared/types/props';
+import Spiner from '../../shared/IU/spiner/spiner';
 
-function EditProfile() {
+function EditProfile({ close }: OptionalCloseProps) {
   const { t } = useTranslation();
   const [update] = useUpdateUserMutation();
   const auth = useAuth();
-  const initValues = getInitValues(auth.user);
+  const initValues = getInitValues(auth?.user);
 
   const f = useFormik({
     initialValues: initValues,
@@ -16,6 +18,9 @@ function EditProfile() {
       try {
         await update({ user: auth?.user.username, body: values });
         auth?.updateUserData(values);
+        if (close) {
+          close();
+        }
       } catch (err) {
         console.log(err);
       }
@@ -24,6 +29,7 @@ function EditProfile() {
 
   return (
     <div>
+      {f.isSubmitting && <Spiner />}
       <form onSubmit={f.handleSubmit} className="flex flex-col gap-5 p-2">
         <div>
           <button

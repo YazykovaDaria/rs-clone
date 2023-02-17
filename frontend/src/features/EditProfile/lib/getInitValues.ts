@@ -15,7 +15,7 @@ const defaultValues: InitValues = {
   site: '',
 };
 
-export const getInitValues = (user: SaveUser | null): InitValues => {
+export const getInitValues = (user: SaveUser | undefined): InitValues => {
   if (user) {
     const { name, about, location, site } = user;
     return { name, about, location, site };

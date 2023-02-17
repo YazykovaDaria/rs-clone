@@ -10,7 +10,9 @@
     "tweets": "Твитов",
     "born": "Дата рождения",
     "following": "Вы подписаны",
-    "followers": "Подписчиков"
+    "followers": "Подписчиков",
+    "read": "Читать",
+    "reading": "Читаю"
   },
   "Invalid Password!": "Неверный пароль",
   "User Not found.": "Неверный логин",

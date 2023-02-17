@@ -24,6 +24,7 @@ export default function HeaderProfile(
     following,
     avatar,
   }: IUserProfile = data;
+  // console.log(data);
 
   return (
     <div className="flex flex-row flex-wrap border-b">

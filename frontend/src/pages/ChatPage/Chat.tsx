@@ -1,12 +1,5 @@
-import EditProfile from '../../features/EditProfile/EditProfile';
-
 function Chat() {
-  return (
-    <>
-      <p>Chat Page</p>
-      <EditProfile />
-    </>
-  );
+  return <p>Chat Page</p>;
 }
 
 export default Chat;

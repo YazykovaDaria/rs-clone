@@ -10,7 +10,9 @@
     "tweets": "Tweets",
     "born": "Born",
     "following": "Following",
-    "followers": "Followers"
+    "followers": "Followers",
+    "read": "Read",
+    "reading": "Reading"
   },
   "tweet": "Tweet",
   "logout": "Logout",
