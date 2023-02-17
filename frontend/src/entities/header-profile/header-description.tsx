@@ -5,6 +5,7 @@ import transformDateJoin from '../../shared/lib/transformDateJoin';
 import DescriptionLink from './descriptionLink';
 import DescriptionLocation from './descriptionLocation';
 import DescriptionAbout from './decriptionAbout';
+import ProfileBtn from './ProfileBtns';
 
 export default function HeaderDesription({
   username,
@@ -37,12 +38,7 @@ export default function HeaderDesription({
           <div className="absolute border-4 border-white border-solid hover:bg-black/10 top-0 bottom-0 right-0 left-0 rounded-full transition-colors duration-200" />
         </div>
         <div>
-          <button
-            type="submit"
-            className="font-bold cursor-pointer sm:px-4 px-1 py-1 text-sm sm:text-base border rounded-2xl border-1 border-slate-300 border-solid hover:bg-slate-200 transition-colors duration-200"
-          >
-            {t('profile.edit')}
-          </button>
+          <ProfileBtn name={username} />
         </div>
       </div>
       <div className="w-full p-4 flex flex-col">
@@ -88,11 +84,15 @@ export default function HeaderDesription({
         </div>
         <div className="flex flex-row w-full items-start">
           <div className="text-gray-350 mr-3 hover:underline cursor-pointer">
-            <span className="text-black font-bold pr-1">{following}</span>
+            <span className="text-black font-bold pr-1">
+              {following.length}
+            </span>
             {t('profile.following')}
           </div>
           <div className="text-gray-350 mr-3 hover:underline cursor-pointer">
-            <span className="text-black font-bold pr-1">{followers}</span>
+            <span className="text-black font-bold pr-1">
+              {followers.length}
+            </span>
             {t('profile.followers')}
           </div>
         </div>

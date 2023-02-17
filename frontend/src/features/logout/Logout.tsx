@@ -1,19 +1,15 @@
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../../entities/user/Auth/authContext';
+import { OptionalCloseProps } from '../../shared/types/props';
 
-type LogoutProps = {
-  // eslint-disable-next-line react/require-default-props
-  close?: () => void;
-};
-
-const Logout = ({ close }: LogoutProps) => {
+const Logout = ({ close }: OptionalCloseProps) => {
   const auth = useAuth();
   const navigate = useNavigate();
   const { t } = useTranslation();
 
   const logout = () => {
-    auth.logOut();
+    auth?.logOut();
     navigate('/');
   };
 

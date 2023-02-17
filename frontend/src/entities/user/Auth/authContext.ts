@@ -1,5 +1,13 @@
 import { createContext, useContext } from 'react';
+import { SaveUser } from '../../../shared/types/user';
 
-export const AuthContext = createContext({});
+type Context = {
+  logIn: (userData: SaveUser) => void;
+  logOut: () => void;
+  updateUserData: <T>(newData: T) => void;
+  user: SaveUser;
+};
+
+export const AuthContext = createContext<Context | null>(null);
 
 export const useAuth = () => useContext(AuthContext);
