@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import TwitCreator from '../../features/twit-creator/Twit-creator';
 import Twit from '../../features/twit/twit';
-import { useGetTweetsQuery } from '../../entities/API/getTwitApi';
+import { useGetTweetsQuery } from '../../entities/API/TwitApi';
 import Spiner from '../../shared/IU/spiner/spiner';
 import ITweet from '../../shared/types/ITweet';
 
@@ -27,6 +27,8 @@ function Main() {
           liked={tweet.liked}
           replies={tweet.replies}
           views={tweet.views}
+          retweets={tweet.retweets}
+          retweeted={tweet.retweeted}
         />
       ))}
     </>

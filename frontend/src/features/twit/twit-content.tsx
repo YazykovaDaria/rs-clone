@@ -1,7 +1,10 @@
 export default function TwitContent({ text }: { text: string }) {
   return (
-    <div className="text-slate-900 lg:pr-10" style={{ textAlign: 'justify' }}>
+    <pre
+      className="text-slate-900 lg:pr-10"
+      style={{ textAlign: 'justify', fontFamily: 'inherit' }}
+    >
       {text}
-    </div>
+    </pre>
   );
 }

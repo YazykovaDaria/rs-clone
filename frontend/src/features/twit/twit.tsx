@@ -20,19 +20,20 @@ export default function Twit({
   liked,
   replies,
   views,
+  retweets,
+  retweeted,
 }: ITweet) {
-  console.log(id, parentId);
   return (
     <div className="cursor-pointer p-4 hover:bg-slate-50 transition-colors duration-200 border-b">
       <div className="flex w-full">
         <div>
           <UserImg />
         </div>
-        <div>
+        <div className="w-full">
           <div className="flex justify-between items-center">
             <div className="flex items-center">
-              <UserName name={user.name} />{' '}
-              <UserAlias username={user.username} />{' '}
+              <UserName name={user.name} />
+              <UserAlias username={user.username} />
               <TwitDate createdAt={createdAt} />
             </div>
             <div>
@@ -46,8 +47,8 @@ export default function Twit({
 
           <div className="flex items-center flex-nowrap">
             <Reply replies={replies} />
-            <Retweet />
-            <Like likes={likes} liked={liked} />
+            <Retweet retweets={retweets} retweeted={retweeted} />
+            <Like likes={likes} liked={liked} id={id} />
             <Views views={views} />
           </div>
         </div>

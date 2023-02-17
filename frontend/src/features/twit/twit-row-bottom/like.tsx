@@ -1,15 +1,45 @@
+/* eslint-disable prefer-const */
+import { listenerCompleted } from '@reduxjs/toolkit/dist/listenerMiddleware/exceptions';
+import { useState } from 'react';
+import { useAddLikeMutation, useDeleteLikeMutation } from '../API/LikeApi';
 import './style.css';
 
 export default function Like({
   likes,
   liked,
+  id,
 }: {
   likes: number;
   liked: boolean;
+  id: number;
 }) {
+  const [addLike] = useAddLikeMutation();
+  const [deleteLike] = useDeleteLikeMutation();
+  const [isLiked, setIsLiked] = useState(liked);
+  let [likesCount, setlikesCount] = useState(likes);
+  const handleAddLike = async () => {
+    try {
+      if (isLiked === false) {
+        setlikesCount((likesCount += 1));
+        setIsLiked(!isLiked);
+        await addLike({ tweetId: id }).unwrap();
+      } else {
+        setlikesCount((likesCount -= 1));
+        setIsLiked(!isLiked);
+        await deleteLike({ tweetId: id }).unwrap();
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
+    // eslint-disable-next-line jsx-a11y/click-events-have-key-events
     <div
       title="Like"
+      onClick={handleAddLike}
+      role="button"
+      tabIndex={0}
       className="twit__like text-gray-350 flex flex-nowrap items-center transition-colors duration-200 mr-5"
     >
       <div className="w-9 h-9 rounded-full flex items-center justify-center">
@@ -18,7 +48,7 @@ export default function Like({
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           style={
-            liked === true
+            isLiked === true
               ? { fill: 'rgb(249, 24, 128)', stroke: 'rgb(249, 24, 128)' }
               : {}
           }
@@ -31,7 +61,7 @@ export default function Like({
           />
         </svg>
       </div>
-      <span className="p-2">{likes}</span>
+      <span className="p-2">{likesCount}</span>
     </div>
   );
 }

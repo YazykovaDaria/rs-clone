@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import HeaderProfile from '../../entities/header-profile/header-profile';
 import Twit from '../../features/twit/twit';
-import { useGetTweetsQuery } from '../../entities/API/getTwitApi';
+import { useGetTweetsQuery } from '../../entities/API/TwitApi';
 import Spiner from '../../shared/IU/spiner/spiner';
 import ITweet from '../../shared/types/ITweet';
 
@@ -24,6 +24,8 @@ function Profile() {
           liked={tweet.liked}
           replies={tweet.replies}
           views={tweet.views}
+          retweets={tweet.retweets}
+          retweeted={tweet.retweeted}
         />
       ))}
     </>
