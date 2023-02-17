@@ -4,6 +4,14 @@
     "profile": "Profile",
     "messages": "Messages"
   },
+  "profile": {
+    "edit": "Edit profile",
+    "join": "Joined",
+    "tweets": "Tweets",
+    "born": "Born",
+    "following": "Following",
+    "followers": "Followers"
+  },
   "tweet": "Tweet",
   "logout": "Logout",
   "login": "Login",

@@ -1,4 +1,6 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable jsx-a11y/label-has-associated-control */
+import './style.css';
 import { useState, useRef } from 'react';
 import { useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
@@ -7,6 +9,7 @@ import MAX_TWIT_MSG_LEN from '../../shared/constants/MAX_TWIT_MSG_LEN';
 import PreviewImage from '../../shared/IU/PreviewImg';
 import { ReactComponent as Picture } from '../../shared/assets/icons/picture.svg';
 import { OptionalCloseProps } from '../../shared/types/props';
+import { useAddTweetMutation } from './twitCreatorApi';
 
 // баг при открытии твита в модалке на главной странице - картинка не добавляется
 
@@ -27,13 +30,19 @@ export default function TwitCreator({ close }: OptionalCloseProps) {
     setValue(val);
   };
 
+  const [addTweet] = useAddTweetMutation();
+
   const f = useFormik({
     initialValues: {
       text: '',
       img: null,
     },
-    onSubmit(values, { resetForm }) {
-      console.log(values);
+    onSubmit: async (values, { resetForm }) => {
+      if (values) {
+        await addTweet({ text: values.text }).unwrap();
+        values.text = '';
+        values.img = null;
+      }
       resetForm();
       if (close) {
         close();
@@ -115,7 +124,7 @@ export default function TwitCreator({ close }: OptionalCloseProps) {
           <button
             type="submit"
             className="twit-create__btn md:mr-5 rounded-full text-white cursor-pointer font-bold hover:bg-cyan-500 bg-sky-400 py-1 px-4 transition-colors duration-200 disabled:opacity-50 mt-5"
-            disabled={!f.dirty && f.isSubmitting}
+            disabled={!f.dirty || f.isSubmitting}
           >
             {t('tweet')}
           </button>
