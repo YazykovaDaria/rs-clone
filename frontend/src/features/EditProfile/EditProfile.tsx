@@ -3,6 +3,7 @@ import { useFormik } from 'formik';
 import { useAuth } from '../../entities/user/Auth/authContext';
 import { getInitValues } from './lib/getInitValues';
 import { useUpdateUserMutation } from '../../entities/user/Profile/userProfileApi';
+import EditAvatar from './EditAvatar';
 import { OptionalCloseProps } from '../../shared/types/props';
 import Spiner from '../../shared/IU/spiner/spiner';
 
@@ -22,7 +23,7 @@ function EditProfile({ close }: OptionalCloseProps) {
           close();
         }
       } catch (err) {
-        console.log(err);
+        throw new Error(err);
       }
     },
   });
@@ -30,16 +31,11 @@ function EditProfile({ close }: OptionalCloseProps) {
   return (
     <div>
       {f.isSubmitting && <Spiner />}
-      <form onSubmit={f.handleSubmit} className="flex flex-col gap-5 p-2">
-        <div>
-          <button
-            type="submit"
-            disabled={!f.dirty || f.isSubmitting}
-            className="disabled:bg-slate-500 bg-sky-400 font-bold hover:bg-cyan-500 rounded-full text-white px-5 py-1 transition-colors duration-200"
-          >
-            {t('save')}
-          </button>
-        </div>
+      <EditAvatar />
+      <form
+        onSubmit={f.handleSubmit}
+        className="flex flex-col gap-5 p-2 sm:min-w-400"
+      >
         <div className="relative">
           <label htmlFor="name" className="edit-label">
             {t('authLoginForm.name')}
@@ -101,6 +97,15 @@ function EditProfile({ close }: OptionalCloseProps) {
             onBlur={f.handleBlur}
             value={f.values.site}
           />
+        </div>
+        <div>
+          <button
+            type="submit"
+            disabled={!f.dirty || f.isSubmitting}
+            className="disabled:bg-slate-500 bg-sky-400 font-bold hover:bg-cyan-500 rounded-full text-white px-5 py-1 transition-colors duration-200"
+          >
+            {t('save')}
+          </button>
         </div>
         {/* {f.isSubmitting && <Preloader />} */}
         {/* {authFailed ? <p className="text-red-500">{t(authMes)}</p> : null} */}
