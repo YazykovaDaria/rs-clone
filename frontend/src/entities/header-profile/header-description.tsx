@@ -84,11 +84,15 @@ export default function HeaderDesription({
         </div>
         <div className="flex flex-row w-full items-start">
           <div className="text-gray-350 mr-3 hover:underline cursor-pointer">
-            <span className="text-black font-bold pr-1">{following}</span>
+            <span className="text-black font-bold pr-1">
+              {following.length}
+            </span>
             {t('profile.following')}
           </div>
           <div className="text-gray-350 mr-3 hover:underline cursor-pointer">
-            <span className="text-black font-bold pr-1">{followers}</span>
+            <span className="text-black font-bold pr-1">
+              {followers.length}
+            </span>
             {t('profile.followers')}
           </div>
         </div>
