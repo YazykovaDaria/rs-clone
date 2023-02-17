@@ -1,6 +1,6 @@
 import React, { useMemo, useState, FC, PropsWithChildren } from 'react';
 import { AuthContext } from './authContext';
-import { saveUser } from '../../../shared/types/user';
+import { SaveUser } from '../../../shared/types/user';
 
 const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
   const storage = localStorage.getItem('user');
@@ -9,13 +9,9 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
     currentUser = JSON.parse(storage);
   }
 
-  const [user, setUser] = useState(
-    currentUser
-      ? { username: currentUser.username, token: currentUser.token }
-      : null
-  );
+  const [user, setUser] = useState(currentUser || null);
 
-  const logIn = (userData: saveUser) => {
+  const logIn = (userData: SaveUser) => {
     localStorage.setItem('user', JSON.stringify(userData));
     setUser(userData);
   };
@@ -26,11 +22,17 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
   };
 
   const authData = useMemo(() => {
-    const getUsername = () => (user?.username ? user.username : '');
+    const updateUserData = <T,>(newData: T) => {
+      const savedData = localStorage.getItem('user');
+      if (savedData) {
+        const data = { ...JSON.parse(savedData), ...newData };
+        logIn(data);
+      }
+    };
     return {
       logIn,
       logOut,
-      getUsername,
+      updateUserData,
       user,
     };
   }, [user]);
