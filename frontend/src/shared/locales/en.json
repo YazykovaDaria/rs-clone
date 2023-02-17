@@ -10,7 +10,9 @@
     "tweets": "Tweets",
     "born": "Born",
     "following": "Following",
-    "followers": "Followers"
+    "followers": "Followers",
+    "read": "Read",
+    "reading": "Reading"
   },
   "tweet": "Tweet",
   "logout": "Logout",
@@ -25,6 +27,10 @@
   "leaveTreetter": "Are you sure you want to leave Threetter?",
   "cancel": "Cancel",
   "whatHappening": "What's happening?",
+  "about you": "About you",
+  "location": "Location",
+  "site": "Web-site",
+  "save": "Save",
   "authLoginForm": {
     "createAccount": "Create an account",
     "notHave": "Don't have an account?",

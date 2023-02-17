@@ -41,7 +41,7 @@ function AuhtForm() {
         const userData = await login(
           JSON.stringify({ username, password })
         ).unwrap();
-        goAuth.logIn(userData);
+        goAuth?.logIn(userData);
         navigate('/');
       } catch (err) {
         if (err.status === 400) {

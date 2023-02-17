@@ -1,14 +1,10 @@
 import IUserProfile from '../../shared/types/IUserProfile';
 import HeaderDesription from './header-description';
-import { useGetUserProfileQuery } from './userProfileApi';
+import { useGetUserProfileQuery } from '../user/Profile/userProfileApi';
 import StickyHeader from './sticky-header';
 import Spiner from '../../shared/IU/spiner/spiner';
-import { useGetTweetsQuery } from '../../features/twit/twitApi';
 
-export default function HeaderProfile(
-  { user }: { user: string },
-  { len }: { len: string } // передаем количество твитов
-) {
+export default function HeaderProfile({ user }: { user: string }) {
   const { data, isLoading } = useGetUserProfileQuery(user);
   if (isLoading) return <Spiner />;
   const {
@@ -24,6 +20,7 @@ export default function HeaderProfile(
     following,
     avatar,
   }: IUserProfile = data;
+
   return (
     <div className="flex flex-row flex-wrap border-b">
       <StickyHeader name={name} />

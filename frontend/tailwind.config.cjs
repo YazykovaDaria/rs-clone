@@ -4,6 +4,9 @@
 module.exports = {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
+    minWidth: {
+      400: '400px',
+    },
     extend: {
       colors: {
         gray: {

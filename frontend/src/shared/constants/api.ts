@@ -5,8 +5,8 @@ const getToken = (): string => {
   const user = localStorage.getItem('user');
   if (user) {
     const res = JSON.parse(user);
-    const { token } = res.accessToken;
-    return token;
+    const { accessToken } = res;
+    return accessToken;
   }
   return '';
 };
