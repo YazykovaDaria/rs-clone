@@ -1,21 +1,27 @@
 import { useTranslation } from 'react-i18next';
 import { useFormik } from 'formik';
+import { useAuth } from '../../entities/user/Auth/authContext';
+import { getInitValues } from './lib/getInitValues';
+import { useUpdateUserMutation } from '../../entities/user/Profile/userProfileApi';
 
 function EditProfile() {
   const { t } = useTranslation();
+  const [update] = useUpdateUserMutation();
+  const auth = useAuth();
+  const initValues = getInitValues(auth.user);
 
   const f = useFormik({
-    initialValues: {
-      avatar: null,
-      name: '',
-      about: '',
-      location: '',
-      site: '',
-    },
-    onSubmit(values) {
-      console.log(values);
+    initialValues: initValues,
+    onSubmit: async (values) => {
+      try {
+        await update({ user: auth?.user.username, body: values });
+        auth?.updateUserData(values);
+      } catch (err) {
+        console.log(err);
+      }
     },
   });
+
   return (
     <div>
       <form onSubmit={f.handleSubmit} className="flex flex-col gap-5 p-2">

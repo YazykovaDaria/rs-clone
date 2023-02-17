@@ -1,13 +1,23 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-export type saveUser = {
-  about: string | null;
+export type SaveUser = {
+  about: string;
   accessToken: string;
   birthday: string;
   email: string;
   id: number;
-  location: string | null;
+  location: string;
   name: string;
   registration_date: string;
-  site: string | null;
+  site: string;
   username: string;
+};
+
+export type UserData = {
+  about: string;
+  birthday: string;
+  location: string;
+  name: string;
+  site: string;
+  username: string;
+  src: string;
 };

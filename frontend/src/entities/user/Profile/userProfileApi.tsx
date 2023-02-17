@@ -13,7 +13,18 @@ export const userProfileApi = createApi({
     getUserProfile: build.query({
       query: (user: string) => `users/${user}`,
     }),
+
+    updateUser: build.mutation({
+      query: (arg) => {
+        const { user, body } = arg;
+        return {
+          url: `users/${user}`,
+          method: 'PATCH',
+          body,
+        };
+      },
+    }),
   }),
 });
 
-export const { useGetUserProfileQuery } = userProfileApi;
+export const { useGetUserProfileQuery, useUpdateUserMutation } = userProfileApi;
