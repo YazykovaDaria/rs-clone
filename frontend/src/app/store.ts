@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { userProfileApi } from '../entities/header-profile/userProfileApi';
 import { userLogin } from '../entities/user/Auth/loginApi';
-import { getTweetApi } from '../features/twit/twitApi';
+import { getTweetApi } from '../entities/API/getTwitApi';
 
 const store = configureStore({
   reducer: {

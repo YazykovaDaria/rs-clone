@@ -9,7 +9,7 @@ import MAX_TWIT_MSG_LEN from '../../shared/constants/MAX_TWIT_MSG_LEN';
 import PreviewImage from '../../shared/IU/PreviewImg';
 import { ReactComponent as Picture } from '../../shared/assets/icons/picture.svg';
 import { OptionalCloseProps } from '../../shared/types/props';
-import { useAddTweetMutation } from './twitCreatorApi';
+import { useAddTweetMutation } from '../../entities/API/twitCreatorApi';
 
 // баг при открытии твита в модалке на главной странице - картинка не добавляется
 

@@ -11,8 +11,10 @@ export const getTweetApi = createApi({
   }),
   endpoints: (build) => ({
     getTweets: build.query({
-      query: (limit = '', offset = '') =>
-        `tweets?${limit && `limit=${limit}`}&${offset && `offset=${offset}`}`,
+      query: (username = '', limit = '', offset = '') =>
+        `tweets?${username && `username=${username}`}&${
+          limit && `limit=${limit}`
+        }&${offset && `offset=${offset}`}`,
     }),
   }),
 });

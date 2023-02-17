@@ -12,6 +12,7 @@
     "following": "Following",
     "followers": "Followers"
   },
+  "home": "Home",
   "tweet": "Tweet",
   "logout": "Logout",
   "login": "Login",

@@ -1,6 +1,6 @@
 import './style.css';
 
-export default function Reply() {
+export default function Reply({ replies }: { replies: number }) {
   return (
     <div
       title="Reply"
@@ -17,7 +17,7 @@ export default function Reply() {
           </g>
         </svg>
       </div>
-      <span className="p-2">3</span>
+      <span className="p-2">{replies}</span>
     </div>
   );
 }
