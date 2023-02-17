@@ -36,7 +36,7 @@ function LoginForm() {
       try {
         const userData = await login(JSON.stringify(values)).unwrap();
 
-        auth.logIn(userData);
+        auth?.logIn(userData);
         navigate('/');
       } catch (err) {
         if (err.status === 404 || err.status === 401) {
