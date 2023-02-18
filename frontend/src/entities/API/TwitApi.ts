@@ -7,8 +7,10 @@ export const TweetApi = createApi({
   tagTypes: ['Tweets'],
   baseQuery: fetchBaseQuery({
     baseUrl,
-    headers: {
-      'x-access-token': getToken(),
+    prepareHeaders: (headers) => {
+      const token = getToken();
+      headers.set('x-access-token', token);
+      return headers;
     },
   }),
   endpoints: (build) => ({

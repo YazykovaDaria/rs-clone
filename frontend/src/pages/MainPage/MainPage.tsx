@@ -14,7 +14,7 @@ function Main() {
       <h1 className="font-bold text-xl w-full py-2 pl-4 border-b">
         {t('home')}
       </h1>
-      {/* <TwitCreator />
+      <TwitCreator />
       {data.map((tweet: ITweet) => (
         <Twit
           key={tweet.id}
@@ -31,7 +31,7 @@ function Main() {
           retweets={tweet.retweets}
           retweeted={tweet.retweeted}
         />
-      ))} */}
+      ))}
     </>
   );
 }
