@@ -9,7 +9,7 @@ import MAX_TWIT_MSG_LEN from '../../shared/constants/MAX_TWIT_MSG_LEN';
 import PreviewImage from '../../shared/IU/PreviewImg';
 import { ReactComponent as Picture } from '../../shared/assets/icons/picture.svg';
 import { OptionalCloseProps } from '../../shared/types/props';
-import { useAddTweetMutation } from './twitCreatorApi';
+import { useAddTweetMutation } from '../../entities/API/TwitApi';
 
 // баг при открытии твита в модалке на главной странице - картинка не добавляется
 
@@ -39,9 +39,14 @@ export default function TwitCreator({ close }: OptionalCloseProps) {
     },
     onSubmit: async (values, { resetForm }) => {
       if (values) {
-        await addTweet({ text: values.text }).unwrap();
-        values.text = '';
-        values.img = null;
+        try {
+          await addTweet({ text: values.text }).unwrap();
+          values.text = '';
+          values.img = null;
+          setMessageLength(MAX_TWIT_MSG_LEN);
+        } catch (err) {
+          throw new Error(err);
+        }
       }
       resetForm();
       if (close) {

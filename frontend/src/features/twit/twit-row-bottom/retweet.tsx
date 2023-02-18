@@ -1,6 +1,12 @@
 import './style.css';
 
-export default function Retweet() {
+export default function Retweet({
+  retweets,
+  retweeted,
+}: {
+  retweets: number;
+  retweeted: boolean;
+}) {
   return (
     <div
       title="Retweet"
@@ -10,6 +16,7 @@ export default function Retweet() {
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
+          style={retweeted === true ? { fill: 'rgb(0, 186, 124)' } : {}}
           className="w-5 h-5 stroke-none transition-colors duration-200 fill-gray-350"
         >
           <g>
@@ -17,7 +24,7 @@ export default function Retweet() {
           </g>
         </svg>
       </div>
-      <span className="p-2">5</span>
+      <span className="p-2">{retweets}</span>
     </div>
   );
 }

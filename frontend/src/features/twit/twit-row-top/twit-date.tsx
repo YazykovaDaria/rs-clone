@@ -1,3 +1,9 @@
-export default function TwitDate() {
-  return <div className="text-gray-350 hover:underline">Feb 2</div>;
+import transformDateCreateAt from '../../../shared/lib/transformDateCreateAt';
+
+export default function TwitDate({ createdAt }: { createdAt: string }) {
+  return (
+    <div className="text-gray-350 hover:underline">
+      {transformDateCreateAt(createdAt)}
+    </div>
+  );
 }

@@ -72,7 +72,7 @@ function UserWidget() {
             className="rounded-full object-contain"
           />
         </div>
-        <div className="flex-col hidden md:flex items-start p-1">
+        <div className="flex-col hidden md:flex items-start p-1 self-start">
           <span className="font-bold">{userData.name}</span>
           <span className="text-gray-350">{`@${userData.username}`}</span>
         </div>
