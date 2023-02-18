@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom';
-import Footer from '../../entities/footer';
+import Footer from '../../shared/IU/footer';
 import SideBar from '../../features/sidebar/SideBar';
 
 function Layout() {

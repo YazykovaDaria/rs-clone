@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import HeaderProfile from '../../entities/header-profile/header-profile';
+import HeaderProfile from '../../features/header-profile/header-profile';
 import Twit from '../../features/twit/twit';
 import { useGetTweetsQuery } from '../../entities/API/TwitApi';
 import Spiner from '../../shared/IU/spiner/spiner';

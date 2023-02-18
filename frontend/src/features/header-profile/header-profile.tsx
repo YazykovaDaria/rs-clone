@@ -1,6 +1,6 @@
 import IUserProfile from '../../shared/types/IUserProfile';
 import HeaderDesription from './header-description';
-import { useGetUserProfileQuery } from '../user/Profile/userProfileApi';
+import { useGetUserProfileQuery } from '../../entities/user/Profile/userProfileApi';
 import StickyHeader from './sticky-header';
 import Spiner from '../../shared/IU/spiner/spiner';
 
