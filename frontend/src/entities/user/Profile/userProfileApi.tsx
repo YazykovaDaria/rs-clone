@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { baseUrl, token } from '../../../shared/constants/api';
+import { baseUrl } from '../../../shared/constants/api';
+import getToken from '../../../shared/lib/getToken';
 
 export const userProfileApi = createApi({
   reducerPath: 'userProfileApi',
@@ -7,7 +8,7 @@ export const userProfileApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl,
     headers: {
-      'x-access-token': token,
+      'x-access-token': getToken(),
     },
   }),
   endpoints: (build) => ({
