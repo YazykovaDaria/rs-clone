@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../entities/user/Auth/authContext';
 import { useGetLoginMutation } from '../../entities/user/Auth/loginApi';
 import Preloader from '../../shared/IU/Preloader';
+import normalizeUserData from '../../shared/lib/authHelper';
 
 const validation = yup.object().shape({
   username: yup
@@ -35,8 +36,9 @@ function LoginForm() {
     onSubmit: async (values) => {
       try {
         const userData = await login(JSON.stringify(values)).unwrap();
+        // console.log(normalizeUserData(userData));
 
-        auth?.logIn(userData);
+        auth?.logIn(normalizeUserData(userData));
         navigate('/');
       } catch (err) {
         if (err.status === 404 || err.status === 401) {
