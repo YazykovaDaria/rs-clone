@@ -16,6 +16,7 @@ export default function Twit({
   text,
   createdAt,
   user,
+  isRetweet,
   likes,
   liked,
   replies,

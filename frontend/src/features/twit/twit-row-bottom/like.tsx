@@ -1,5 +1,4 @@
 /* eslint-disable prefer-const */
-import { listenerCompleted } from '@reduxjs/toolkit/dist/listenerMiddleware/exceptions';
 import { useState } from 'react';
 import { useAddLikeMutation, useDeleteLikeMutation } from '../API/LikeApi';
 import './style.css';
@@ -29,7 +28,7 @@ export default function Like({
         await deleteLike({ tweetId: id }).unwrap();
       }
     } catch (err) {
-      console.error(err);
+      throw new Error(err);
     }
   };
 

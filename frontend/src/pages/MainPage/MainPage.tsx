@@ -23,6 +23,7 @@ function Main() {
           text={tweet.text}
           createdAt={tweet.createdAt}
           user={tweet.user}
+          isRetweet={tweet.isRetweet}
           likes={tweet.likes}
           liked={tweet.liked}
           replies={tweet.replies}

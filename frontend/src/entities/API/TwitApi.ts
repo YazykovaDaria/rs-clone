@@ -16,14 +16,7 @@ export const TweetApi = createApi({
         `tweets?${username && `username=${username}`}${
           limit && `limit=${limit}`
         }&${offset && `offset=${offset}`}`,
-      providesTags: (result) =>
-        // todo подгрузка твитов ?????????
-        result
-          ? [
-              ...result.map(({ id }) => ({ type: 'Tweets' as const, id })),
-              { type: 'Tweets', id: 'LIST' },
-            ]
-          : [{ type: 'Tweets', id: 'LIST' }],
+      providesTags:['Tweets'],
     }),
     addTweet: build.mutation({
       query: (body) => ({
@@ -31,7 +24,7 @@ export const TweetApi = createApi({
         method: 'POST',
         body,
       }),
-      invalidatesTags: [{ type: 'Tweets', id: 'List' }],
+      invalidatesTags: ['Tweets'],
     }),
   }),
 });

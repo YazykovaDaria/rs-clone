@@ -3,6 +3,7 @@ export default interface ITweet {
   parentId: number | null;
   text: string;
   createdAt: string;
+  isRetweet: boolean;
   user: {
     name: string;
     username: string;

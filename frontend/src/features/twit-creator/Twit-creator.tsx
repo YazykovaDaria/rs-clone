@@ -45,7 +45,7 @@ export default function TwitCreator({ close }: OptionalCloseProps) {
           values.img = null;
           setMessageLength(MAX_TWIT_MSG_LEN);
         } catch (err) {
-          console.error(err);
+          throw new Error(err);
         }
       }
       resetForm();
