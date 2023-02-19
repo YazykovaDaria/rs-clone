@@ -39,7 +39,7 @@ export default function Like({
       onClick={handleAddLike}
       role="button"
       tabIndex={0}
-      className="twit__like text-gray-350 flex flex-nowrap items-center transition-colors duration-200 mr-5"
+      className="twit__like text-gray-350 flex flex-nowrap items-center transition-colors duration-200 sm:mr-5"
     >
       <div className="w-9 h-9 rounded-full flex items-center justify-center">
         <svg

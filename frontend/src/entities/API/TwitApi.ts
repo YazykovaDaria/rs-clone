@@ -16,7 +16,7 @@ export const TweetApi = createApi({
         `tweets?${username && `username=${username}`}${
           limit && `limit=${limit}`
         }&${offset && `offset=${offset}`}`,
-      providesTags:['Tweets'],
+      providesTags: ['Tweets'],
     }),
     addTweet: build.mutation({
       query: (body) => ({

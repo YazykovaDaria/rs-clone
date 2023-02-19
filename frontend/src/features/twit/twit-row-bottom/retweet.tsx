@@ -10,7 +10,7 @@ export default function Retweet({
   return (
     <div
       title="Retweet"
-      className="twit__retweet text-gray-350 flex flex-nowrap items-center transition-colors duration-200 mr-5 md:mr-10"
+      className="twit__retweet text-gray-350 flex flex-nowrap items-center transition-colors duration-200 sm:mr-5 md:mr-10"
     >
       <div className="w-9 h-9 rounded-full flex items-center justify-center">
         <svg

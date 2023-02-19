@@ -25,10 +25,10 @@ export default function Twit({
   retweeted,
 }: ITweet) {
   return (
-    <div className="cursor-pointer p-4 hover:bg-slate-50 transition-colors duration-200 border-b">
+    <div className="cursor-pointer sm:p-4 p-3 hover:bg-slate-50 transition-colors duration-200 border-b">
       <div className="flex w-full">
         <div>
-          <UserImg />
+          <UserImg avatar={user.avatar} />
         </div>
         <div className="w-full">
           <div className="flex justify-between items-center">
