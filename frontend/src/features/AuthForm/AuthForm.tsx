@@ -9,6 +9,7 @@ import {
   useGetLoginMutation,
 } from '../../entities/user/Auth/loginApi';
 import Preloader from '../../shared/IU/Preloader';
+import normalizeUserData from '../../shared/lib/authHelper';
 
 function AuhtForm() {
   const { t } = useTranslation();
@@ -41,7 +42,7 @@ function AuhtForm() {
         const userData = await login(
           JSON.stringify({ username, password })
         ).unwrap();
-        goAuth?.logIn(userData);
+        goAuth?.logIn(normalizeUserData(userData));
         navigate('/');
       } catch (err) {
         if (err.status === 400) {

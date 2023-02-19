@@ -1,13 +1,16 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { baseUrl, token } from '../../shared/constants/api';
+import { baseUrl } from '../../shared/constants/api';
+import getToken from '../../shared/lib/getToken';
 
 export const TweetApi = createApi({
   reducerPath: 'TweetApi',
   tagTypes: ['Tweets'],
   baseQuery: fetchBaseQuery({
     baseUrl,
-    headers: {
-      'x-access-token': token,
+    prepareHeaders: (headers) => {
+      const token = getToken();
+      headers.set('x-access-token', token);
+      return headers;
     },
   }),
   endpoints: (build) => ({
@@ -16,7 +19,7 @@ export const TweetApi = createApi({
         `tweets?${username && `username=${username}`}${
           limit && `limit=${limit}`
         }&${offset && `offset=${offset}`}`,
-      providesTags:['Tweets'],
+      providesTags: ['Tweets'],
     }),
     addTweet: build.mutation({
       query: (body) => ({

@@ -14,8 +14,9 @@ function UserWidget() {
   const [isOpenModalLogout, setModalLogout] = useState(false);
   const { user } = useAuth();
   const userData = {
-    name: 'name',
-    username: 'nick',
+    name: '',
+    username: '',
+    avatar: '',
   };
   if (user) {
     Object.assign(userData, user);
@@ -67,7 +68,7 @@ function UserWidget() {
       <button type="button" className="user-aside" onClick={togglePopup}>
         <div className="w-10 h-10 min-w-[2.5rem] rounded-full border-solid border-2 border-cyan-500 transition-colors">
           <img
-            src="https://randomuser.me/api/portraits/lego/6.jpg"
+            src={userData.avatar}
             alt="user"
             className="rounded-full object-contain"
           />

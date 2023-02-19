@@ -1,4 +1,4 @@
-type Followers = {
+export type Followers = {
   username: string;
   name: string;
 };

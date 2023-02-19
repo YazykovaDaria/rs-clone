@@ -5,7 +5,7 @@ import { useState, useRef } from 'react';
 import { useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
 import useAutosizeTextArea from './lib/autoHeight';
-import MAX_TWIT_MSG_LEN from '../../shared/constants/MAX_TWIT_MSG_LEN';
+import { MAX_TWIT_MSG_LEN } from '../../shared/constants/common';
 import PreviewImage from '../../shared/IU/PreviewImg';
 import { ReactComponent as Picture } from '../../shared/assets/icons/picture.svg';
 import { OptionalCloseProps } from '../../shared/types/props';
