@@ -35,7 +35,7 @@ export default function HeaderDesription({
                 : '../../../public/icon/unknown-user.svg'
             }
             alt="avatar"
-            className="rounded-full object-contain bg-white sm:w-32 sm:h-32 w-24 h-24"
+            className="profile-avatar"
           />
           <div className="absolute border-4 border-white border-solid hover:bg-black/10 top-0 bottom-0 right-0 left-0 rounded-full transition-colors duration-200" />
         </div>

@@ -1,13 +1,16 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { baseUrl, token } from '../../../shared/constants/api';
+import { baseUrl } from '../../../shared/constants/api';
+import getToken from '../../../shared/lib/getToken';
 
 export const userProfileApi = createApi({
   reducerPath: 'userProfileApi',
   tagTypes: ['User'],
   baseQuery: fetchBaseQuery({
     baseUrl,
-    headers: {
-      'x-access-token': token,
+    prepareHeaders: (headers) => {
+      const token = getToken();
+      headers.set('x-access-token', token);
+      return headers;
     },
   }),
   endpoints: (build) => ({

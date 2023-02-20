@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
-import { useAuth } from '../user/Auth/authContext';
+import { useAuth } from '../../entities/user/Auth/authContext';
 import Modal from '../../shared/IU/modal/Modal';
-import EditProfile from '../../features/EditProfile/EditProfile';
+import EditProfile from '../EditProfile/EditProfile';
 
 type Props = {
   name: string;

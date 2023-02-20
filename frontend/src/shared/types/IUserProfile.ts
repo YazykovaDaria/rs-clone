@@ -1,6 +1,6 @@
 import Avatar from './avatar';
 
-type Followers = {
+export type Followers = {
   username: string;
   name: string;
   avatar: Avatar;
