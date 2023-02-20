@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { baseUrl, token } from '../../../shared/constants/api';
+import { baseUrl, token } from '../../shared/constants/api';
 
 export const LikeApi = createApi({
   reducerPath: 'LikeApi',

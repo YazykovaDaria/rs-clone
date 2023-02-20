@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { userProfileApi } from '../entities/user/Profile/userProfileApi';
 import { userLogin } from '../entities/user/Auth/loginApi';
 import { TweetApi } from '../entities/API/TwitApi';
-import { LikeApi } from '../features/twit/API/LikeApi';
+import { LikeApi } from '../entities/API/LikeApi';
 
 const store = configureStore({
   reducer: {

@@ -17,5 +17,5 @@ export default interface IUserProfile {
   registration_date: string;
   followers: Followers[];
   following: Followers[];
-  avatar?: Avatar;
+  avatar: Avatar;
 }

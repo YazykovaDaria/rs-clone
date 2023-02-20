@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention */
 export type SaveUser = {
   about: string;
   accessToken: string;

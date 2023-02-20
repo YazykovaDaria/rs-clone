@@ -1,6 +1,9 @@
 /* eslint-disable prefer-const */
 import { useState } from 'react';
-import { useAddLikeMutation, useDeleteLikeMutation } from '../API/LikeApi';
+import {
+  useAddLikeMutation,
+  useDeleteLikeMutation,
+} from '../../../entities/API/LikeApi';
 import './style.css';
 
 export default function Like({
