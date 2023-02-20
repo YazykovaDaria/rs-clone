@@ -5,12 +5,14 @@ import { SaveUser, User } from '../types/user';
 type Tmp = {
   avatar: string;
   following: string[];
+  followers: [];
 };
 
 const normalizeUserData = (user: User): SaveUser => {
   const tmp: Tmp = {
     avatar: defaultUserSrc,
     following: [],
+    followers: [],
   };
 
   const { avatar } = user;

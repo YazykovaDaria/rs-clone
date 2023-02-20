@@ -5,6 +5,7 @@ type Context = {
   logIn: (userData: SaveUser) => void;
   logOut: () => void;
   updateUserData: <T>(newData: T) => void;
+  updateFollowing: (newFollowing: string, action: string) => void;
   user: SaveUser;
 };
 
