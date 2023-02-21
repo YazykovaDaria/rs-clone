@@ -4,7 +4,7 @@ import TwitCreator from '../../features/twit-creator/Twit-creator';
 import Twit from '../../features/twit/twit';
 import { useGetTweetsQuery } from '../../entities/API/TwitApi';
 import ITweet from '../../shared/types/ITweet';
-import Preloader from '../../shared/IU/Preloader';
+import Spiner from '../../shared/IU/spiner/spiner';
 
 function Main() {
   const { t } = useTranslation();
@@ -32,7 +32,7 @@ function Main() {
       document.removeEventListener('scroll', scrollHandler);
     };
   });
-  if (isLoading) return <Preloader />;
+  if (isLoading) return <Spiner />;
 
   return (
     <>

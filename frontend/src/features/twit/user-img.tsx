@@ -1,8 +1,17 @@
 import Avatar from '../../shared/types/avatar';
 
-export default function UserImg({ avatar }: { avatar: Avatar }) {
+export default function UserImg({
+  avatar,
+  username,
+}: {
+  avatar: Avatar;
+  username: string;
+}) {
   return (
-    <div className="sm:w-12 sm:h-12 w-10 h-10 flex items-center justify-center transition-colors duration-200 mr-3">
+    <a
+      className="sm:w-12 sm:h-12 w-10 h-10 flex items-center justify-center transition-colors duration-200 mr-3"
+      href={`/profile/${username}`}
+    >
       <img
         src={
           avatar.imageType && avatar.imageData
@@ -12,6 +21,6 @@ export default function UserImg({ avatar }: { avatar: Avatar }) {
         alt="user"
         className="rounded-full object-contain"
       />
-    </div>
+    </a>
   );
 }

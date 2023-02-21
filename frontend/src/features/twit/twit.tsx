@@ -9,8 +9,8 @@ import TwitDelete from './twit-row-top/twit-delete';
 import UserAlias from './twit-row-top/user-alias';
 import UserName from './twit-row-top/user-name';
 import UserImg from './user-img';
+import { useAuth } from '../../entities/user/Auth/authContext';
 
-const userName = JSON.parse(localStorage.getItem('user') || '').username;
 export default function Twit({
   id,
   parentId,
@@ -25,17 +25,18 @@ export default function Twit({
   retweets,
   retweeted,
 }: ITweet) {
-  const isOwnTwit = userName === user.username;
+  const authUserName = useAuth()?.user.username;
+  const isOwnTwit = authUserName === user.username;
   return (
     <div className="cursor-pointer sm:p-4 p-3 hover:bg-slate-50 transition-colors duration-200 border-b">
       <div className="flex w-full">
         <div>
-          <UserImg avatar={user.avatar} />
+          <UserImg avatar={user.avatar} username={user.username} />
         </div>
         <div className="w-full">
           <div className="flex justify-between items-center">
             <div className="flex items-center">
-              <UserName name={user.name} />
+              <UserName name={user.name} username={user.username} />
               <UserAlias username={user.username} />
               <TwitDate createdAt={createdAt} />
             </div>
