@@ -1,4 +1,5 @@
 import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import HeaderProfile from '../../features/header-profile/header-profile';
 import Twit from '../../features/twit/twit';
 import { useGetTweetsQuery } from '../../entities/API/TwitApi';
@@ -7,8 +8,32 @@ import ITweet from '../../shared/types/ITweet';
 
 function Profile() {
   const { user } = useParams();
-  const { data, isLoading } = useGetTweetsQuery(user);
+  const [limitCount, setLimitCount] = useState(3);
+  const { data, isLoading } = useGetTweetsQuery({
+    username: user || '',
+    limit: limitCount,
+    offset: 0,
+  });
+  const scrollHandler = (e: Event) => {
+    if (e) {
+      const target = e.target as Document;
+      if (
+        target.documentElement.scrollHeight -
+          (target.documentElement.scrollTop + window.innerHeight) <
+        100
+      ) {
+        setLimitCount((prevState) => prevState + 1);
+      }
+    }
+  };
+  useEffect(() => {
+    document.addEventListener('scroll', scrollHandler);
+    return () => {
+      document.removeEventListener('scroll', scrollHandler);
+    };
+  });
   if (isLoading) return <Spiner />;
+
   return (
     <>
       <HeaderProfile user={user || ''} />
