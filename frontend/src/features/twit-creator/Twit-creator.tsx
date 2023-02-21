@@ -10,6 +10,7 @@ import PreviewImage from '../../shared/IU/PreviewImg';
 import { ReactComponent as Picture } from '../../shared/assets/icons/picture.svg';
 import { OptionalCloseProps } from '../../shared/types/props';
 import { useAddTweetMutation } from '../../entities/API/TwitApi';
+import Preloader from '../../shared/IU/Preloader';
 
 // баг при открытии твита в модалке на главной странице - картинка не добавляется
 
@@ -30,7 +31,7 @@ export default function TwitCreator({ close }: OptionalCloseProps) {
     setValue(val);
   };
 
-  const [addTweet] = useAddTweetMutation();
+  const [addTweet, { isLoading }] = useAddTweetMutation();
 
   const f = useFormik({
     initialValues: {
@@ -54,7 +55,7 @@ export default function TwitCreator({ close }: OptionalCloseProps) {
       }
     },
   });
-
+  if (isLoading) return <Preloader />;
   return (
     <div className="flex flex-row flex-nowrap w-full p-4 border-b pb-10">
       <div className="mr-3 h-12 relative cursor-pointer flex items-center justify-center">

@@ -5,11 +5,12 @@ import Reply from './twit-row-bottom/reply';
 import Retweet from './twit-row-bottom/retweet';
 import Views from './twit-row-bottom/views';
 import TwitDate from './twit-row-top/twit-date';
-import TwitSettings from './twit-row-top/twit-settings';
+import TwitDelete from './twit-row-top/twit-delete';
 import UserAlias from './twit-row-top/user-alias';
 import UserName from './twit-row-top/user-name';
 import UserImg from './user-img';
 
+const userName = JSON.parse(localStorage.getItem('user') || '').username;
 export default function Twit({
   id,
   parentId,
@@ -24,6 +25,7 @@ export default function Twit({
   retweets,
   retweeted,
 }: ITweet) {
+  const isOwnTwit = userName === user.username;
   return (
     <div className="cursor-pointer sm:p-4 p-3 hover:bg-slate-50 transition-colors duration-200 border-b">
       <div className="flex w-full">
@@ -38,7 +40,7 @@ export default function Twit({
               <TwitDate createdAt={createdAt} />
             </div>
             <div>
-              <TwitSettings />
+              <TwitDelete isOwnTwit={isOwnTwit} id={id} />
             </div>
           </div>
 

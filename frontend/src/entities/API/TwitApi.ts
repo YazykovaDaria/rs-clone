@@ -29,7 +29,19 @@ export const TweetApi = createApi({
       }),
       invalidatesTags: ['Tweets'],
     }),
+    deleteTweet: build.mutation({
+      query: (body) => ({
+        url: 'tweets',
+        method: 'DELETE',
+        body,
+      }),
+      invalidatesTags: ['Tweets'],
+    }),
   }),
 });
 
-export const { useGetTweetsQuery, useAddTweetMutation } = TweetApi;
+export const {
+  useGetTweetsQuery,
+  useAddTweetMutation,
+  useDeleteTweetMutation,
+} = TweetApi;
