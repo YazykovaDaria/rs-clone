@@ -45,6 +45,7 @@
     "registration": "Registration"
   },
   "formErrors": {
+    "maxImg": "You can download 4 images, no more",
     "max20": "Max length is twenty sumbols",
     "min6": "Min length is six sumbols",
     "required": "Must not be empty",

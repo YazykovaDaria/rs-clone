@@ -6,16 +6,23 @@ import { useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
 import useAutosizeTextArea from './lib/autoHeight';
 import { MAX_TWIT_MSG_LEN } from '../../shared/constants/common';
-import PreviewImage from '../../shared/IU/PreviewImg';
+// import PreviewImage from '../../shared/IU/PreviewImg';
 import { ReactComponent as Picture } from '../../shared/assets/icons/picture.svg';
+import PreviewImage from '../../shared/IU/PreviewImg';
 import { OptionalCloseProps } from '../../shared/types/props';
 import { useAddTweetMutation } from '../../entities/API/TwitApi';
-
+import { useAuth } from '../../entities/user/Auth/authContext';
+import { validationTwit } from './lib/validation';
+import getFormData from './lib/getFormData';
 // баг при открытии твита в модалке на главной странице - картинка не добавляется
 
 export default function TwitCreator({ close }: OptionalCloseProps) {
   const [messageLength, setMessageLength] = useState(MAX_TWIT_MSG_LEN);
   const { t } = useTranslation();
+  const [imgError, setImgError] = useState('');
+
+  const auth = useAuth();
+  const src = auth?.user.avatar;
 
   const [value, setValue] = useState('');
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
@@ -35,31 +42,38 @@ export default function TwitCreator({ close }: OptionalCloseProps) {
   const f = useFormik({
     initialValues: {
       text: '',
-      img: null,
+      img: [],
     },
+    validationSchema: validationTwit,
     onSubmit: async (values, { resetForm }) => {
-      if (values) {
-        try {
-          await addTweet({ text: values.text }).unwrap();
-          values.text = '';
-          values.img = null;
-          setMessageLength(MAX_TWIT_MSG_LEN);
-        } catch (err) {
-          throw new Error(err);
-        }
+      const data = getFormData(values);
+      try {
+        await addTweet(data).unwrap();
+        // values.text = '';
+        // values.img = null;
+        setMessageLength(MAX_TWIT_MSG_LEN);
+      } catch (err) {
+        throw new Error(err);
       }
+
       resetForm();
+      setImgError('');
       if (close) {
         close();
       }
     },
   });
 
+  const delImgWithFormik = (imgName: string) => {
+    const data = f.values.img.filter((img) => img.name !== imgName);
+    f.setFieldValue('img', data);
+  };
+
   return (
     <div className="flex flex-row flex-nowrap w-full p-4 border-b pb-10">
       <div className="mr-3 h-12 relative cursor-pointer flex items-center justify-center">
         <img
-          src="https://randomuser.me/api/portraits/lego/3.jpg"
+          src={src}
           alt="user"
           className="rounded-full object-contain w-12"
         />
@@ -82,17 +96,8 @@ export default function TwitCreator({ close }: OptionalCloseProps) {
             value={f.values.text}
           />
 
-          {f.values.img && (
-            <div className="relative">
-              <button
-                type="button"
-                onClick={() => f.setFieldValue('img', null)}
-                className="absolute right-1 top-1 w-5 h-5 hover:bg-zinc-400 hover:rounded-full"
-              >
-                ❌
-              </button>
-              <PreviewImage file={f.values.img} />
-            </div>
+          {f.values.img.length > 0 && (
+            <PreviewImage files={f.values.img} close={delImgWithFormik} />
           )}
 
           <input
@@ -101,12 +106,17 @@ export default function TwitCreator({ close }: OptionalCloseProps) {
             onChange={(e) => {
               const target = e.currentTarget as HTMLInputElement;
               if (target.files) {
-                f.setFieldValue('img', target.files[0]);
+                const selectedFiles = [...f.values.img, ...target.files];
+                if (selectedFiles.length > 4) {
+                  setImgError('formErrors.maxImg');
+                }
+                f.setFieldValue('img', selectedFiles);
               }
             }}
             type="file"
             accept=".jpg, .jpeg, .png"
             className="invisible w-[1px] h-[1px]"
+            multiple
           />
 
           <div className="flex justify-between items-center mt-2">
@@ -116,6 +126,7 @@ export default function TwitCreator({ close }: OptionalCloseProps) {
             >
               <Picture className="w-6 h-6 cursor-pointer hover:stroke-cyan-500 stroke-sky-400 hover:stroke-2" />
             </label>
+
             <div
               className="mr-4 rounded-full border-2 border-sky-400 w-8 h-8 flex justify-center items-center"
               style={{
@@ -126,10 +137,12 @@ export default function TwitCreator({ close }: OptionalCloseProps) {
             </div>
           </div>
 
+          {imgError ? <p className="text-red-500">{t(imgError)}</p> : null}
+
           <button
             type="submit"
             className="twit-create__btn md:mr-5 rounded-full text-white cursor-pointer font-bold hover:bg-cyan-500 bg-sky-400 py-1 px-4 transition-colors duration-200 disabled:opacity-50 mt-5"
-            disabled={!f.dirty || f.isSubmitting}
+            disabled={!(f.isValid && f.dirty) || f.isSubmitting}
           >
             {t('tweet')}
           </button>
