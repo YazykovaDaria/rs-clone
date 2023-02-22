@@ -3,32 +3,35 @@ import { useState } from 'react';
 import {
   useAddLikeMutation,
   useDeleteLikeMutation,
-} from '../../../entities/API/LikeApi';
+} from '../../../entities/API/TwitApi';
 import './style.css';
 
 export default function Like({
   likes,
   liked,
   id,
+  parentId,
 }: {
   likes: number;
   liked: boolean;
   id: number;
+  parentId: number | null;
 }) {
   const [addLike] = useAddLikeMutation();
   const [deleteLike] = useDeleteLikeMutation();
   const [isLiked, setIsLiked] = useState(liked);
   let [likesCount, setlikesCount] = useState(likes);
+  const thisId = parentId || id;
   const handleAddLike = async () => {
     try {
       if (isLiked === false) {
         setlikesCount((likesCount += 1));
         setIsLiked(!isLiked);
-        await addLike({ tweetId: id }).unwrap();
+        await addLike({ tweetId: thisId }).unwrap();
       } else {
         setlikesCount((likesCount -= 1));
         setIsLiked(!isLiked);
-        await deleteLike({ tweetId: id }).unwrap();
+        await deleteLike({ tweetId: thisId }).unwrap();
       }
     } catch (err) {
       throw new Error(err);

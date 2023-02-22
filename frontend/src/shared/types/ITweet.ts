@@ -11,12 +11,12 @@ export default interface ITweet {
     username: string;
     avatar: Avatar;
   };
-  origin?: {
-    createdAt: string;
-    user: {
+  origin: {
+    createdAt?: string;
+    user?: {
       name: string;
       username: string;
-      avatar?: Avatar;
+      avatar: Avatar;
     };
   };
   likes: number;

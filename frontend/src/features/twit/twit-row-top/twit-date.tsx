@@ -1,7 +1,7 @@
 import transformDateCreateAt from '../../../shared/lib/transformDateCreateAt';
 
-export default function TwitDate({ createdAt }: { createdAt: string }) {
+export default function TwitDate({ thisCreatedAt }: { thisCreatedAt: string }) {
   return (
-    <div className="text-gray-350">{transformDateCreateAt(createdAt)}</div>
+    <div className="text-gray-350">{transformDateCreateAt(thisCreatedAt)}</div>
   );
 }

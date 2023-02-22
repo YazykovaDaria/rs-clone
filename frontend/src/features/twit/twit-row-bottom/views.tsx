@@ -1,6 +1,16 @@
+import { useAddViewMutation } from '../../../entities/API/ViewApi';
 import './style.css';
 
-export default function Views({ views }: { views: number }) {
+export default function Views({ views, id }: { views: number; id: number }) {
+  const [addView] = useAddViewMutation();
+  const handleAddView = async () => {
+    try {
+      await addView({ tweetId: id }).unwrap();
+    } catch (err) {
+      throw new Error(err);
+    }
+  };
+
   return (
     <div
       title="Views"

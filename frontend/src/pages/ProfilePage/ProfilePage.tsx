@@ -31,7 +31,7 @@ function Profile() {
         target.documentElement.scrollHeight -
           (target.documentElement.scrollTop + window.innerHeight) <
           100 &&
-        tweets.length < count
+        tweets?.length < count
       ) {
         setLimitCount((prevState) => prevState + 1);
       }
@@ -49,6 +49,7 @@ function Profile() {
           text={tweet.text}
           createdAt={tweet.createdAt}
           user={tweet.user}
+          origin={tweet.origin}
           isRetweet={tweet.isRetweet}
           likes={tweet.likes}
           liked={tweet.liked}

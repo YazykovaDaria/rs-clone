@@ -1,14 +1,38 @@
 import './style.css';
+import { useState } from 'react';
+import { useAddRetweetMutation } from '../../../entities/API/TwitApi';
 
 export default function Retweet({
   retweets,
   retweeted,
+  id,
+  isRetweet,
 }: {
   retweets: number;
   retweeted: boolean;
+  id: number;
+  isRetweet: boolean | null;
 }) {
+  const [addRetweet] = useAddRetweetMutation();
+  const [isRetweeted, setIsRetweeted] = useState(retweeted);
+  const handleAddRetweet = async () => {
+    try {
+      if (!isRetweet) {
+        setIsRetweeted(!isRetweeted);
+        await addRetweet({ parentId: id, isRetweet: true }).unwrap();
+      } else {
+        return;
+      }
+    } catch (err) {
+      throw new Error(err);
+    }
+  };
   return (
+    // eslint-disable-next-line jsx-a11y/click-events-have-key-events
     <div
+      onClick={handleAddRetweet}
+      role="button"
+      tabIndex={0}
       title="Retweet"
       className="twit__retweet text-gray-350 flex flex-nowrap items-center transition-colors duration-200 sm:mr-5 md:mr-10"
     >

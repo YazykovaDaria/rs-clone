@@ -16,6 +16,7 @@
   },
   "home": "Home",
   "tweet": "Tweet",
+  "Retweeted": "Retweeted",
   "logout": "Logout",
   "login": "Login",
   "Failed! Email is already in use!": "Email is already in use!",

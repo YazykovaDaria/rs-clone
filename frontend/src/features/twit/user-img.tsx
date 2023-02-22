@@ -1,21 +1,21 @@
 import Avatar from '../../shared/types/avatar';
 
 export default function UserImg({
-  avatar,
-  username,
+  thisUsername,
+  thisAvatar,
 }: {
-  avatar: Avatar;
-  username: string;
+  thisUsername: string | undefined;
+  thisAvatar: Avatar;
 }) {
   return (
     <a
       className="sm:w-12 sm:h-12 w-10 h-10 flex items-center justify-center transition-colors duration-200 mr-3"
-      href={`/profile/${username}`}
+      href={`/profile/${thisUsername}`}
     >
       <img
         src={
-          avatar.imageType && avatar.imageData
-            ? `data:${avatar.imageType};base64, ${avatar.imageData}`
+          thisAvatar.imageType && thisAvatar.imageData
+            ? `data:${thisAvatar.imageType};base64, ${thisAvatar.imageData}`
             : '../../../public/icon/unknown-user.svg'
         }
         alt="user"

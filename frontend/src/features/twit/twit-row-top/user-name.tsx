@@ -1,16 +1,16 @@
 export default function UserName({
-  name,
-  username,
+  thisName,
+  thisUsername,
 }: {
-  name: string;
-  username: string;
+  thisName: string;
+  thisUsername: string;
 }) {
   return (
     <a
       className="text-black hover:underline font-bold pr-1"
-      href={`/profile/${username}`}
+      href={`/profile/${thisUsername}`}
     >
-      {name}
+      {thisName}
     </a>
   );
 }

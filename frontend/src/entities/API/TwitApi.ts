@@ -45,6 +45,30 @@ export const TweetApi = createApi({
       }),
       invalidatesTags: ['Tweets'],
     }),
+    addLike: build.mutation({
+      query: (body) => ({
+        url: 'likes',
+        method: 'POST',
+        body,
+      }),
+      invalidatesTags: ['Tweets'],
+    }),
+    deleteLike: build.mutation({
+      query: (body) => ({
+        url: 'likes',
+        method: 'DELETE',
+        body,
+      }),
+      invalidatesTags: ['Tweets'],
+    }),
+    addRetweet: build.mutation({
+      query: (body) => ({
+        url: 'tweets',
+        method: 'POST',
+        body,
+      }),
+      invalidatesTags: ['Tweets'],
+    }),
   }),
 });
 
@@ -52,4 +76,7 @@ export const {
   useGetTweetsQuery,
   useAddTweetMutation,
   useDeleteTweetMutation,
+  useAddLikeMutation,
+  useDeleteLikeMutation,
+  useAddRetweetMutation,
 } = TweetApi;
