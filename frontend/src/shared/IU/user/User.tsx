@@ -1,6 +1,3 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-import { useNavigate } from 'react-router-dom';
 import { Avatar } from '../../types/IUserProfile';
 import { getAvatar } from '../../lib/imgHelper';
 
@@ -11,12 +8,8 @@ type Props = {
 };
 
 const User = ({ name, username, avatar }: Props) => {
-  const navigate = useNavigate();
   return (
-    <div
-      className="flex w-full justify-evenly"
-      onClick={() => navigate(`/profile/${username}`)}
-    >
+    <div className="flex w-full justify-evenly">
       <div className="w-12 h-12 flex items-center justify-center transition-colors duration-200 mr-3">
         <img
           src={getAvatar(avatar)}
