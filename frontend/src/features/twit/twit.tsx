@@ -24,6 +24,7 @@ export default function Twit({
   liked,
   replies,
   views,
+  viewed,
   retweets,
   retweeted,
 }: ITweet) {
@@ -64,10 +65,10 @@ export default function Twit({
               retweets={retweets}
               retweeted={retweeted}
               id={id}
-              isRetweet={isRetweet}
+              parentId={parentId}
             />
             <Like likes={likes} liked={liked} id={id} parentId={parentId} />
-            <Views views={views} id={id} />
+            <Views views={views} id={id} viewed={viewed} />
           </div>
         </div>
       </div>

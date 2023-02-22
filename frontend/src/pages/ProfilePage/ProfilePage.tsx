@@ -55,6 +55,7 @@ function Profile() {
           liked={tweet.liked}
           replies={tweet.replies}
           views={tweet.views}
+          viewed={tweet.viewed}
           retweets={tweet.retweets}
           retweeted={tweet.retweeted}
         />

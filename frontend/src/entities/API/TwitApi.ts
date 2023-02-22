@@ -69,6 +69,14 @@ export const TweetApi = createApi({
       }),
       invalidatesTags: ['Tweets'],
     }),
+    addView: build.mutation({
+      query: (body) => ({
+        url: 'views',
+        method: 'POST',
+        body,
+      }),
+      invalidatesTags: ['Tweets'],
+    }),
   }),
 });
 
@@ -79,4 +87,5 @@ export const {
   useAddLikeMutation,
   useDeleteLikeMutation,
   useAddRetweetMutation,
+  useAddViewMutation,
 } = TweetApi;

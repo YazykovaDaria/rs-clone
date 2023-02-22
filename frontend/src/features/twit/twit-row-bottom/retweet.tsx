@@ -6,20 +6,21 @@ export default function Retweet({
   retweets,
   retweeted,
   id,
-  isRetweet,
+  parentId,
 }: {
   retweets: number;
   retweeted: boolean;
   id: number;
-  isRetweet: boolean | null;
+  parentId: number | null;
 }) {
   const [addRetweet] = useAddRetweetMutation();
   const [isRetweeted, setIsRetweeted] = useState(retweeted);
+  const thisId = parentId || id;
   const handleAddRetweet = async () => {
     try {
-      if (!isRetweet) {
+      if (!retweeted) {
         setIsRetweeted(!isRetweeted);
-        await addRetweet({ parentId: id, isRetweet: true }).unwrap();
+        await addRetweet({ parentId: thisId, isRetweet: true }).unwrap();
       } else {
         return;
       }
@@ -34,6 +35,7 @@ export default function Retweet({
       role="button"
       tabIndex={0}
       title="Retweet"
+      style={retweeted === true ? { pointerEvents: 'none' } : {}}
       className="twit__retweet text-gray-350 flex flex-nowrap items-center transition-colors duration-200 sm:mr-5 md:mr-10"
     >
       <div className="w-9 h-9 rounded-full flex items-center justify-center">

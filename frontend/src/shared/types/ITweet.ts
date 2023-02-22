@@ -23,6 +23,7 @@ export default interface ITweet {
   liked: boolean;
   replies: number;
   views: number;
+  viewed: boolean;
   retweets: number;
   retweeted: boolean;
   images?: {
