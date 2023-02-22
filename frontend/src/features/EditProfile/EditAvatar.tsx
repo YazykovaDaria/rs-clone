@@ -23,6 +23,7 @@ const EditAvatar = () => {
         await update(data);
         setModal(false);
         const src = URL.createObjectURL(avatar);
+        // с таким src какой-то баг - разобраться!
         auth?.updateUserData({ avatar: src });
         // удаляем ссылку на файл
         // URL.revokeObjectURL(avatar);
@@ -45,16 +46,11 @@ const EditAvatar = () => {
             >
               {t('save')}
             </button>
-            <button
-              type="button"
-              className="profile-btn"
-              disabled={isSubmit}
-              onClick={() => setModal(false)}
-            >
-              {t('cancel')}
-            </button>
           </div>
-          <PreviewImage file={avatar as File} />
+          <PreviewImage
+            files={[avatar as File]}
+            close={() => setModal(false)}
+          />
         </div>
       </SameModal>
       <div className="flex justify-center relative">
