@@ -26,9 +26,9 @@ export default interface ITweet {
   viewed: boolean;
   retweets: number;
   retweeted: boolean;
-  images?: {
-    type: string;
-    name: string;
-    data: string;
+  images: {
+    type?: string;
+    name?: string;
+    data?: string;
   }[];
 }

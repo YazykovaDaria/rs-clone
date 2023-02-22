@@ -11,6 +11,7 @@ import UserName from './twit-row-top/user-name';
 import UserImg from './user-img';
 import { useAuth } from '../../entities/user/Auth/authContext';
 import RetweetName from './twit-row-top/RetweetName';
+import TwitImages from './twitImages';
 
 export default function Twit({
   id,
@@ -27,9 +28,16 @@ export default function Twit({
   viewed,
   retweets,
   retweeted,
+  images,
 }: ITweet) {
-  const authUserName = useAuth()?.user.username;
-  const isOwnTwit = authUserName === user.username;
+  const authUser = useAuth()?.user;
+  let authUserUsername = '';
+  let authUserName = '';
+  if (authUser) {
+    authUserUsername = authUser.username;
+    authUserName = authUser.name;
+  }
+  const isOwnTwit = authUserUsername === user.username;
   const originUser = origin?.user;
   const thisCreatedAt = origin?.createdAt || createdAt;
   const thisName = originUser?.name || user.name;
@@ -38,7 +46,11 @@ export default function Twit({
 
   return (
     <div className="cursor-pointer sm:p-4 p-3 hover:bg-slate-50 transition-colors duration-200 border-b">
-      <RetweetName name={user.name} isRetweet={isRetweet} />
+      <RetweetName
+        name={user.name}
+        isRetweet={isRetweet}
+        authUserName={authUserName}
+      />
       <div className="flex w-full">
         <div>
           <UserImg thisUsername={thisUsername} thisAvatar={thisAvatar} />
@@ -57,6 +69,7 @@ export default function Twit({
 
           <div>
             <TwitContent text={text} />
+            <TwitImages images={images} />
           </div>
 
           <div className="flex items-center flex-nowrap">
