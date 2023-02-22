@@ -9,9 +9,9 @@ import { useAuth } from '../../entities/user/Auth/authContext';
 function Nav() {
   const { t } = useTranslation();
   let name = '';
-  const { user } = useAuth();
-  if (user) {
-    name = user.username;
+  const auth = useAuth();
+  if (auth?.user) {
+    name = auth.user.username;
   }
   return (
     <ul className="flex gap-4 sm:gap-3 flex-col justify-between sm:flex-col items-center sm:items-start">

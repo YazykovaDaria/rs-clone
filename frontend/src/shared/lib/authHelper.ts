@@ -1,4 +1,4 @@
-import { convertFileInSrc } from './imgHelper';
+import { getAvatar } from './imgHelper';
 import { defaultUserSrc } from '../constants/common';
 import { SaveUser, User } from '../types/user';
 
@@ -16,9 +16,8 @@ const normalizeUserData = (user: User): SaveUser => {
   };
 
   const { avatar } = user;
-  if (avatar.imageData && avatar.imageType) {
-    tmp.avatar = convertFileInSrc(avatar.imageType, avatar.imageData);
-  }
+  tmp.avatar = getAvatar(avatar);
+
   if (user.following.length > 0) {
     tmp.following = user.following.map((val) => val.username);
   }

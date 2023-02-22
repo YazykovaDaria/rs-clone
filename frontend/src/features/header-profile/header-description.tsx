@@ -8,6 +8,9 @@ import DescriptionLink from './descriptionLink';
 import DescriptionLocation from './descriptionLocation';
 import DescriptionAbout from './decriptionAbout';
 import ProfileBtn from './ProfileBtns';
+import { getAvatar } from '../../shared/lib/imgHelper';
+import DescriptionFollowers from './descriptionFollowers';
+import DescriptionFollowing from './descriptionFollowing';
 
 export default function HeaderDesription({
   username,
@@ -29,11 +32,7 @@ export default function HeaderDesription({
       <div className="w-full p-4 flex justify-between max-h-20">
         <div className="sm:-top-20 -top-16 sm:w-32 sm:h-32 w-24 h-24 cursor-pointer flex items-center justify-center transition-colors duration-200 relative mr-3">
           <img
-            src={
-              avatar.imageType && avatar.imageData
-                ? `data:${avatar.imageType};base64, ${avatar.imageData}`
-                : '../../../public/icon/unknown-user.svg'
-            }
+            src={getAvatar(avatar)}
             alt="avatar"
             className="profile-avatar"
           />
@@ -69,18 +68,8 @@ export default function HeaderDesription({
           {site && <DescriptionLink site={site} />}
         </div>
         <div className="flex flex-row w-full items-start">
-          <div className="text-gray-350 mr-3 hover:underline cursor-pointer">
-            <span className="text-black font-bold pr-1">
-              {following.length}
-            </span>
-            {t('profile.following')}
-          </div>
-          <div className="text-gray-350 mr-3 hover:underline cursor-pointer">
-            <span className="text-black font-bold pr-1">
-              {followers.length}
-            </span>
-            {t('profile.followers')}
-          </div>
+          <DescriptionFollowing followers={following} />
+          <DescriptionFollowers followers={followers} />
         </div>
       </div>
     </div>
