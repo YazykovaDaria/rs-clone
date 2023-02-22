@@ -5,8 +5,10 @@ import { useState } from 'react';
 import Nav from './Nav';
 import UserWidget from '../userSidebarWidget/UserWitget';
 import { ReactComponent as Logo } from '../../shared/assets/icons/icons8-twitter.svg';
-import Modal from '../../shared/IU/modal/Modal';
+import { ReactComponent as Pen } from '../../shared/assets/icons/feather-pen_icon-icons.com_64932.svg';
+import SameModal from '../../shared/IU/modal/SameModal';
 import TwitCreator from '../twit-creator/Twit-creator';
+import ButtonCloseSvg from '../../shared/IU/ButtonCloseSvg/ButtonCloswSvg';
 
 function SideBar() {
   const { t } = useTranslation();
@@ -20,9 +22,12 @@ function SideBar() {
 
         <Nav />
 
-        <Modal isOpen={isOpenModal} onClose={() => setModal(false)}>
-          <TwitCreator close={() => setModal(false)} />
-        </Modal>
+        <SameModal isOpen={isOpenModal} onClose={() => setModal(false)}>
+          <div className="relative">
+            <ButtonCloseSvg close={() => setModal(false)} />
+            <TwitCreator close={() => setModal(false)} />
+          </div>
+        </SameModal>
 
         <button
           type="button"
@@ -33,10 +38,10 @@ function SideBar() {
         </button>
         <button
           type="button"
-          className="rounded-full m-2 bg-sky-400 sm:hidden"
+          className="rounded-full hover:bg-cyan-500 py-1 m-2 bg-sky-400 sm:hidden flex justify-center"
           onClick={() => setModal(true)}
         >
-          +
+          <Pen className="fill-white" />
         </button>
       </div>
       <UserWidget />
