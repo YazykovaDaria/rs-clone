@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
 import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
 import TwitCreator from '../../features/twit-creator/Twit-creator';
@@ -14,18 +15,6 @@ function Main() {
     limit: limitCount,
     offset: 0,
   });
-  const scrollHandler = (e: Event) => {
-    if (e) {
-      const target = e.target as Document;
-      if (
-        target.documentElement.scrollHeight -
-          (target.documentElement.scrollTop + window.innerHeight) <
-        100
-      ) {
-        setLimitCount((prevState) => prevState + 1);
-      }
-    }
-  };
   useEffect(() => {
     document.addEventListener('scroll', scrollHandler);
     return () => {
@@ -33,6 +22,21 @@ function Main() {
     };
   });
   if (isLoading) return <Spiner />;
+  const count: number = data.count || 0;
+  const tweets: ITweet[] = data.tweets || [];
+  function scrollHandler(e: Event) {
+    if (e) {
+      const target = e.target as Document;
+      if (
+        target.documentElement.scrollHeight -
+          (target.documentElement.scrollTop + window.innerHeight) <
+          100 &&
+        tweets.length < count
+      ) {
+        setLimitCount((prevState) => prevState + 1);
+      }
+    }
+  }
 
   return (
     <>
@@ -40,7 +44,7 @@ function Main() {
         {t('home')}
       </h1>
       <TwitCreator />
-      {data.map((tweet: ITweet) => (
+      {tweets.map((tweet: ITweet) => (
         <Twit
           key={tweet.id}
           id={tweet.id}
