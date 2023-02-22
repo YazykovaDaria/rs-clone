@@ -10,7 +10,6 @@ import DescriptionAbout from './decriptionAbout';
 import ProfileBtn from './ProfileBtns';
 import { getAvatar } from '../../shared/lib/imgHelper';
 import DescriptionFollowers from './descriptionFollowers';
-import DescriptionFollowing from './descriptionFollowing';
 
 export default function HeaderDesription({
   username,
@@ -68,8 +67,14 @@ export default function HeaderDesription({
           {site && <DescriptionLink site={site} />}
         </div>
         <div className="flex flex-row w-full items-start">
-          <DescriptionFollowing followers={following} />
-          <DescriptionFollowers followers={followers} />
+          <DescriptionFollowers
+            followers={following}
+            name={t('profile.following')}
+          />
+          <DescriptionFollowers
+            followers={followers}
+            name={t('profile.followers')}
+          />
         </div>
       </div>
     </div>
