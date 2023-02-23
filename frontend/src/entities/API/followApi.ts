@@ -4,6 +4,7 @@ import getToken from '../../shared/lib/getToken';
 
 export const followApi = createApi({
   reducerPath: 'FollowApi',
+  tagTypes: ['User'],
   baseQuery: fetchBaseQuery({
     baseUrl,
     prepareHeaders: (headers) => {
@@ -19,6 +20,7 @@ export const followApi = createApi({
         method: 'DELETE',
         body,
       }),
+      invalidatesTags: ['User'],
     }),
 
     follow: build.mutation({
@@ -27,6 +29,7 @@ export const followApi = createApi({
         method: 'POST',
         body,
       }),
+      invalidatesTags: ['User'],
     }),
   }),
 });
