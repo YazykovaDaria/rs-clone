@@ -6,7 +6,6 @@ import { useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
 import useAutosizeTextArea from './lib/autoHeight';
 import { MAX_TWIT_MSG_LEN } from '../../shared/constants/common';
-// import PreviewImage from '../../shared/IU/PreviewImg';
 import { ReactComponent as Picture } from '../../shared/assets/icons/picture.svg';
 import PreviewImage from '../../shared/IU/PreviewImg';
 import { OptionalCloseProps } from '../../shared/types/props';
@@ -14,7 +13,8 @@ import { useAddTweetMutation } from '../../entities/API/TwitApi';
 import { useAuth } from '../../entities/user/Auth/authContext';
 import { validationTwit } from './lib/validation';
 import getFormData from './lib/getFormData';
-// баг при открытии твита в модалке на главной странице - картинка не добавляется
+
+// баг при наборе текста с уже добавленной картинкой - картинка мигает на каждое нажатие клавиши - всё время дёргается компонент previewImage
 
 export default function TwitCreator({ close }: OptionalCloseProps) {
   const [messageLength, setMessageLength] = useState(MAX_TWIT_MSG_LEN);
@@ -49,8 +49,6 @@ export default function TwitCreator({ close }: OptionalCloseProps) {
       const data = getFormData(values);
       try {
         await addTweet(data).unwrap();
-        // values.text = '';
-        // values.img = null;
         setMessageLength(MAX_TWIT_MSG_LEN);
       } catch (err) {
         throw new Error(err);

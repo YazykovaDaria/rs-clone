@@ -25,3 +25,9 @@
 .profile-avatar {
   @apply rounded-full object-contain bg-white sm:w-32 sm:h-32 w-24 h-24
 }
+
+.preview-img {
+  width: 320px;
+  height: 180px;
+  object-fit: cover;
+}

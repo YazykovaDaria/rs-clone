@@ -5,8 +5,6 @@ type Props = {
   close?: (immName: string) => void;
 };
 
-// need fix styles for img
-
 export default function PreviewImage({ files, close }: Props) {
   const filesSrc = files.map((file) => {
     const src = URL.createObjectURL(file);
@@ -15,10 +13,15 @@ export default function PreviewImage({ files, close }: Props) {
   });
 
   return (
-    <div className="flex flex-wrap">
+    <div className="flex flex-wrap gap-2 justify-center">
       {filesSrc.map((file) => (
         <div key={file.src} className="relative">
-          <img src={file.src} alt=" " data-name={file.name} />
+          <img
+            src={file.src}
+            alt=" "
+            data-name={file.name}
+            className="preview-img"
+          />
 
           <button
             type="button"
