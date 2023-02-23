@@ -21,12 +21,15 @@ const EditAvatar = () => {
       const data = getImgForServer(avatar, avatar?.name);
       try {
         await update(data);
+
+        const reader = new FileReader();
+        reader.readAsDataURL(avatar);
+        reader.onload = () => {
+          const src = reader.result;
+          auth?.updateUserData({ avatar: src });
+        };
+
         setModal(false);
-        const src = URL.createObjectURL(avatar);
-        // с таким src какой-то баг - разобраться!
-        auth?.updateUserData({ avatar: src });
-        // удаляем ссылку на файл
-        // URL.revokeObjectURL(avatar);
       } catch (err) {
         throw new Error(err);
       }
