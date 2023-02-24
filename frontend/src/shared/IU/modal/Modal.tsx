@@ -22,6 +22,10 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, children }) => {
     };
   });
 
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? 'hidden' : 'unset';
+  }, [isOpen]);
+
   const closeModal = (e: React.MouseEvent) => {
     const target = e.target as HTMLElement;
     if (target.matches('.js-close')) {
