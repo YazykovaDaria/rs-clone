@@ -1,10 +1,55 @@
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { useAddViewMutation } from '../../../entities/API/TwitApi';
 import './style.css';
 
-export default function Views({ views }: { views: number }) {
+export default function Views({
+  views,
+  id,
+  viewed,
+}: {
+  views: number;
+  id: number;
+  viewed: boolean;
+}) {
+  const [addView] = useAddViewMutation();
+  const targetRef = useRef<HTMLDivElement>(null);
+
+  // код ниже выполнится когда элемент появится в зоне видимости окна браузера но не чаще чем раз в пол секунды
+  const handleAddView = useCallback(async () => {
+    try {
+      if (!viewed) {
+        await addView({ tweetId: id }).unwrap();
+      }
+    } catch (err: unknown) {
+      throw new Error(String(err));
+    }
+  }, [viewed, addView, id]);
+  const [lastCallTime, setLastCallTime] = useState<number>(0);
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && Date.now() - lastCallTime > 500) {
+          setLastCallTime(Date.now());
+          handleAddView();
+        }
+      });
+    });
+    const target = targetRef.current;
+    if (target) {
+      observer.observe(target);
+    }
+    return () => {
+      if (target) {
+        observer.unobserve(target);
+      }
+    };
+  }, [handleAddView, lastCallTime]);
+
   return (
     <div
+      ref={targetRef}
       title="Views"
-      className="twit__views text-gray-350 flex flex-nowrap items-center transition-colors duration-200 mr-5 md:mr-10"
+      className="twit__views text-gray-350 flex flex-nowrap items-center transition-colors duration-200 md:mr-10"
     >
       <div className="w-9 h-9 rounded-full flex items-center justify-center">
         <svg

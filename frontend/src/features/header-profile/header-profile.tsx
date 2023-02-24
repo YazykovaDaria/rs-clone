@@ -36,6 +36,7 @@ export default function HeaderProfile({ user }: { user: string }) {
         registration_date={registrationDate}
         followers={followers}
         following={following}
+        tweets={tweets}
         avatar={avatar}
       />
     </div>

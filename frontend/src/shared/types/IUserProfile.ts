@@ -1,9 +1,13 @@
+import Avatar from './avatar';
+
 export type Followers = {
   username: string;
   name: string;
+  avatar: Avatar;
 };
 
 export default interface IUserProfile {
+  id?: number;
   username: string;
   email: string;
   name: string;
@@ -14,9 +18,6 @@ export default interface IUserProfile {
   registration_date: string;
   followers: Followers[];
   following: Followers[];
-  avatar: {
-    imageType: string | null;
-    imageName: string | null;
-    imageData: string;
-  };
+  tweets: number;
+  avatar: Avatar;
 }

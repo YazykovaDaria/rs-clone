@@ -1,45 +1,55 @@
 /* eslint-disable prefer-const */
 import { useState } from 'react';
-import { useAddLikeMutation, useDeleteLikeMutation } from '../API/LikeApi';
+import {
+  useAddLikeMutation,
+  useDeleteLikeMutation,
+} from '../../../entities/API/TwitApi';
 import './style.css';
 
 export default function Like({
   likes,
   liked,
   id,
+  parentId,
 }: {
   likes: number;
   liked: boolean;
   id: number;
+  parentId: number | null;
 }) {
   const [addLike] = useAddLikeMutation();
   const [deleteLike] = useDeleteLikeMutation();
   const [isLiked, setIsLiked] = useState(liked);
   let [likesCount, setlikesCount] = useState(likes);
+  const thisId = parentId || id;
   const handleAddLike = async () => {
     try {
       if (isLiked === false) {
         setlikesCount((likesCount += 1));
         setIsLiked(!isLiked);
-        await addLike({ tweetId: id }).unwrap();
+        await addLike({ tweetId: thisId }).unwrap();
       } else {
         setlikesCount((likesCount -= 1));
         setIsLiked(!isLiked);
-        await deleteLike({ tweetId: id }).unwrap();
+        await deleteLike({ tweetId: thisId }).unwrap();
       }
-    } catch (err) {
-      throw new Error(err);
+    } catch (err: unknown) {
+      throw new Error(String(err));
     }
   };
 
   return (
-    // eslint-disable-next-line jsx-a11y/click-events-have-key-events
     <div
       title="Like"
       onClick={handleAddLike}
+      onKeyDown={(event) => {
+        if (event.key === 'Enter') {
+          handleAddLike();
+        }
+      }}
       role="button"
       tabIndex={0}
-      className="twit__like text-gray-350 flex flex-nowrap items-center transition-colors duration-200 mr-5"
+      className="twit__like text-gray-350 flex flex-nowrap items-center transition-colors duration-200 sm:mr-5"
     >
       <div className="w-9 h-9 rounded-full flex items-center justify-center">
         <svg

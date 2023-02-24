@@ -15,8 +15,16 @@ export const TweetApi = createApi({
   }),
   endpoints: (build) => ({
     getTweets: build.query({
-      query: (username = '', limit = '', offset = '') =>
-        `tweets?${username && `username=${username}`}${
+      query: ({
+        username,
+        limit,
+        offset,
+      }: {
+        username: string;
+        limit: number;
+        offset: number;
+      }) =>
+        `tweets?${username && `username=${username}`}&${
           limit && `limit=${limit}`
         }&${offset && `offset=${offset}`}`,
       providesTags: ['Tweets'],
@@ -29,7 +37,70 @@ export const TweetApi = createApi({
       }),
       invalidatesTags: ['Tweets'],
     }),
+    deleteTweet: build.mutation({
+      query: (body) => ({
+        url: 'tweets',
+        method: 'DELETE',
+        body,
+      }),
+      invalidatesTags: ['Tweets'],
+    }),
+    addLike: build.mutation({
+      query: (body) => ({
+        url: 'likes',
+        method: 'POST',
+        body,
+      }),
+      invalidatesTags: ['Tweets'],
+    }),
+    deleteLike: build.mutation({
+      query: (body) => ({
+        url: 'likes',
+        method: 'DELETE',
+        body,
+      }),
+      invalidatesTags: ['Tweets'],
+    }),
+    addRetweet: build.mutation({
+      query: (body) => ({
+        url: 'tweets',
+        method: 'POST',
+        body,
+      }),
+      invalidatesTags: ['Tweets'],
+    }),
+    getReply: build.query({
+      query: ({ tweetId }: { tweetId: number }) =>
+        `tweets?${tweetId && `tweetId=${tweetId}`}`,
+      providesTags: ['Tweets'],
+    }),
+    addReply: build.mutation({
+      query: (body) => ({
+        url: 'tweets',
+        method: 'POST',
+        body,
+      }),
+      invalidatesTags: ['Tweets'],
+    }),
+    addView: build.mutation({
+      query: (body) => ({
+        url: 'views',
+        method: 'POST',
+        body,
+      }),
+      invalidatesTags: ['Tweets'],
+    }),
   }),
 });
 
-export const { useGetTweetsQuery, useAddTweetMutation } = TweetApi;
+export const {
+  useGetTweetsQuery,
+  useAddTweetMutation,
+  useDeleteTweetMutation,
+  useAddLikeMutation,
+  useDeleteLikeMutation,
+  useAddRetweetMutation,
+  useGetReplyQuery,
+  useAddReplyMutation,
+  useAddViewMutation,
+} = TweetApi;

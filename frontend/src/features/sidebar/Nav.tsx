@@ -16,19 +16,19 @@ function Nav() {
   return (
     <ul className="flex gap-4 sm:gap-3 flex-col justify-between sm:flex-col items-center sm:items-start">
       <li>
-        <NavLink to="/" className="aside-link">
+        <NavLink to="/" className="aside-link px-2">
           <Home />
           <p className="hidden sm:block text-xl">{t('nav.home')}</p>
         </NavLink>
       </li>
       <li>
-        <NavLink to={`profile/${name}`} className="aside-link">
+        <NavLink to={`profile/${name}`} className="aside-link px-2">
           <Profile />
           <p className="hidden sm:block text-xl">{t('nav.profile')}</p>
         </NavLink>
       </li>
       <li>
-        <NavLink to="/chat" className="aside-link">
+        <NavLink to="/chat" className="aside-link px-2">
           <Chat />
           <p className="hidden sm:block text-xl">{t('nav.messages')}</p>
         </NavLink>

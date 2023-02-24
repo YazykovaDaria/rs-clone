@@ -1,11 +1,26 @@
-export default function UserImg() {
+import Avatar from '../../shared/types/avatar';
+
+export default function UserImg({
+  thisUsername,
+  thisAvatar,
+}: {
+  thisUsername: string | undefined;
+  thisAvatar: Avatar;
+}) {
   return (
-    <div className="w-12 h-12 flex items-center justify-center transition-colors duration-200 mr-3">
+    <a
+      className="sm:w-12 sm:h-12 w-10 h-10 flex items-center justify-center transition-colors duration-200 mr-3"
+      href={`/profile/${thisUsername}`}
+    >
       <img
-        src="https://randomuser.me/api/portraits/lego/6.jpg"
+        src={
+          thisAvatar.imageType && thisAvatar.imageData
+            ? `data:${thisAvatar.imageType};base64, ${thisAvatar.imageData}`
+            : '../../../public/icon/unknown-user.svg'
+        }
         alt="user"
         className="rounded-full object-contain"
       />
-    </div>
+    </a>
   );
 }

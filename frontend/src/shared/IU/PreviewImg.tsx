@@ -15,7 +15,11 @@ export default function PreviewImage({ file }: Props) {
 
   return (
     <div>
-      <img src={preview} alt={preview} className="max-w-sm max-h-sm mt-5" />
+      <img
+        src={preview}
+        alt="logo"
+        className="sm:max-w-sm max-h-sm mt-5 mx-auto max-w-[250px]"
+      />
     </div>
   );
 }

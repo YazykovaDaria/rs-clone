@@ -1,7 +1,10 @@
-export default function UserAlias({ username }: { username: string }) {
+export default function UserAlias({ thisUsername }: { thisUsername: string }) {
   return (
-    <div className="text-gray-350 after:content-['·'] after:ml-0.5 pr-1">
-      @{username}
-    </div>
+    <a
+      className="text-gray-350 after:content-['·'] after:ml-0.5 pr-1"
+      href={`/profile/${thisUsername}`}
+    >
+      @{thisUsername}
+    </a>
   );
 }
