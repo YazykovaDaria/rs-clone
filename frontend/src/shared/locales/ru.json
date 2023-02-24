@@ -51,5 +51,23 @@
     "required": "Поле не должно быть пустым",
     "email": "Не верный email",
     "samePassword": "Пароли не совпадают"
-  }
+  },
+  "datePicker": {
+    "day": "День",
+    "month": "Месяц",
+    "year": "Год"
+  },
+    "January": "Января",
+    "February": "Февраля",
+    "March": "Марта",
+    "April": "Апреля",
+    "May": "Мая",
+    "June": "Июня",
+    "July" : "Июля",
+    "August": "Августа",
+    "September": "Сентября",
+    "October": "Октября",
+    "November": "Ноября",
+    "December": "Декабря"
+
 }
