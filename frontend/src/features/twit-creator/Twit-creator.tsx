@@ -67,6 +67,17 @@ export default function TwitCreator({ close }: OptionalCloseProps) {
     f.setFieldValue('img', data);
   };
 
+  const handleImgChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const target = e.currentTarget as HTMLInputElement;
+    if (target.files) {
+      const selectedFiles = [...f.values.img, ...target.files];
+      if (selectedFiles.length > 4) {
+        setImgError('formErrors.maxImg');
+      }
+      f.setFieldValue('img', selectedFiles);
+    }
+  };
+
   return (
     <div className="flex flex-row flex-nowrap w-full p-4 border-b pb-10">
       <div className="mr-3 h-12 relative cursor-pointer flex items-center justify-center">
@@ -101,16 +112,7 @@ export default function TwitCreator({ close }: OptionalCloseProps) {
           <input
             id="img"
             name="img"
-            onChange={(e) => {
-              const target = e.currentTarget as HTMLInputElement;
-              if (target.files) {
-                const selectedFiles = [...f.values.img, ...target.files];
-                if (selectedFiles.length > 4) {
-                  setImgError('formErrors.maxImg');
-                }
-                f.setFieldValue('img', selectedFiles);
-              }
-            }}
+            onChange={handleImgChange}
             type="file"
             accept=".jpg, .jpeg, .png"
             className="invisible w-[1px] h-[1px]"
