@@ -64,6 +64,7 @@ function Main() {
           images={tweet.images}
         />
       ))}
+      {!isLoading && tweets.length < count && <Spiner />}
     </>
   );
 }

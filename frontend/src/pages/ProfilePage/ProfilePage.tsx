@@ -61,6 +61,7 @@ function Profile() {
           images={tweet.images}
         />
       ))}
+      {!isLoading && tweets.length < count && <Spiner />}
     </>
   );
 }
