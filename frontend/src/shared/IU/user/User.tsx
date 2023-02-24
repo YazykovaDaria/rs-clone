@@ -9,7 +9,7 @@ type Props = {
 
 const User = ({ name, username, avatar }: Props) => {
   return (
-    <div className="flex w-full justify-evenly">
+    <div className="flex w-full justify-around">
       <div className="w-12 h-12 flex items-center justify-center transition-colors duration-200 mr-3">
         <img
           src={getAvatar(avatar)}

@@ -17,10 +17,10 @@ const DescriptionFollowers = ({ followers, name }: Props) => {
     <>
       <Modal isOpen={isModal} onClose={() => setModal(false)}>
         <div
-          className="flex flex-col justify-center items-center gap-2"
+          className="flex flex-col justify-start gap-2"
           onClick={() => setModal(false)}
         >
-          <p className="text-xl">{`${name} ${followers.length}`}</p>
+          <p className="text-xl text-center">{`${name} ${followers.length}`}</p>
           <FollowContainer followers={followers} />
         </div>
       </Modal>
