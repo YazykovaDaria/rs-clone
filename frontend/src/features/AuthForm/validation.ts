@@ -1,12 +1,18 @@
+/* eslint-disable import/prefer-default-export */
 import * as yup from 'yup';
 
-// eslint-disable-next-line import/prefer-default-export
+const ValidBirthday = yup.object().shape({
+  day: yup.string().required('formErrors.required'),
+  month: yup.string().required('formErrors.required'),
+  year: yup.string().required('formErrors.required'),
+});
+
 export const validation = yup.object().shape({
   name: yup
     .string()
     .max(20, 'formErrors.max20')
     .required('formErrors.required'),
-  birthday: yup.string().required('formErrors.required'),
+  birthday: ValidBirthday,
   username: yup
     .string()
     .max(20, 'formErrors.max20')

@@ -9,11 +9,13 @@ import {
   useGetLoginMutation,
 } from '../../entities/user/Auth/loginApi';
 import Preloader from '../../shared/IU/Preloader';
+import SelectForm from '../../shared/IU/SelectForm';
 import normalizeUserData from '../../shared/lib/authHelper';
+import { days, months, years } from './lib/datePickerData';
+import { normalizeDate } from './lib/normalizeData';
 
 function AuhtForm() {
   const { t } = useTranslation();
-  const dateRef = useRef<HTMLInputElement>(null);
   const userRef = useRef<HTMLInputElement>(null);
   const [authMes, setAuthMes] = useState('');
   const navigate = useNavigate();
@@ -28,7 +30,11 @@ function AuhtForm() {
   const f = useFormik({
     initialValues: {
       name: '',
-      birthday: '',
+      birthday: {
+        day: '',
+        month: '',
+        year: '',
+      },
       username: '',
       email: '',
       password: '',
@@ -37,7 +43,8 @@ function AuhtForm() {
     validationSchema: validation,
     onSubmit: async (values) => {
       try {
-        await auth(JSON.stringify(values)).unwrap();
+        const birthday = normalizeDate(values.birthday);
+        await auth(JSON.stringify({ ...values, birthday })).unwrap();
         const { username, password } = values;
         const userData = await login(
           JSON.stringify({ username, password })
@@ -76,38 +83,6 @@ function AuhtForm() {
       </div>
       {f.errors.name && f.touched.name ? (
         <p className="text-red-500">{t(f.errors.name)}</p>
-      ) : null}
-
-      <div className="relative">
-        <input
-          className={`${
-            f.errors.birthday && f.touched.birthday ? 'border-red-500 ' : ''
-          }floating-input peer`}
-          name="birthday"
-          type="text"
-          id="floating-birthday"
-          placeholder=" "
-          onChange={f.handleChange}
-          ref={dateRef}
-          onFocus={() => {
-            if (dateRef.current) {
-              dateRef.current.type = 'date';
-            }
-          }}
-          onBlur={(e) => {
-            if (dateRef.current) {
-              dateRef.current.type = 'text';
-            }
-            f.handleBlur(e);
-          }}
-          value={f.values.birthday}
-        />
-        <label htmlFor="floating-birthday" className="floating-label">
-          {t('authLoginForm.birthday')}
-        </label>
-      </div>
-      {f.errors.birthday && f.touched.birthday ? (
-        <p className="text-red-500">{t(f.errors.birthday)}</p>
       ) : null}
 
       <div className="relative">
@@ -195,6 +170,31 @@ function AuhtForm() {
       {f.touched.confirmPassword && f.errors.confirmPassword ? (
         <p className="text-red-500">{t(f.errors.confirmPassword)}</p>
       ) : null}
+
+      <p className="text-center">{t('authLoginForm.birthday')}</p>
+
+      <div className="flex gap-1">
+        <SelectForm
+          onChange={(value) => f.setFieldValue('birthday.day', value.value)}
+          placeholder="datePicker.day"
+          options={days}
+          className="w-1/4 4/4"
+        />
+
+        <SelectForm
+          onChange={(value) => f.setFieldValue('birthday.month', value.value)}
+          placeholder="datePicker.month"
+          options={months}
+          className="w-2/4 4/4"
+        />
+
+        <SelectForm
+          onChange={(value) => f.setFieldValue('birthday.year', value.value)}
+          placeholder="datePicker.year"
+          className="w-1/4 4/4"
+          options={years()}
+        />
+      </div>
 
       {authMes && <p className="text-red-500">{t(authMes)}</p>}
       {f.isSubmitting && <Preloader />}

@@ -1,4 +1,8 @@
-import Avatar from './avatar';
+export type Avatar = {
+  imageType: string | null;
+  imageName: string | null;
+  imageData: string;
+};
 
 export type Followers = {
   username: string;

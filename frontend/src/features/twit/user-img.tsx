@@ -1,4 +1,5 @@
 import Avatar from '../../shared/types/avatar';
+import { defaultUserSrc } from '../../shared/constants/common';
 
 export default function UserImg({
   thisUsername,
@@ -16,7 +17,7 @@ export default function UserImg({
         src={
           thisAvatar.imageType && thisAvatar.imageData
             ? `data:${thisAvatar.imageType};base64, ${thisAvatar.imageData}`
-            : '../../../public/icon/unknown-user.svg'
+            : defaultUserSrc
         }
         alt="user"
         className="rounded-full object-contain"

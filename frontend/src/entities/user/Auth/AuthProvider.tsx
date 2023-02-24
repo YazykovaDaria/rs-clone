@@ -29,10 +29,27 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
         logIn(data);
       }
     };
+    const updateFollowing = (newFollowing: string, action: string): void => {
+      const savedData = localStorage.getItem('user');
+      if (savedData) {
+        const data = JSON.parse(savedData);
+        const { following } = data;
+        if (action === 'follow') {
+          following.push(newFollowing);
+        } else if (action === 'unfollow') {
+          data.following = following.filter(
+            (val: string) => val !== newFollowing
+          );
+        }
+        logIn(data);
+      }
+    };
+
     return {
       logIn,
       logOut,
       updateUserData,
+      updateFollowing,
       user,
     };
   }, [user]);

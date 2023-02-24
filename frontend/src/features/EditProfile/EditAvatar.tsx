@@ -21,11 +21,15 @@ const EditAvatar = () => {
       const data = getImgForServer(avatar, avatar?.name);
       try {
         await update(data);
+
+        const reader = new FileReader();
+        reader.readAsDataURL(avatar);
+        reader.onload = () => {
+          const src = reader.result;
+          auth?.updateUserData({ avatar: src });
+        };
+
         setModal(false);
-        const src = URL.createObjectURL(avatar);
-        auth?.updateUserData({ avatar: src });
-        // удаляем ссылку на файл
-        // URL.revokeObjectURL(avatar);
       } catch (err) {
         throw new Error(err);
       }
@@ -45,16 +49,11 @@ const EditAvatar = () => {
             >
               {t('save')}
             </button>
-            <button
-              type="button"
-              className="profile-btn"
-              disabled={isSubmit}
-              onClick={() => setModal(false)}
-            >
-              {t('cancel')}
-            </button>
           </div>
-          <PreviewImage file={avatar as File} />
+          <PreviewImage
+            files={[avatar as File]}
+            close={() => setModal(false)}
+          />
         </div>
       </SameModal>
       <div className="flex justify-center relative">

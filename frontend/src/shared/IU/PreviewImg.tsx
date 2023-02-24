@@ -1,25 +1,41 @@
-import { useState } from 'react';
+/* eslint-disable react/require-default-props */
 
 type Props = {
-  file: File;
+  files: File[];
+  close?: (imgName: string) => void;
 };
 
-export default function PreviewImage({ file }: Props) {
-  const [preview, setPreview] = useState('');
-
-  const reader = new FileReader();
-  reader.readAsDataURL(file);
-  reader.onload = () => {
-    setPreview(reader.result as string);
-  };
+export default function PreviewImage({ files, close }: Props) {
+  const filesSrc = files.map((file) => {
+    const src = URL.createObjectURL(file);
+    const { name } = file;
+    return { src, name };
+  });
 
   return (
-    <div>
-      <img
-        src={preview}
-        alt="logo"
-        className="sm:max-w-sm max-h-sm mt-5 mx-auto max-w-[250px]"
-      />
+    <div className="flex flex-wrap gap-2 justify-center">
+      {filesSrc.map((file) => (
+        <div key={file.src} className="relative">
+          <img
+            src={file.src}
+            alt=" "
+            data-name={file.name}
+            className="preview-img"
+          />
+
+          <button
+            type="button"
+            onClick={() => {
+              if (close) {
+                close(file.name);
+              }
+            }}
+            className="absolute right-1 top-1 w-5 h-5 hover:bg-zinc-400 hover:rounded-full"
+          >
+            ❌
+          </button>
+        </div>
+      ))}
     </div>
   );
 }

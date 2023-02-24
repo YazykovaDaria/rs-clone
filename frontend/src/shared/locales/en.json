@@ -12,7 +12,7 @@
     "following": "Following",
     "followers": "Followers",
     "read": "Read",
-    "reading": "Reading"
+    "reading": "I read"
   },
   "home": "Home",
   "tweet": "Tweet",
@@ -45,10 +45,29 @@
     "registration": "Registration"
   },
   "formErrors": {
+    "maxImg": "You can download 4 images, no more",
     "max20": "Max length is twenty sumbols",
     "min6": "Min length is six sumbols",
     "required": "Must not be empty",
     "email": "Enter right email",
     "samePassword": "Passwords are not the same"
-  }
+  },
+  "datePicker": {
+    "day": "Day",
+    "month": "Month",
+    "year": "Year"
+  },
+    "January": "January",
+    "February": "February",
+    "March": "March",
+    "April": "April",
+    "May": "May",
+    "June": "June",
+    "July" : "July",
+    "August": "August",
+    "September": "September",
+    "October": "October",
+    "November": "November",
+    "December": "December"
+
 }

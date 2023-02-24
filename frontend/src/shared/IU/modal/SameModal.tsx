@@ -1,11 +1,17 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
+import { useEffect } from 'react';
+
 type ModalProps = {
   onClose: () => void;
   isOpen: boolean;
   children: React.ReactNode;
 };
 const SameModal = ({ onClose, isOpen, children }: ModalProps) => {
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? 'hidden' : 'unset';
+  }, [isOpen]);
+
   const closeModal = (e: React.MouseEvent) => {
     const target = e.target as HTMLElement;
     if (target.matches('.js-cl')) {

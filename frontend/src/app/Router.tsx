@@ -22,7 +22,7 @@ const MainRoute: FC<PropsWithChildren> = ({ children }) => {
   const auth = useAuth();
   const location = useLocation();
 
-  return auth.user ? (
+  return auth?.user ? (
     children
   ) : (
     <Navigate to="/login" state={{ from: location }} />
