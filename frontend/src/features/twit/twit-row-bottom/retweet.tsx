@@ -24,14 +24,18 @@ export default function Retweet({
       } else {
         return;
       }
-    } catch (err) {
-      throw new Error(err);
+    } catch (err: unknown) {
+      throw new Error(String(err));
     }
   };
   return (
-    // eslint-disable-next-line jsx-a11y/click-events-have-key-events
     <div
       onClick={handleAddRetweet}
+      onKeyDown={(event) => {
+        if (event.key === 'Enter') {
+          handleAddRetweet();
+        }
+      }}
       role="button"
       tabIndex={0}
       title="Retweet"

@@ -13,16 +13,20 @@ export default function TwitDelete({
   const handleDeleteTweet = async () => {
     try {
       await deleteTweet({ tweetId: id }).unwrap();
-    } catch (err) {
-      throw new Error(err);
+    } catch (err: unknown) {
+      throw new Error(String(err));
     }
   };
   if (isLoading) return <Preloader />;
   return (
-    // eslint-disable-next-line jsx-a11y/click-events-have-key-events
     <div
       style={isOwnTwit === true ? { display: 'flex' } : { display: 'none' }}
       onClick={handleDeleteTweet}
+      onKeyDown={(event) => {
+        if (event.key === 'Enter') {
+          handleDeleteTweet();
+        }
+      }}
       role="button"
       tabIndex={0}
       title="Delete"

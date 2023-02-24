@@ -61,6 +61,7 @@ function Main() {
           viewed={tweet.viewed}
           retweets={tweet.retweets}
           retweeted={tweet.retweeted}
+          images={tweet.images}
         />
       ))}
     </>

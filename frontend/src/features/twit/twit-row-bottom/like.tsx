@@ -33,16 +33,20 @@ export default function Like({
         setIsLiked(!isLiked);
         await deleteLike({ tweetId: thisId }).unwrap();
       }
-    } catch (err) {
-      throw new Error(err);
+    } catch (err: unknown) {
+      throw new Error(String(err));
     }
   };
 
   return (
-    // eslint-disable-next-line jsx-a11y/click-events-have-key-events
     <div
       title="Like"
       onClick={handleAddLike}
+      onKeyDown={(event) => {
+        if (event.key === 'Enter') {
+          handleAddLike();
+        }
+      }}
       role="button"
       tabIndex={0}
       className="twit__like text-gray-350 flex flex-nowrap items-center transition-colors duration-200 sm:mr-5"

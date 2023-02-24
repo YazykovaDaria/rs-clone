@@ -1,3 +1,4 @@
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useAddViewMutation } from '../../../entities/API/TwitApi';
 import './style.css';
 
@@ -11,18 +12,42 @@ export default function Views({
   viewed: boolean;
 }) {
   const [addView] = useAddViewMutation();
-  const handleAddView = async () => {
+  const targetRef = useRef<HTMLDivElement>(null);
+
+  // код ниже выполнится когда элемент появится в зоне видимости окна браузера но не чаще чем раз в пол секунды
+  const handleAddView = useCallback(async () => {
     try {
       if (!viewed) {
         await addView({ tweetId: id }).unwrap();
       }
-    } catch (err) {
-      throw new Error(err);
+    } catch (err: unknown) {
+      throw new Error(String(err));
     }
-  };
+  }, [viewed, addView, id]);
+  const [lastCallTime, setLastCallTime] = useState<number>(0);
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && Date.now() - lastCallTime > 500) {
+          setLastCallTime(Date.now());
+          handleAddView();
+        }
+      });
+    });
+    const target = targetRef.current;
+    if (target) {
+      observer.observe(target);
+    }
+    return () => {
+      if (target) {
+        observer.unobserve(target);
+      }
+    };
+  }, [handleAddView, lastCallTime]);
 
   return (
     <div
+      ref={targetRef}
       title="Views"
       className="twit__views text-gray-350 flex flex-nowrap items-center transition-colors duration-200 md:mr-10"
     >
