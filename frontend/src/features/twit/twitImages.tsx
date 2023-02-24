@@ -8,14 +8,6 @@ export default function TwitContent({
     data: string;
   }[];
 }) {
-  // console.log(images.length);
-  // let imgSrc = '';
-  // if (images) {
-  //   imgSrc = images.length
-  //     ? `data:${images[0].type};base64, ${images[0].data}`
-  //     : '';
-  // }
-
   return (
     <div className="flex flex-row flex-wrap sm:max-w-[80%]">
       {images.map(
@@ -28,6 +20,7 @@ export default function TwitContent({
             src={image.type ? `data:${image.type};base64, ${image.data}` : ''}
             style={image.type ? { display: 'block' } : { display: 'none' }}
             alt="user"
+            key={image.name}
             className="rounded-xl object-contain mt-2 mb-1 max-w-[45%] border m-2 max-h-[300px] p-1"
           />
         )

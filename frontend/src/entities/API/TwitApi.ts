@@ -69,6 +69,19 @@ export const TweetApi = createApi({
       }),
       invalidatesTags: ['Tweets'],
     }),
+    getReply: build.query({
+      query: ({ tweetId }: { tweetId: number }) =>
+        `tweets?${tweetId && `tweetId=${tweetId}`}`,
+      providesTags: ['Tweets'],
+    }),
+    addReply: build.mutation({
+      query: (body) => ({
+        url: 'tweets',
+        method: 'POST',
+        body,
+      }),
+      invalidatesTags: ['Tweets'],
+    }),
     addView: build.mutation({
       query: (body) => ({
         url: 'views',
@@ -87,5 +100,7 @@ export const {
   useAddLikeMutation,
   useDeleteLikeMutation,
   useAddRetweetMutation,
+  useGetReplyQuery,
+  useAddReplyMutation,
   useAddViewMutation,
 } = TweetApi;
