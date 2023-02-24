@@ -17,7 +17,7 @@ export default function TwitContent({
   // }
 
   return (
-    <>
+    <div className="flex flex-row flex-wrap sm:max-w-[80%]">
       {images.map(
         (image: {
           type: string | undefined;
@@ -28,10 +28,10 @@ export default function TwitContent({
             src={image.type ? `data:${image.type};base64, ${image.data}` : ''}
             style={image.type ? { display: 'block' } : { display: 'none' }}
             alt="user"
-            className="rounded-xl object-contain mt-2 mb-1 md:max-w-[50%] max-w-[80%] border"
+            className="rounded-xl object-contain mt-2 mb-1 max-w-[45%] border m-2 max-h-[300px] p-1"
           />
         )
       )}
-    </>
+    </div>
   );
 }
