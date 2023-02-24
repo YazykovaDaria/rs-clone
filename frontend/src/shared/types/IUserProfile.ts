@@ -11,6 +11,7 @@ export type Followers = {
 };
 
 export default interface IUserProfile {
+  id?: number;
   username: string;
   email: string;
   name: string;
@@ -21,5 +22,6 @@ export default interface IUserProfile {
   registration_date: string;
   followers: Followers[];
   following: Followers[];
+  tweets: number;
   avatar: Avatar;
 }

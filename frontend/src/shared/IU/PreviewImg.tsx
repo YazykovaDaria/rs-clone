@@ -2,7 +2,7 @@
 
 type Props = {
   files: File[];
-  close?: (immName: string) => void;
+  close?: (imgName: string) => void;
 };
 
 export default function PreviewImage({ files, close }: Props) {

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention */
 import { Followers } from './IUserProfile';
 
 export type SaveUser = {

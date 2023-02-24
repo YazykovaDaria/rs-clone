@@ -13,6 +13,7 @@ import { useAddTweetMutation } from '../../entities/API/TwitApi';
 import { useAuth } from '../../entities/user/Auth/authContext';
 import { validationTwit } from './lib/validation';
 import getFormData from './lib/getFormData';
+import Preloader from '../../shared/IU/Preloader';
 
 // баг при наборе текста с уже добавленной картинкой - картинка мигает на каждое нажатие клавиши - всё время дёргается компонент previewImage
 
@@ -37,7 +38,7 @@ export default function TwitCreator({ close }: OptionalCloseProps) {
     setValue(val);
   };
 
-  const [addTweet] = useAddTweetMutation();
+  const [addTweet, { isLoading }] = useAddTweetMutation();
 
   const f = useFormik({
     initialValues: {
@@ -77,6 +78,8 @@ export default function TwitCreator({ close }: OptionalCloseProps) {
       f.setFieldValue('img', selectedFiles);
     }
   };
+
+  if (isLoading) return <Preloader />;
 
   return (
     <div className="flex flex-row flex-nowrap w-full p-4 border-b pb-10">

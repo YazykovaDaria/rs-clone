@@ -1,16 +1,46 @@
 import './style.css';
+import { useState } from 'react';
+import { useAddRetweetMutation } from '../../../entities/API/TwitApi';
 
 export default function Retweet({
   retweets,
   retweeted,
+  id,
+  parentId,
 }: {
   retweets: number;
   retweeted: boolean;
+  id: number;
+  parentId: number | null;
 }) {
+  const [addRetweet] = useAddRetweetMutation();
+  const [isRetweeted, setIsRetweeted] = useState(retweeted);
+  const thisId = parentId || id;
+  const handleAddRetweet = async () => {
+    try {
+      if (!retweeted) {
+        setIsRetweeted(!isRetweeted);
+        await addRetweet({ parentId: thisId, isRetweet: true }).unwrap();
+      } else {
+        return;
+      }
+    } catch (err: unknown) {
+      throw new Error(String(err));
+    }
+  };
   return (
     <div
+      onClick={handleAddRetweet}
+      onKeyDown={(event) => {
+        if (event.key === 'Enter') {
+          handleAddRetweet();
+        }
+      }}
+      role="button"
+      tabIndex={0}
       title="Retweet"
-      className="twit__retweet text-gray-350 flex flex-nowrap items-center transition-colors duration-200 mr-5 md:mr-10"
+      style={retweeted === true ? { pointerEvents: 'none' } : {}}
+      className="twit__retweet text-gray-350 flex flex-nowrap items-center transition-colors duration-200 sm:mr-5 md:mr-10"
     >
       <div className="w-9 h-9 rounded-full flex items-center justify-center">
         <svg
