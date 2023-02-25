@@ -52,7 +52,7 @@ export default function TwitCreator({ close }: OptionalCloseProps) {
         await addTweet(data).unwrap();
         setMessageLength(MAX_TWIT_MSG_LEN);
       } catch (err) {
-        throw new Error(err);
+        throw new Error(String(err));
       }
 
       resetForm();
@@ -64,16 +64,18 @@ export default function TwitCreator({ close }: OptionalCloseProps) {
   });
 
   const delImgWithFormik = (imgName: string) => {
-    const data = f.values.img.filter((img) => img.name !== imgName);
+    const data = f.values.img.filter((img: File) => img.name !== imgName);
     f.setFieldValue('img', data);
   };
-
   const handleImgChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const target = e.currentTarget as HTMLInputElement;
     if (target.files) {
       const selectedFiles = [...f.values.img, ...target.files];
       if (selectedFiles.length > 4) {
         setImgError('formErrors.maxImg');
+      }
+      if (target.files[0].size > 1024 * 1024) {
+        setImgError('formErrors.maxImgSize');
       }
       f.setFieldValue('img', selectedFiles);
     }
@@ -109,7 +111,11 @@ export default function TwitCreator({ close }: OptionalCloseProps) {
           />
 
           {f.values.img.length > 0 && (
-            <PreviewImage files={f.values.img} close={delImgWithFormik} />
+            <PreviewImage
+              files={f.values.img}
+              close={delImgWithFormik}
+              setImgError={setImgError}
+            />
           )}
 
           <input
@@ -144,8 +150,9 @@ export default function TwitCreator({ close }: OptionalCloseProps) {
 
           <button
             type="submit"
+            style={{ zIndex: '-1' }}
             className="twit-create__btn md:mr-5 rounded-full text-white cursor-pointer font-bold hover:bg-cyan-500 bg-sky-400 py-1 px-4 transition-colors duration-200 disabled:opacity-50 mt-5"
-            disabled={!(f.isValid && f.dirty) || f.isSubmitting}
+            disabled={!(f.isValid && f.dirty) || f.isSubmitting || !!imgError}
           >
             {t('tweet')}
           </button>

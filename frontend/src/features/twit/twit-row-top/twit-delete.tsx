@@ -13,7 +13,7 @@ export default function TwitDelete({
   const handleDeleteTweet = async () => {
     try {
       await deleteTweet({ tweetId: id }).unwrap();
-    } catch (err: unknown) {
+    } catch (err) {
       throw new Error(String(err));
     }
   };

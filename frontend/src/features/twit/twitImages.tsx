@@ -21,7 +21,7 @@ export default function TwitContent({
             style={image.type ? { display: 'block' } : { display: 'none' }}
             alt="user"
             key={image.name}
-            className="rounded-xl object-contain mt-2 mb-1 max-w-[45%] border m-2 max-h-[300px] p-1"
+            className="rounded-xl object-contain mt-2 mb-1 md:max-w-[40%] max-w-[60%] border m-1 max-h-[250px] p-1"
           />
         )
       )}

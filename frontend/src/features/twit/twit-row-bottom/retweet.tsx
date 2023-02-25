@@ -24,7 +24,7 @@ export default function Retweet({
       } else {
         return;
       }
-    } catch (err: unknown) {
+    } catch (err) {
       throw new Error(String(err));
     }
   };
