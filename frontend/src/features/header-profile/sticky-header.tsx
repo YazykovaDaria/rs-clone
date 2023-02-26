@@ -22,7 +22,7 @@ export default function StickyHeader({
 }) {
   const { t } = useTranslation();
   return (
-    <div className="w-full fixed z-40 top-0 flex items-center h-[53px] px-4 justify-between cursor-pointer backdrop-blur-md bg-white/60">
+    <div className="w-full fixed z-30 top-0 flex items-center h-[53px] px-4 justify-between cursor-pointer backdrop-blur-md bg-white/60 dark:bg-slate-700">
       <div className="arrow-back min-w-[56px] min-h-[32px] flex items-start">
         <button
           onClick={() => window.history.back()}
@@ -52,8 +52,10 @@ export default function StickyHeader({
         tabIndex={0}
         className="flex flex-col w-full items-start"
       >
-        <h2 className="text-black font-bold text-xl">{name}</h2>
-        <div className="text-gray-350">
+        <h2 className="text-black font-bold text-xl  dark:text-white">
+          {name}
+        </h2>
+        <div className="text-gray-350  dark:text-gray-200">
           {tweets} {t('profile.tweets')}
         </div>
       </div>

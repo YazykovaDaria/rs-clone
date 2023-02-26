@@ -12,7 +12,7 @@ const FollowContainer = ({ followers }: Props) => {
       {followers.map((user) => (
         <div
           key={user.username}
-          className=" hover:bg-slate-300 hover:rounded-full p-1 cursor-pointer"
+          className=" hover:bg-slate-300 hover:rounded-full p-1 cursor-pointer dark:hover:bg-slate-200"
         >
           <WithNavigate url={`/profile/${user.username}`}>
             <User

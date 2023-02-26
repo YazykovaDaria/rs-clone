@@ -31,27 +31,29 @@ const MainRoute: FC<PropsWithChildren> = ({ children }) => {
 
 const Router = () => {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route
-            index
-            element={
-              <MainRoute>
-                <Main />
-              </MainRoute>
-            }
-          />
+    <div className="dark:bg-slate-900 dark:text-white">
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route
+              index
+              element={
+                <MainRoute>
+                  <Main />
+                </MainRoute>
+              }
+            />
 
-          <Route path="profile/:user" element={<Profile />} />
-          <Route path="chat" element={<Chat />} />
-        </Route>
+            <Route path="profile/:user" element={<Profile />} />
+            <Route path="chat" element={<Chat />} />
+          </Route>
 
-        <Route path="/login" element={<Login />} />
-        <Route path="/auth" element={<Auth />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </BrowserRouter>
+          <Route path="/login" element={<Login />} />
+          <Route path="/auth" element={<Auth />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 };
 

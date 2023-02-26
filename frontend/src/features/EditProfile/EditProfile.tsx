@@ -29,7 +29,7 @@ function EditProfile({ close }: OptionalCloseProps) {
   });
 
   return (
-    <div>
+    <div className="">
       {f.isSubmitting && <Spiner />}
       <EditAvatar />
       <form

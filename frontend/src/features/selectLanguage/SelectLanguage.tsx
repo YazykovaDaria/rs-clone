@@ -25,7 +25,7 @@ const SelectLang = ({ close }: OptionalCloseProps) => {
       <button
         onClick={() => changeLang('ru')}
         type="button"
-        className="bg-slate-500 hover:bg-cyan-600 rounded-full text-white w-40"
+        className="bg-slate-500 hover:bg-cyan-600 rounded-full text-white w-40 dark:bg-slate-300"
       >
         ru
       </button>

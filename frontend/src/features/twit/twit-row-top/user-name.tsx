@@ -7,7 +7,7 @@ export default function UserName({
 }) {
   return (
     <a
-      className="text-black hover:underline font-bold pr-1"
+      className="text-black hover:underline font-bold pr-1 dark:text-white"
       href={`/profile/${thisUsername}`}
     >
       {thisName}

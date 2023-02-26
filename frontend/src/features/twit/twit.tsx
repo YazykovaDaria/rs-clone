@@ -45,7 +45,7 @@ export default function Twit({
   const thisAvatar = originUser?.avatar || user.avatar;
 
   return (
-    <div className="cursor-pointer sm:p-4 p-3 hover:bg-slate-50 transition-colors duration-200 border-b">
+    <div className="cursor-pointer sm:p-4 p-3 hover:bg-slate-50 transition-colors duration-200 border-b dark:border-slate-600 dark:hover:bg-slate-800">
       <RetweetName
         name={user.name}
         isRetweet={isRetweet}

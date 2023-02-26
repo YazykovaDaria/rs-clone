@@ -40,7 +40,7 @@ function Main() {
 
   return (
     <>
-      <h1 className="font-bold text-xl w-full py-2 pl-4 border-b">
+      <h1 className="font-bold text-xl w-full py-2 pl-4 border-b dark:border-slate-600">
         {t('home')}
       </h1>
       <TwitCreator />
