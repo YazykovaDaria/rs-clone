@@ -17,6 +17,7 @@ import NotFound from '../pages/NotFound/NotFound';
 import './style.css';
 import Chat from '../pages/ChatPage/Chat';
 import Layout from '../widgets/layout/Layout';
+import Dialogs from '../widgets/dialogs/Dialogs';
 
 const MainRoute: FC<PropsWithChildren> = ({ children }) => {
   const auth = useAuth();
@@ -44,7 +45,9 @@ const Router = () => {
           />
 
           <Route path="profile/:user" element={<Profile />} />
-          <Route path="chat" element={<Chat />} />
+          <Route path="chat" element={<Chat />}>
+            <Route path=":user" element={<Dialogs />} />
+          </Route>
         </Route>
 
         <Route path="/login" element={<Login />} />

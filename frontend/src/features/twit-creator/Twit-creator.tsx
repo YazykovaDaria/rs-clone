@@ -15,8 +15,6 @@ import { validationTwit } from './lib/validation';
 import getFormData from './lib/getFormData';
 import Preloader from '../../shared/IU/Preloader';
 
-// баг при наборе текста с уже добавленной картинкой - картинка мигает на каждое нажатие клавиши - всё время дёргается компонент previewImage
-
 export default function TwitCreator({ close }: OptionalCloseProps) {
   const [messageLength, setMessageLength] = useState(MAX_TWIT_MSG_LEN);
   const { t } = useTranslation();
