@@ -1,4 +1,3 @@
-/* eslint-disable import/no-cycle */
 import './style.css';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -14,7 +13,6 @@ import TwitDate from '../twit-row-top/twit-date';
 import TwitContent from '../twit-content';
 import TwitImages from '../twitImages';
 import ITweet from '../../../shared/types/ITweet';
-import Twit from '../twit';
 import Spiner from '../../../shared/IU/spiner/spiner';
 
 export default function Reply({
@@ -119,26 +117,6 @@ export default function Reply({
             isReply={isReply}
             id={id}
           />
-          {tweets.map((tweet: ITweet) => (
-            <Twit
-              key={tweet.id + 100}
-              id={tweet.id}
-              parentId={tweet.parentId}
-              text={tweet.text}
-              createdAt={tweet.createdAt}
-              user={tweet.user}
-              origin={tweet.origin}
-              isRetweet={tweet.isRetweet}
-              likes={tweet.likes}
-              liked={tweet.liked}
-              replies={tweet.replies}
-              views={tweet.views}
-              viewed={tweet.viewed}
-              retweets={tweet.retweets}
-              retweeted={tweet.retweeted}
-              images={tweet.images}
-            />
-          ))}
           {!isLoading && tweets.length < count && <Spiner />}
         </div>
       </SameModal>
