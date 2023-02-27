@@ -33,7 +33,7 @@ export default function Like({
         setIsLiked(!isLiked);
         await deleteLike({ tweetId: thisId }).unwrap();
       }
-    } catch (err: unknown) {
+    } catch (err) {
       throw new Error(String(err));
     }
   };

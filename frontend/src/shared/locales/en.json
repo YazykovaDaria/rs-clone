@@ -18,6 +18,11 @@
   "tweet": "Tweet",
   "logout": "Logout",
   "login": "Login",
+  "reply": "Reply",
+  "replyPlaceholder": "Tweet your reply",
+  "retweets": "Retweets",
+  "likes": "Likes",
+  "views": "Views",
   "Failed! Email is already in use!": "Email is already in use!",
   "Failed! Username is already in use!": "Username is already in use!",
   "selectLng": "Select language",
@@ -50,7 +55,8 @@
     "min6": "Min length is six sumbols",
     "required": "Must not be empty",
     "email": "Enter right email",
-    "samePassword": "Passwords are not the same"
+    "samePassword": "Passwords are not the same",
+    "maxImgSize": "The file size should not exceed 1MB"
   },
   "datePicker": {
     "day": "Day",

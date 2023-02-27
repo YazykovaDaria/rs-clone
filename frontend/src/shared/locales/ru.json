@@ -21,6 +21,11 @@
   "network error": "Ошибка сети",
   "logout": "Выйти",
   "login": "Войти",
+  "replyPlaceholder": "Твитнуть свой ответ",
+  "reply": "Ответ",
+  "retweets": "Ретвиты",
+  "likes": "Лайки",
+  "views": "Просмотры",
   "Failed! Email is already in use!": "Этот email адрес уже используется!",
   "goBack": "Назад",
   "about you": "О себе",
@@ -50,7 +55,8 @@
     "min6": "Должно быть болььше 6 символов",
     "required": "Поле не должно быть пустым",
     "email": "Не верный email",
-    "samePassword": "Пароли не совпадают"
+    "samePassword": "Пароли не совпадают",
+    "maxImgSize": "Размер файла не должен превышать 1МБ"
   },
   "datePicker": {
     "day": "День",

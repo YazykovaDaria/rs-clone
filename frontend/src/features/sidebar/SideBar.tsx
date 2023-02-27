@@ -14,7 +14,7 @@ function SideBar() {
   const { t } = useTranslation();
   const [isOpenModal, setModal] = useState(false);
   return (
-    <aside className="flex flex-col justify-between sm:p-3 h-screen sticky top-0 left-0">
+    <aside className="flex flex-col justify-between sm:p-3 h-screen sticky top-0 left-0 z-40">
       <div className="flex flex-col justify-between gap-5">
         <Link to="/">
           <Logo className="hover:fill-cyan-500 fill-cyan-300 md:w-16 md:h-16 w-12 h-12  dark:fill-cyan-400" />

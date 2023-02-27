@@ -69,7 +69,7 @@ export const TweetApi = createApi({
       }),
       invalidatesTags: ['Tweets'],
     }),
-    getReply: build.query({
+    getReplays: build.query({
       query: ({ tweetId }: { tweetId: number }) =>
         `tweets?${tweetId && `tweetId=${tweetId}`}`,
       providesTags: ['Tweets'],
@@ -100,7 +100,7 @@ export const {
   useAddLikeMutation,
   useDeleteLikeMutation,
   useAddRetweetMutation,
-  useGetReplyQuery,
+  useGetReplaysQuery,
   useAddReplyMutation,
   useAddViewMutation,
 } = TweetApi;
