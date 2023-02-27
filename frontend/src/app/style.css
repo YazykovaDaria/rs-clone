@@ -15,11 +15,11 @@
 }
 
 .edit-label {
-@apply block mb-2 text-base font-medium text-gray-900 dark:text-white
+@apply block mb-2 text-base font-medium text-gray-900 dark:text-white dark:text-black
 }
 
 .profile-btn {
-  @apply font-bold cursor-pointer sm:px-4 px-1 py-1 text-sm sm:text-base border rounded-2xl border-slate-300 border-solid hover:bg-slate-200 transition-colors duration-200
+  @apply font-bold cursor-pointer sm:px-4 px-1 py-1 text-sm sm:text-base border rounded-2xl border-slate-300 border-solid hover:bg-slate-200 transition-colors duration-200 dark:hover:bg-sky-900
 }
 
 .profile-avatar {

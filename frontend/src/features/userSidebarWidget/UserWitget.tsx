@@ -6,20 +6,21 @@ import ButtonCloseSvg from '../../shared/IU/ButtonCloseSvg/ButtonCloswSvg';
 import SelectLang from '../selectLanguage/SelectLanguage';
 import Logout from '../logout/Logout';
 import Modal from '../../shared/IU/modal/Modal';
+import SwitchTheme from '../../shared/IU/SwitchTheme';
 
 function UserWidget() {
   const { t } = useTranslation();
   const [isOpenPopup, setPopup] = useState(false);
   const [isOpenModalLang, setModalLang] = useState(false);
   const [isOpenModalLogout, setModalLogout] = useState(false);
-  const { user } = useAuth();
+  const auth = useAuth();
   const userData = {
     name: '',
     username: '',
     avatar: '',
   };
-  if (user) {
-    Object.assign(userData, user);
+  if (auth?.user) {
+    Object.assign(userData, auth.user);
   }
 
   const closePopup = (): void => setPopup(false);
@@ -30,7 +31,8 @@ function UserWidget() {
     <div className="flex flex-col gap-2 cursor-pointer sm:w-11/12">
       <div className={isOpenPopup ? 'user-popup' : 'hidden'}>
         <ButtonCloseSvg close={closePopup} />
-        <div className="hover:text-sky-600 hover:font-bold transition-colors">
+        <SwitchTheme />
+        <div className="hover:text-sky-600 hover:font-bold transition-colors dark:hover:text-cyan-200">
           <button
             type="button"
             onClick={() => {
@@ -45,7 +47,7 @@ function UserWidget() {
             <SelectLang close={() => setModalLang(false)} />
           </Modal>
         </div>
-        <div className="hover:text-sky-600 cursor-pointer transition-colors">
+        <div className="hover:text-sky-600 cursor-pointer transition-colors dark:hover:text-cyan-200">
           <button
             type="button"
             onClick={() => {
@@ -75,7 +77,7 @@ function UserWidget() {
         </div>
         <div className="flex-col hidden md:flex items-start p-1 self-start">
           <span className="font-bold">{userData.name}</span>
-          <span className="text-gray-350">{`@${userData.username}`}</span>
+          <span className="text-gray-350 dark:text-gray-200">{`@${userData.username}`}</span>
         </div>
         <span className="hidden sm:inline-block text-lg font-bold hover:text-sky-600 transition-colors">
           ...

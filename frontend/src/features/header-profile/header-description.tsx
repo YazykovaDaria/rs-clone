@@ -27,7 +27,7 @@ export default function HeaderDesription({
 
   return (
     <div className="w-full">
-      <div className="w-full bg-slate-200 h-[200px] mt-[53px]" />
+      <div className="w-full bg-slate-200 h-[200px] mt-[53px] dark:bg-black" />
       <div className="w-full p-4 flex justify-between max-h-20">
         <div className="sm:-top-20 -top-16 sm:w-32 sm:h-32 w-24 h-24 cursor-pointer flex items-center justify-center transition-colors duration-200 relative mr-3">
           <img
@@ -43,7 +43,9 @@ export default function HeaderDesription({
       </div>
       <div className="w-full p-4 flex flex-col">
         <div className="flex flex-col w-full items-start mb-3">
-          <h2 className="text-black font-bold text-xl">{name}</h2>
+          <h2 className="text-black font-bold text-xl dark:text-white">
+            {name}
+          </h2>
           <div className="text-gray-350">@{username}</div>
         </div>
 

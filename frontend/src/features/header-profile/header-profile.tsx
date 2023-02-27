@@ -23,7 +23,7 @@ export default function HeaderProfile({ user }: { user: string }) {
   }: IUserProfile = data;
 
   return (
-    <div className="flex flex-row flex-wrap border-b">
+    <div className="flex flex-row flex-wrap border-b dark:border-slate-600">
       <StickyHeader name={name} tweets={tweets || 0} />
       <HeaderDesription
         username={username}

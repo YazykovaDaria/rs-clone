@@ -28,7 +28,9 @@ const DescriptionFollowers = ({ followers, name }: Props) => {
         onClick={() => setModal(true)}
         className="text-gray-350 mr-3 hover:underline cursor-pointer"
       >
-        <span className="text-black font-bold pr-1">{followers.length}</span>
+        <span className="text-black font-bold pr-1 dark:text-gray-300">
+          {followers.length}
+        </span>
         {name}
       </div>
     </>

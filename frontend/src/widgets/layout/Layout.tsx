@@ -9,7 +9,7 @@ function Layout() {
         <nav className="w-1/4 4/4">
           <SideBar />
         </nav>
-        <section className="w-full border-x">
+        <section className="w-full border-x dark:border-slate-600">
           <Outlet />
         </section>
       </main>

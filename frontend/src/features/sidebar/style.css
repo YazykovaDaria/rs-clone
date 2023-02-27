@@ -1,5 +1,5 @@
 .aside-link {
-  @apply flex gap-2 hover:bg-slate-200 hover:rounded-full p-1 items-center transition-all duration-100
+  @apply flex gap-2 hover:bg-slate-200 hover:rounded-full p-1 items-center transition-all duration-100 dark:hover:bg-slate-600
   }
 
   .aside-bnt {
@@ -8,6 +8,5 @@
 
   .active {
     font-weight: 700;
-    color: black;
     stroke-width: 2;
   }

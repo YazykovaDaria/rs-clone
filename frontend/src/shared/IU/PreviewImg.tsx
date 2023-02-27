@@ -13,7 +13,7 @@ export default function PreviewImage({ files, close }: Props) {
   });
 
   return (
-    <div className="flex flex-wrap gap-2 justify-center">
+    <div className="flex flex-wrap gap-2 justify-center dark:bg-inherit">
       {filesSrc.map((file) => (
         <div key={file.src} className="relative">
           <img
