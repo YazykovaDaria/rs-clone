@@ -18,14 +18,14 @@ const SelectLang = ({ close }: OptionalCloseProps) => {
       <button
         onClick={() => changeLang('en')}
         type="button"
-        className="bg-slate-500 hover:bg-cyan-600 rounded-full text-white w-40"
+        className="bg-slate-500 hover:bg-cyan-600 rounded-full text-white w-40 dark:bg-cyan-700 dark:hover:bg-cyan-500"
       >
         en
       </button>
       <button
         onClick={() => changeLang('ru')}
         type="button"
-        className="bg-slate-500 hover:bg-cyan-600 rounded-full text-white w-40 dark:bg-slate-300"
+        className="bg-slate-500 hover:bg-cyan-600 rounded-full text-white w-40 dark:bg-cyan-700 dark:hover:bg-cyan-500"
       >
         ru
       </button>
