@@ -42,7 +42,7 @@ export default function Retweet({
       style={retweeted === true ? { pointerEvents: 'none' } : {}}
       className="twit__retweet text-gray-350 flex flex-nowrap items-center transition-colors duration-200 sm:mr-5 md:mr-10"
     >
-      <div className="w-9 h-9 rounded-full flex items-center justify-center">
+      <div className="w-9 h-9 rounded-full flex items-center justify-center cursor-pointer">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
