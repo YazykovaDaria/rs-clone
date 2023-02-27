@@ -1,4 +1,8 @@
-/* eslint-disable import/no-cycle */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import ITweet from '../../shared/types/ITweet';
 import TwitContent from './twit-content';
 import Like from './twit-row-bottom/like';
@@ -13,24 +17,27 @@ import UserImg from './user-img';
 import { useAuth } from '../../entities/user/Auth/authContext';
 import RetweetName from './twit-row-top/RetweetName';
 import TwitImages from './twitImages';
+import { setParentTwit } from '../../entities/parentTwitSlice';
 
-export default function Twit({
-  id,
-  parentId,
-  text,
-  createdAt,
-  user,
-  origin,
-  isRetweet,
-  likes,
-  liked,
-  replies,
-  views,
-  viewed,
-  retweets,
-  retweeted,
-  images,
-}: ITweet) {
+export default function Twit(props: ITweet) {
+  const {
+    id,
+    parentId,
+    text,
+    createdAt,
+    user,
+    origin,
+    isRetweet,
+    likes,
+    liked,
+    replies,
+    views,
+    viewed,
+    retweets,
+    retweeted,
+    images,
+  } = props;
+
   const authUser = useAuth()?.user;
   let authUserUsername = '';
   let authUserName = '';
@@ -44,6 +51,13 @@ export default function Twit({
   const thisName = originUser?.name || user.name;
   const thisUsername = originUser?.username || user.username;
   const thisAvatar = originUser?.avatar || user.avatar;
+
+  const dispathc = useDispatch();
+  const navigate = useNavigate();
+  const navigator = () => {
+    dispathc(setParentTwit(props));
+    navigate(`/tweet/${id}`);
+  };
 
   return (
     <div className="cursor-pointer sm:p-4 p-3 hover:bg-slate-50 transition-colors duration-200 border-b dark:border-slate-600 dark:hover:bg-slate-800">
@@ -64,7 +78,10 @@ export default function Twit({
             <div>{isOwnTwit && <TwitDelete id={id} />}</div>
           </div>
 
-          <div>
+          <div
+            onClick={navigator}
+            className="hover:bg-slate-200 dark:hover:bg-slate-600"
+          >
             <TwitContent text={text} />
             {images.length > 0 && <TwitImages images={images} />}
           </div>

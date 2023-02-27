@@ -15,8 +15,8 @@ import Auth from '../pages/AuthPage/AuthPage';
 import Profile from '../pages/ProfilePage/ProfilePage';
 import NotFound from '../pages/NotFound/NotFound';
 import './style.css';
-import Chat from '../pages/ChatPage/Chat';
 import Layout from '../widgets/layout/Layout';
+import TweetPage from '../pages/TweetPage/TweetPage';
 
 const MainRoute: FC<PropsWithChildren> = ({ children }) => {
   const auth = useAuth();
@@ -45,7 +45,7 @@ const Router = () => {
             />
 
             <Route path="profile/:user" element={<Profile />} />
-            <Route path="chat" element={<Chat />} />
+            <Route path="tweet/:id" element={<TweetPage />} />
           </Route>
 
           <Route path="/login" element={<Login />} />

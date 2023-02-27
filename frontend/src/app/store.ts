@@ -3,6 +3,7 @@ import { userProfileApi } from '../entities/user/Profile/userProfileApi';
 import { userLogin } from '../entities/user/Auth/loginApi';
 import { TweetApi } from '../entities/API/TwitApi';
 import { followApi } from '../entities/API/followApi';
+import parentTwitSlice from '../entities/parentTwitSlice';
 
 const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ const store = configureStore({
     [userProfileApi.reducerPath]: userProfileApi.reducer,
     [TweetApi.reducerPath]: TweetApi.reducer,
     [followApi.reducerPath]: followApi.reducer,
+    parentTwit: parentTwitSlice,
   },
   middleware: (getDefaultMiddlware) =>
     getDefaultMiddlware().concat(

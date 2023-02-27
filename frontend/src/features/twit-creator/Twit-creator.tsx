@@ -20,8 +20,6 @@ import getFormData from './lib/getFormData';
 import Preloader from '../../shared/IU/Preloader';
 import { OptionalCloseProps } from '../../shared/types/props';
 
-// баг при наборе текста с уже добавленной картинкой - картинка мигает на каждое нажатие клавиши - всё время дёргается компонент previewImage
-
 export default function TwitCreator({
   close,
   isReply,

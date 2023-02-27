@@ -15,6 +15,10 @@
     "reading": "I read"
   },
   "home": "Home",
+  "twe": "Tweet",
+  "show more": "Show more",
+  "404": "Sorry, page not found",
+  "go main": "Go main",
   "tweet": "Tweet",
   "logout": "Logout",
   "login": "Login",

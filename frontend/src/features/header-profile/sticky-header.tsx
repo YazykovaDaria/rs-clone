@@ -1,5 +1,6 @@
 import './style.css';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 
 function scrollUp() {
   const top = Math.max(
@@ -20,12 +21,13 @@ export default function StickyHeader({
   name: string;
   tweets: number;
 }) {
+  const navigate = useNavigate();
   const { t } = useTranslation();
   return (
     <div className="w-full fixed z-30 top-0 flex items-center h-[53px] px-4 justify-between cursor-pointer backdrop-blur-md bg-white/60 dark:bg-slate-700">
       <div className="arrow-back min-w-[56px] min-h-[32px] flex items-start">
         <button
-          onClick={() => window.history.back()}
+          onClick={() => navigate(-1)}
           type="button"
           className="w-9 h-9 rounded-full flex items-center justify-center"
         >

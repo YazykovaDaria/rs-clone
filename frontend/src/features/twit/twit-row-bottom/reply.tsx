@@ -1,8 +1,6 @@
-/* eslint-disable import/no-cycle */
 import './style.css';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useGetReplaysQuery } from '../../../entities/API/TwitApi';
 import SameModal from '../../../shared/IU/modal/SameModal';
 import TwitCreator from '../../twit-creator/Twit-creator';
 import ButtonCloseSvg from '../../../shared/IU/ButtonCloseSvg/ButtonCloswSvg';
@@ -13,9 +11,6 @@ import UserAlias from '../twit-row-top/user-alias';
 import TwitDate from '../twit-row-top/twit-date';
 import TwitContent from '../twit-content';
 import TwitImages from '../twitImages';
-import ITweet from '../../../shared/types/ITweet';
-import Twit from '../twit';
-import Spiner from '../../../shared/IU/spiner/spiner';
 
 export default function Reply({
   replies,
@@ -47,15 +42,9 @@ export default function Reply({
   }[];
 }) {
   const { t } = useTranslation();
-  const { data, isLoading } = useGetReplaysQuery({ tweetId: id });
   const [isOpenModal, setModal] = useState(false);
   const isReply = true;
-  let count = 0;
-  let tweets: ITweet[] = [];
-  if (data) {
-    count = data.count;
-    tweets = data.tweets;
-  }
+
   return (
     <>
       <div
@@ -119,27 +108,6 @@ export default function Reply({
             isReply={isReply}
             id={id}
           />
-          {tweets.map((tweet: ITweet) => (
-            <Twit
-              key={tweet.id + 100}
-              id={tweet.id}
-              parentId={tweet.parentId}
-              text={tweet.text}
-              createdAt={tweet.createdAt}
-              user={tweet.user}
-              origin={tweet.origin}
-              isRetweet={tweet.isRetweet}
-              likes={tweet.likes}
-              liked={tweet.liked}
-              replies={tweet.replies}
-              views={tweet.views}
-              viewed={tweet.viewed}
-              retweets={tweet.retweets}
-              retweeted={tweet.retweeted}
-              images={tweet.images}
-            />
-          ))}
-          {!isLoading && tweets.length < count && <Spiner />}
         </div>
       </SameModal>
     </>
