@@ -22,7 +22,7 @@ export default function StickyHeader({
 }) {
   const { t } = useTranslation();
   return (
-    <div className="w-full fixed z-40 top-0 flex items-center h-[53px] px-4 justify-between cursor-pointer backdrop-blur-md bg-white/60">
+    <div className="w-full fixed z-30 top-0 flex items-center h-[53px] px-4 justify-between cursor-pointer backdrop-blur-md bg-white/60">
       <div className="arrow-back min-w-[56px] min-h-[32px] flex items-start">
         <button
           onClick={() => window.history.back()}

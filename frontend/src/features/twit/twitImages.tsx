@@ -1,5 +1,4 @@
-/* eslint-disable react/jsx-key */
-export default function TwitContent({
+export default function TwitImages({
   images,
 }: {
   images: {
@@ -18,10 +17,9 @@ export default function TwitContent({
         }) => (
           <img
             src={image.type ? `data:${image.type};base64, ${image.data}` : ''}
-            style={image.type ? { display: 'block' } : { display: 'none' }}
             alt="user"
             key={image.name}
-            className="rounded-xl object-contain mt-2 mb-1 md:max-w-[40%] max-w-[60%] border m-1 max-h-[250px] p-1"
+            className="rounded-xl object-contain mt-2 mb-1 sm:max-w-[40%] max-w-[70%] border m-1 max-h-[250px] p-1"
           />
         )
       )}

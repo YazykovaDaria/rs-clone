@@ -2,13 +2,7 @@ import { useDeleteTweetMutation } from '../../../entities/API/TwitApi';
 import Preloader from '../../../shared/IU/Preloader';
 import './style.css';
 
-export default function TwitDelete({
-  isOwnTwit,
-  id,
-}: {
-  isOwnTwit: boolean;
-  id: number;
-}) {
+export default function TwitDelete({ id }: { id: number }) {
   const [deleteTweet, { isLoading }] = useDeleteTweetMutation();
   const handleDeleteTweet = async () => {
     try {
@@ -20,7 +14,6 @@ export default function TwitDelete({
   if (isLoading) return <Preloader />;
   return (
     <div
-      style={isOwnTwit === true ? { display: 'flex' } : { display: 'none' }}
       onClick={handleDeleteTweet}
       onKeyDown={(event) => {
         if (event.key === 'Enter') {
@@ -30,7 +23,7 @@ export default function TwitDelete({
       role="button"
       tabIndex={0}
       title="Delete"
-      className="twit__delete w-9 h-9 rounded-full flex items-center justify-center transition-colors duration-200"
+      className="twit__delete flex w-9 h-9 rounded-full items-center justify-center transition-colors duration-200"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

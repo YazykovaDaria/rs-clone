@@ -1,10 +1,8 @@
 export default function RetweetName({
   name,
-  isRetweet,
   authUserName,
 }: {
   name: string;
-  isRetweet: boolean | null;
   authUserName: string;
 }) {
   let retweetText = `${name} Retweeted`;
@@ -20,10 +18,7 @@ export default function RetweetName({
   }
 
   return (
-    <div
-      style={isRetweet === true ? { display: 'flex' } : { display: 'none' }}
-      className="flex flex-nowrap sm:ml-[60px] ml-[52px] items-center"
-    >
+    <div className="flex flex-nowrap sm:ml-[60px] ml-[52px] items-center">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"

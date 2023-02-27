@@ -1,5 +1,5 @@
 export const baseUrl =
-  'https://rs-clone-twitter-api-production.up.railway.app/api/' as const;
+  'https://rs-clone-twitter-api.onrender.com/api/' as const;
 
 const getToken = (): string => {
   const user = localStorage.getItem('user');

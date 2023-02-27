@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import ITweet from '../../shared/types/ITweet';
 import TwitContent from './twit-content';
 import Like from './twit-row-bottom/like';
@@ -46,11 +47,9 @@ export default function Twit({
 
   return (
     <div className="cursor-pointer sm:p-4 p-3 hover:bg-slate-50 transition-colors duration-200 border-b">
-      <RetweetName
-        name={user.name}
-        isRetweet={isRetweet}
-        authUserName={authUserName}
-      />
+      {isRetweet && (
+        <RetweetName name={user.name} authUserName={authUserName} />
+      )}
       <div className="flex w-full">
         <div>
           <UserImg thisUsername={thisUsername} thisAvatar={thisAvatar} />
@@ -62,18 +61,28 @@ export default function Twit({
               <UserAlias thisUsername={thisUsername} />
               <TwitDate thisCreatedAt={thisCreatedAt} />
             </div>
-            <div>
-              <TwitDelete isOwnTwit={isOwnTwit} id={id} />
-            </div>
+            <div>{isOwnTwit && <TwitDelete id={id} />}</div>
           </div>
 
           <div>
             <TwitContent text={text} />
-            <TwitImages images={images} />
+            {images.length > 0 && <TwitImages images={images} />}
           </div>
 
           <div className="flex items-center flex-nowrap">
-            <Reply replies={replies} />
+            <Reply
+              replies={replies}
+              id={id}
+              thisName={thisName}
+              thisUsername={thisUsername}
+              thisAvatar={thisAvatar}
+              thisCreatedAt={thisCreatedAt}
+              text={text}
+              likes={likes}
+              retweets={retweets}
+              views={views}
+              images={images}
+            />
             <Retweet
               retweets={retweets}
               retweeted={retweeted}
