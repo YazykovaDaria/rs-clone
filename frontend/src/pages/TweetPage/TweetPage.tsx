@@ -58,24 +58,26 @@ const TweetPage = () => {
         {t('twe')}
       </h1>
       {parent && (
-        <Twit
-          key={parent.id}
-          id={parent.id}
-          parentId={parent.pparentId}
-          text={parent.text}
-          createdAt={parent.createdAt}
-          user={parent.user}
-          origin={parent.origin}
-          isRetweet={parent.isRetweet}
-          likes={parent.likes}
-          liked={parent.liked}
-          replies={parent.replies}
-          views={parent.views}
-          viewed={parent.viewed}
-          retweets={parent.retweets}
-          retweeted={parent.retweeted}
-          images={parent.images}
-        />
+        <div className="bg-slate-100 border-2 dark:bg-slate-800">
+          <Twit
+            key={parent.id}
+            id={parent.id}
+            parentId={parent.pparentId}
+            text={parent.text}
+            createdAt={parent.createdAt}
+            user={parent.user}
+            origin={parent.origin}
+            isRetweet={parent.isRetweet}
+            likes={parent.likes}
+            liked={parent.liked}
+            replies={parent.replies}
+            views={parent.views}
+            viewed={parent.viewed}
+            retweets={parent.retweets}
+            retweeted={parent.retweeted}
+            images={parent.images}
+          />
+        </div>
       )}
 
       {tweets.map((tweet: ITweet) => (
