@@ -6,6 +6,7 @@ export default interface ITweet {
   text: string;
   createdAt: string;
   isRetweet: boolean | null;
+  isReply?: true;
   user: {
     name: string;
     username: string;

@@ -15,18 +15,10 @@ export const TweetApi = createApi({
   }),
   endpoints: (build) => ({
     getTweets: build.query({
-      query: ({
-        username,
-        limit,
-        offset,
-      }: {
-        username: string;
-        limit: number;
-        offset: number;
-      }) =>
+      query: ({ username, limit }: { username: string; limit: number }) =>
         `tweets?${username && `username=${username}`}&${
           limit && `limit=${limit}`
-        }&${offset && `offset=${offset}`}`,
+        }`,
       providesTags: ['Tweets'],
     }),
     addTweet: build.mutation({

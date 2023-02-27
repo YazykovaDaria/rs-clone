@@ -29,6 +29,7 @@ const TweetPage = () => {
     dispathc(delParentTwit(parent));
     navigate(-1);
   };
+  const isReply = true;
 
   return (
     <>
@@ -88,6 +89,7 @@ const TweetPage = () => {
           user={tweet.user}
           origin={tweet.origin}
           isRetweet={tweet.isRetweet}
+          isReply={isReply}
           likes={tweet.likes}
           liked={tweet.liked}
           replies={tweet.replies}

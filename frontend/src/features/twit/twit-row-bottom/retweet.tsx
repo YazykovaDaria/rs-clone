@@ -7,27 +7,31 @@ export default function Retweet({
   retweeted,
   id,
   parentId,
+  isReply,
 }: {
   retweets: number;
   retweeted: boolean;
   id: number;
   parentId: number | null;
+  isReply: true | undefined;
 }) {
   const [addRetweet] = useAddRetweetMutation();
   const [isRetweeted, setIsRetweeted] = useState(retweeted);
   const thisId = parentId || id;
   const handleAddRetweet = async () => {
     try {
-      if (!retweeted) {
+      if (!retweeted && !isReply) {
         setIsRetweeted(!isRetweeted);
         await addRetweet({ parentId: thisId, isRetweet: true }).unwrap();
-      } else {
-        return;
+      }
+      if (isReply) {
+        await addRetweet({ parentId: id, isRetweet: true }).unwrap();
       }
     } catch (err) {
       throw new Error(String(err));
     }
   };
+
   return (
     <div
       onClick={handleAddRetweet}

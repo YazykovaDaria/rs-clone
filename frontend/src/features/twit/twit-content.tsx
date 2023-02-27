@@ -6,6 +6,7 @@ export default function TwitContent({ text }: { text: string }) {
         textAlign: 'justify',
         fontFamily: 'inherit',
         whiteSpace: 'pre-line',
+        wordBreak: 'break-all',
       }}
     >
       {text}

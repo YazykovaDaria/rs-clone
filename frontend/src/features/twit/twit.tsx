@@ -28,6 +28,7 @@ export default function Twit(props: ITweet) {
     user,
     origin,
     isRetweet,
+    isReply,
     likes,
     liked,
     replies,
@@ -105,8 +106,15 @@ export default function Twit(props: ITweet) {
               retweeted={retweeted}
               id={id}
               parentId={parentId}
+              isReply={isReply}
             />
-            <Like likes={likes} liked={liked} id={id} parentId={parentId} />
+            <Like
+              likes={likes}
+              liked={liked}
+              id={id}
+              parentId={parentId}
+              isReply={isReply}
+            />
             <Views views={views} id={id} viewed={viewed} />
           </div>
         </div>
