@@ -60,7 +60,7 @@ export default function Twit(props: ITweet) {
   };
 
   return (
-    <div className="border-b dark:border-slate-600 sm:p-4 p-3 dark:hover:bg-slate-800">
+    <div className="border-b dark:border-slate-600 sm:p-4 p-3">
       {isRetweet && (
         <RetweetName name={user.name} authUserName={authUserName} />
       )}
@@ -80,7 +80,7 @@ export default function Twit(props: ITweet) {
 
           <div
             onClick={navigator}
-            className="cursor-pointer hover:bg-slate-100 transition-colors duration-200"
+            className="cursor-pointer hover:bg-slate-100 transition-colors duration-200 dark:hover:bg-slate-700"
           >
             <TwitContent text={text} />
             {images.length > 0 && <TwitImages images={images} />}
