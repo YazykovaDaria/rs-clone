@@ -178,20 +178,20 @@ function AuhtForm() {
           onChange={(value) => f.setFieldValue('birthday.day', value.value)}
           placeholder="datePicker.day"
           options={days}
-          className="w-1/4 4/4"
+          className="w-1/4 4/4 dark:text-black"
         />
 
         <SelectForm
           onChange={(value) => f.setFieldValue('birthday.month', value.value)}
           placeholder="datePicker.month"
           options={months}
-          className="w-2/4 4/4"
+          className="w-2/4 4/4 dark:text-black"
         />
 
         <SelectForm
           onChange={(value) => f.setFieldValue('birthday.year', value.value)}
           placeholder="datePicker.year"
-          className="w-1/4 4/4"
+          className="w-1/4 4/4 dark:text-black"
           options={years()}
         />
       </div>

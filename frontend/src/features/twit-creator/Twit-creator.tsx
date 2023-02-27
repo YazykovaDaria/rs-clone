@@ -103,7 +103,7 @@ export default function TwitCreator({
   if (isLoading) return <Preloader />;
 
   return (
-    <div className="flex flex-row flex-nowrap w-full p-4 border-b pb-10">
+    <div className="flex flex-row flex-nowrap w-full p-4 border-b pb-10 dark:border-slate-600">
       <div className="mr-3 h-12 relative cursor-pointer flex items-center justify-center">
         <img
           src={src}
@@ -115,7 +115,7 @@ export default function TwitCreator({
       <div className="w-full">
         <form onSubmit={f.handleSubmit} className="w-full">
           <textarea
-            className="w-full focus:border-b-2 outline-none block p-2 md:text-xl overflow-hidden resize-none max-h-[600px]"
+            className="w-full focus:border-b-2 outline-none block p-2 md:text-xl overflow-hidden resize-none max-h-[600px] dark:bg-inherit"
             id="review-text"
             name="text"
             onChange={(e) => {

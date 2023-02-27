@@ -40,7 +40,9 @@ const DescriptionFollowers = ({ followers, name }: Props) => {
         role="button"
         tabIndex={0}
       >
-        <span className="text-black font-bold pr-1">{followers.length}</span>
+        <span className="text-black font-bold pr-1 dark:text-gray-300">
+          {followers.length}
+        </span>
         {name}
       </div>
     </>

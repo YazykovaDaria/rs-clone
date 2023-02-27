@@ -22,10 +22,12 @@ const SameModal = ({ onClose, isOpen, children }: ModalProps) => {
   if (isOpen)
     return (
       <div
-        className="bg-slate-300 fixed top-0 left-0 w-screen h-screen flex justify-center items-center js-cl z-40"
+        className="bg-slate-300 fixed top-0 left-0 w-screen h-screen flex justify-center items-center js-cl z-50 dark:bg-slate-600"
         onClick={closeModal}
       >
-        <div className="bg-white p-4 rounded-xl relative pt-8">{children}</div>
+        <div className="bg-white p-4 rounded-xl relative pt-8 dark:bg-slate-300">
+          {children}
+        </div>
       </div>
     );
   return null;
