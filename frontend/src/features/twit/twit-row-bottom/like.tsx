@@ -11,11 +11,13 @@ export default function Like({
   liked,
   id,
   parentId,
+  isReply,
 }: {
   likes: number;
   liked: boolean;
   id: number;
   parentId: number | null;
+  isReply: true | undefined;
 }) {
   const [addLike] = useAddLikeMutation();
   const [deleteLike] = useDeleteLikeMutation();
@@ -27,11 +29,19 @@ export default function Like({
       if (isLiked === false) {
         setlikesCount((likesCount += 1));
         setIsLiked(!isLiked);
-        await addLike({ tweetId: thisId }).unwrap();
+        if (isReply) {
+          await addLike({ tweetId: id }).unwrap();
+        } else {
+          await addLike({ tweetId: thisId }).unwrap();
+        }
       } else {
         setlikesCount((likesCount -= 1));
         setIsLiked(!isLiked);
-        await deleteLike({ tweetId: thisId }).unwrap();
+        if (isReply) {
+          await deleteLike({ tweetId: id }).unwrap();
+        } else {
+          await deleteLike({ tweetId: thisId }).unwrap();
+        }
       }
     } catch (err) {
       throw new Error(String(err));

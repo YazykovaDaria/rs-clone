@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import './style.css';
 import { useTranslation } from 'react-i18next';
-import { ReactComponent as Chat } from '../../shared/assets/icons/chat.svg';
+// import { ReactComponent as Chat } from '../../shared/assets/icons/chat.svg';
 import { ReactComponent as Profile } from '../../shared/assets/icons/profile.svg';
 import { ReactComponent as Home } from '../../shared/assets/icons/home.svg';
 import { useAuth } from '../../entities/user/Auth/authContext';

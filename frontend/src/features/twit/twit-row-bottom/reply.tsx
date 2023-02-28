@@ -15,6 +15,7 @@ import TwitImages from '../twitImages';
 export default function Reply({
   replies,
   id,
+  parentId,
   thisName,
   thisUsername,
   thisAvatar,
@@ -27,6 +28,7 @@ export default function Reply({
 }: {
   replies: number;
   id: number;
+  parentId: number | null;
   thisName: string;
   thisUsername: string | undefined;
   thisAvatar: Avatar;
@@ -44,6 +46,7 @@ export default function Reply({
   const { t } = useTranslation();
   const [isOpenModal, setModal] = useState(false);
   const isReply = true;
+  const thisId = parentId || id;
 
   return (
     <>
@@ -73,7 +76,7 @@ export default function Reply({
         <span className="p-2">{replies}</span>
       </div>
       <SameModal isOpen={isOpenModal} onClose={() => setModal(false)}>
-        <div className="relative z-40 outline-none md:w-[50vw] w-[70vw]">
+        <div className="relative z-40 outline-none md:w-[50vw] w-[70vw] dark:bg-slate-300">
           <ButtonCloseSvg close={() => setModal(false)} />
 
           <div className="flex items-center nowrap">
@@ -90,15 +93,15 @@ export default function Reply({
             {images.length > 0 && <TwitImages images={images} />}
           </div>
           <div className="flex items-center nowrap">
-            <span className="p-3 text-gray-350">
+            <span className="p-3 text-gray-350 dark:text-slate-500">
               <span className="mr-2 text-black font-bold">{retweets}</span>
               {t('Retweets')}
             </span>
-            <span className="p-3 text-gray-350">
+            <span className="p-3 text-gray-350 dark:text-slate-500">
               <span className="mr-2 text-black font-bold">{likes}</span>
               {t('Likes')}
             </span>
-            <span className="p-3 text-gray-350">
+            <span className="p-3 text-gray-350 dark:text-slate-500">
               <span className="mr-2 text-black font-bold">{views}</span>
               {t('Views')}
             </span>
@@ -106,7 +109,7 @@ export default function Reply({
           <TwitCreator
             close={() => setModal(false)}
             isReply={isReply}
-            id={id}
+            id={thisId}
           />
         </div>
       </SameModal>

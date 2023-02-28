@@ -13,29 +13,45 @@ function Main() {
   const { data, isLoading } = useGetTweetsQuery({
     username: '',
     limit: limitCount,
-    offset: 0,
   });
+  const [lastScrollTime, setLastScrollTime] = useState(0);
+  let isThrottled = false;
   useEffect(() => {
     document.addEventListener('scroll', scrollHandler);
     return () => {
       document.removeEventListener('scroll', scrollHandler);
     };
   });
+
   if (isLoading) return <Spiner />;
-  const count: number = data.count || 0;
-  const tweets: ITweet[] = data.tweets || [];
+  let count = 0;
+  let tweets: ITweet[] = [];
+  if (data) {
+    count = data.count;
+    tweets = data.tweets;
+  }
+
   function scrollHandler(e: Event) {
-    if (e) {
+    if (isThrottled) return;
+    isThrottled = true;
+
+    requestAnimationFrame(() => {
       const target = e.target as Document;
       if (
         target.documentElement.scrollHeight -
           (target.documentElement.scrollTop + window.innerHeight) <
           100 &&
-        tweets?.length < count
+        tweets?.length < count &&
+        !isLoading
       ) {
-        setLimitCount((prevState) => prevState + 1);
+        const currentTime = new Date().getTime();
+        if (currentTime - lastScrollTime >= 1000) {
+          setLimitCount((prevState) => prevState + 1);
+          setLastScrollTime(currentTime);
+        }
       }
-    }
+      isThrottled = false;
+    });
   }
 
   return (

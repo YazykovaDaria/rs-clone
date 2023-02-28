@@ -28,6 +28,7 @@ export default function Twit(props: ITweet) {
     user,
     origin,
     isRetweet,
+    isReply,
     likes,
     liked,
     replies,
@@ -51,12 +52,12 @@ export default function Twit(props: ITweet) {
   const thisName = originUser?.name || user.name;
   const thisUsername = originUser?.username || user.username;
   const thisAvatar = originUser?.avatar || user.avatar;
-
+  const thisId = parentId || id;
   const dispathc = useDispatch();
   const navigate = useNavigate();
   const navigator = () => {
     dispathc(setParentTwit(props));
-    navigate(`/tweet/${id}`);
+    navigate(`/tweet/${thisId}`);
   };
 
   return (
@@ -90,6 +91,7 @@ export default function Twit(props: ITweet) {
             <Reply
               replies={replies}
               id={id}
+              parentId={parentId}
               thisName={thisName}
               thisUsername={thisUsername}
               thisAvatar={thisAvatar}
@@ -105,8 +107,15 @@ export default function Twit(props: ITweet) {
               retweeted={retweeted}
               id={id}
               parentId={parentId}
+              isReply={isReply}
             />
-            <Like likes={likes} liked={liked} id={id} parentId={parentId} />
+            <Like
+              likes={likes}
+              liked={liked}
+              id={id}
+              parentId={parentId}
+              isReply={isReply}
+            />
             <Views views={views} id={id} viewed={viewed} />
           </div>
         </div>
