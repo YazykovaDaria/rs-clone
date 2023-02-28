@@ -25,7 +25,7 @@ const SameModal = ({ onClose, isOpen, children }: ModalProps) => {
         className="bg-slate-300 fixed top-0 left-0 w-screen h-screen flex justify-center items-center js-cl z-50 dark:bg-slate-600"
         onClick={closeModal}
       >
-        <div className="bg-white p-4 rounded-xl relative pt-8 dark:bg-slate-300">
+        <div className="bg-white p-4 rounded-xl relative pt-8 dark:bg-slate-400">
           {children}
         </div>
       </div>
