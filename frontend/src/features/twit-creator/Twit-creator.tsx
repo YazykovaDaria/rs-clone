@@ -113,7 +113,7 @@ export default function TwitCreator({
       <div className="w-full">
         <form onSubmit={f.handleSubmit} className="w-full">
           <textarea
-            className="w-full focus:border-b-2 outline-none block p-2 md:text-xl overflow-hidden resize-none max-h-[600px] dark:bg-inherit"
+            className="w-full dark:text-black focus:border-b-2 outline-none block p-2 md:text-xl overflow-hidden resize-none max-h-[600px] dark:bg-inherit"
             id="review-text"
             name="text"
             onChange={(e) => {
@@ -146,15 +146,16 @@ export default function TwitCreator({
           />
 
           <div className="flex justify-between items-center mt-2">
-            <label
-              htmlFor="img"
-              className="w-8 h-8 flex items-center justify-center"
-            >
-              <Picture className="w-6 h-6 cursor-pointer hover:stroke-cyan-500 stroke-sky-400 hover:stroke-2" />
-            </label>
-
+            {!isReply && (
+              <label
+                htmlFor="img"
+                className="w-8 h-8 flex items-center justify-center"
+              >
+                <Picture className="w-6 h-6 cursor-pointer hover:stroke-cyan-500 stroke-sky-400 hover:stroke-2" />
+              </label>
+            )}
             <div
-              className="mr-4 rounded-full border-2 border-sky-400 w-8 h-8 flex justify-center items-center"
+              className="mr-4 rounded-full border-2 border-sky-400 w-8 h-8 flex justify-center items-center ml-auto"
               style={{
                 borderColor: messageLength > 15 ? 'rgb(56 189 248)' : 'red',
               }}

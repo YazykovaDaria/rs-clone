@@ -52,12 +52,12 @@ export default function Twit(props: ITweet) {
   const thisName = originUser?.name || user.name;
   const thisUsername = originUser?.username || user.username;
   const thisAvatar = originUser?.avatar || user.avatar;
-
+  const thisId = parentId || id;
   const dispathc = useDispatch();
   const navigate = useNavigate();
   const navigator = () => {
     dispathc(setParentTwit(props));
-    navigate(`/tweet/${id}`);
+    navigate(`/tweet/${thisId}`);
   };
 
   return (
@@ -91,6 +91,7 @@ export default function Twit(props: ITweet) {
             <Reply
               replies={replies}
               id={id}
+              parentId={parentId}
               thisName={thisName}
               thisUsername={thisUsername}
               thisAvatar={thisAvatar}

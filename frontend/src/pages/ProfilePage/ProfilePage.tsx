@@ -15,6 +15,7 @@ function Profile() {
     limit: limitCount,
   });
   const [lastScrollTime, setLastScrollTime] = useState(0);
+  let isThrottled = false;
 
   useEffect(() => {
     document.addEventListener('scroll', scrollHandler);
@@ -30,8 +31,6 @@ function Profile() {
     count = data.count;
     tweets = data.tweets;
   }
-
-  let isThrottled = false;
 
   function scrollHandler(e: Event) {
     if (isThrottled) return;
