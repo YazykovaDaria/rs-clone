@@ -113,7 +113,7 @@ export default function TwitCreator({
       <div className="w-full">
         <form onSubmit={f.handleSubmit} className="w-full">
           <textarea
-            className="w-full dark:text-black focus:border-b-2 outline-none block p-2 md:text-xl overflow-hidden resize-none max-h-[600px] dark:bg-inherit"
+            className="w-full focus:border-b-2 outline-none block p-2 md:text-xl overflow-hidden resize-none max-h-[600px] dark:bg-inherit"
             id="review-text"
             name="text"
             onChange={(e) => {
