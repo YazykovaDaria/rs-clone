@@ -1,6 +1,6 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import InfiniteScroll from 'react-infinite-scroll-component';
 import HeaderProfile from '../../features/header-profile/header-profile';
 import Twit from '../../features/twit/twit';

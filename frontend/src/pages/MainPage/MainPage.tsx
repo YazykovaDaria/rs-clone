@@ -1,6 +1,6 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import InfiniteScroll from 'react-infinite-scroll-component';
 import TwitCreator from '../../features/twit-creator/Twit-creator';
 import Twit from '../../features/twit/twit';
