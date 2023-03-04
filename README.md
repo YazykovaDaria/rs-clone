@@ -1,1 +1,13 @@
-start task rs-clone
+Stack:
+
+React
+
+Redux toolkit
+
+Tailwind
+
+I18next
+
+Formik
+
+Yup
