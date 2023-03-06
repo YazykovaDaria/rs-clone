@@ -1,13 +1,28 @@
-Stack:
+# RS clone - Twitter-clone
 
-React
+Final project for **[RS-school](https://rs.school/js/)** JS/FE Course 2022Q3
 
-Redux toolkit
+## Task
 
-Tailwind
+https://github.com/rolling-scopes-school/tasks/blob/master/tasks/rsclone/rsclone.md
 
-I18next
+## Deploy
 
-Formik
+https://threetter.netlify.app/
 
-Yup
+## Used technologies
+
+- Typescript
+- React
+- React Router
+- Redux toolkit
+- Tailwind CSS
+- I18next
+- Formik
+- Yup
+
+## Backend
+
+https://github.com/viktorsolovyev/rs-clone-twitter-api
+
+
